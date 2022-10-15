@@ -31,24 +31,24 @@ export default function Signup (){
                 </div>
 
                 <div className="w-[350px] flex flex-col gap-2 justify-center" >
-                    <div className="text-center font-extrabold mb-5 text-[45px] drop-shadow-[0px_3px_2px_rgba(0,0,0,0.50)]">
+                    <div className=" text-white text-center font-extrabold mb-5 text-[45px] drop-shadow-[0px_3px_2px_rgba(0,0,0,0.50)]">
                         Sign Up
                     </div>
                     <div className="flex items-center justify-between ">
-                        <input className="px-3 py-1 rounded-lg w-full bg-bgColor focus:outline-dashed shadow-[0px_3px_6px_rgba(0,0,0,0.5)]" placeholder="Email"></input>
+                        <input className="px-3 py-1 rounded-lg w-full bg-bgColor focus:outline-dashed shadow-[0px_3px_6px_rgba(0,0,0,0.5)] placeholder:text-gray-500 text-white" placeholder="Email"></input>
                     </div>
                     <div className="flex items-center justify-between w-full">
-                        <input className="px-3 py-1 rounded-lg w-full bg-bgColor focus:outline-dashed shadow-[0px_3px_6px_rgba(0,0,0,0.5)]" placeholder="Phone Number"></input>
+                        <input className="px-3 py-1 rounded-lg w-full bg-bgColor focus:outline-dashed shadow-[0px_3px_6px_rgba(0,0,0,0.5)] placeholder:text-gray-500 text-white" placeholder="Phone Number"></input>
                     </div>
                     <div className="flex items-center justify-between">
-                        <input className="px-3 py-1 rounded-lg w-full bg-bgColor focus:outline-dashed shadow-[0px_3px_6px_rgba(0,0,0,0.5)]" placeholder="Address"></input>
+                        <input className="px-3 py-1 rounded-lg w-full bg-bgColor focus:outline-dashed shadow-[0px_3px_6px_rgba(0,0,0,0.5)] placeholder:text-gray-500 text-white" placeholder="Address"></input>
                     </div>
                     <br></br>
                     <div className="flex items-center justify-between">
-                         <input className="px-3 py-1 rounded-lg w-full bg-bgColor focus:outline-dashed shadow-[0px_3px_6px_rgba(0,0,0,0.5)]" placeholder="Password"></input>
+                         <input className="px-3 py-1 rounded-lg w-full bg-bgColor focus:outline-dashed shadow-[0px_3px_6px_rgba(0,0,0,0.5)] placeholder:text-gray-500 text-white" placeholder="Password"></input>
                     </div>
                     <div className="flex items-center justify-between">
-                        <input className="px-3 py-1 rounded-lg w-full bg-bgColor focus:outline-dashed shadow-[0px_3px_6px_rgba(0,0,0,0.5)]" placeholder="Confirm password "></input>
+                        <input className="px-3 py-1 rounded-lg w-full bg-bgColor focus:outline-dashed shadow-[0px_3px_6px_rgba(0,0,0,0.5)] placeholder:text-gray-500 text-white" placeholder="Confirm password "></input>
                     </div>
                     <br>
                     </br>

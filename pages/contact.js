@@ -9,9 +9,8 @@ export default function Home() {
     <div className='fixed top-0 bottom-0 left-0 right-0 '>
       <Head>
         <title>
-          Brgy. Fort
+          Contact Us
         </title>
-        <meta name="description" content="Welcome to Brgy. Fort!"></meta>
       </Head>
 
       <div className='relative w-screen h-4/6 overflow-hidden shadow-customShadow'>
@@ -25,16 +24,9 @@ export default function Home() {
           <div className='cursor-pointer text-gray-300 hover:text-white'>
             Online Services
           </div>
-
-          <Link href="/contact" passHref>
-            <a>
-              <div className='cursor-pointer text-gray-300 hover:text-white'>
-                Contact Us
-              </div>
-            </a>
-          </Link>
-
-          
+          <div className='cursor-pointer text-gray-300 hover:text-white'>
+            Contact Us
+          </div>
           <div className='cursor-pointer text-gray-300 hover:text-white'>
             About
           </div>
