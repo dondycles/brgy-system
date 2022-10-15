@@ -19,9 +19,14 @@ export default function Home() {
       </div>
       <div className='w-full h-2/6 flex flex-col'>
         <div className=' flex gap-3 md:gap-5  justify-center items-center h-20 mt-0 mb-0 mx-auto text-md md:text-lg font-extrabold drop-shadow-[0px_3px_6px_rgba(0,0,0,0.5)]'>
-          <div className='cursor-pointer text-gray-300 hover:text-white'>
-            Home
-          </div>
+          <Link href="/" passHref>
+            <a>
+              <div className='cursor-pointer text-gray-300 hover:text-white'>
+                Home
+              </div>
+            </a>
+          </Link>
+          
           <div className='cursor-pointer text-gray-300 hover:text-white'>
             Online Services
           </div>
