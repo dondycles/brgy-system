@@ -11,7 +11,7 @@ export default function Home() {
         <Image className='w-screen h-auto object-center'  objectFit='cover' layout='fill' width={1980} height={1080} src={bgryImg} />
       </div>
       <div className='w-full h-2/6 flex flex-col'>
-        <div className=' flex gap-5 justify-center items-center h-10 mt-0 mb-0 mx-auto text-lg'>
+        <div className=' flex gap-3 md:gap-5  justify-center items-center h-10 mt-0 mb-0 mx-auto text-md md:text-lg'>
           <div className='cursor-pointer text-gray-300 hover:text-white'>
             Home
           </div>

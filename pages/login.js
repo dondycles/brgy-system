@@ -9,21 +9,22 @@ export default function Login (){
 
         <div className="className='fixed top-0 bottom-0 left-0 right-0 h-screen w-screen flex justify-center items-center">
             
-            <div className="m-auto h-fit w-fit p-5 bg-accentColor rounded-lg shadow-customShadow flex flex-row gap-10 relative">
-                <Link href="/" passHref>
-                    <a>
-                        <div className='absolute top-5 left-5 text-2xl cursor-pointer hover:scale-[1.5] transition-all ease-in-out drop-shadow-[0px_3px_2px_rgba(0,0,0,0.50)]'>
-                            <TiArrowBack/>
+            <div className="m-auto h-fit w-fit p-5 bg-accentColor rounded-lg shadow-customShadow flex flex-row gap-10 relative scale-[0.75] md:scale-[1]">
+                <Link href="/" passHref className='w-0' >
+                    <a className=' z-10 absolute top-0 left-0 text-2xl'>
+                        <div className=' absolute top-5 left-5 text-2xl cursor-pointer hover:scale-[1.5] transition-all ease-in-out drop-shadow-[0px_3px_2px_rgba(0,0,0,0.50)]'>
+                            <TiArrowBack />
                         </div>
                     </a>
                 </Link>
 
-                <div className=' m-auto relative w-[300px] h-[300px] overflow-hidden flex'>
+                <div className=' m-auto relative w-[300px] h-[300px] overflow-hidden md:flex hidden'>
                     
                     <Image src={cityGirl}
                     objectPosition='center'
                     layout='fill'/>
                 </div>
+
 
                 <div className="w-[350px] flex flex-col gap-2 justify-center" >
                     <div className="text-center font-extrabold mb-5 text-[45px] drop-shadow-[0px_3px_2px_rgba(0,0,0,0.50)]">
