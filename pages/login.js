@@ -1,30 +1,38 @@
 import Image from 'next/image'
 import Head from 'next/head'
 import Link from 'next/link'
-import { useRouter } from 'next/router'
 import cityGirl from '../public/imgs/undrawCityGirl.svg'
 import {TiArrowBack} from 'react-icons/ti'
 import {AiOutlineGoogle} from 'react-icons/ai'
 import {auth} from '../utils/firebase'
 import { GoogleAuthProvider, signInWithPopup, getAdditionalUserInfo, signOut,} from "firebase/auth";
+import {useAuthState} from 'react-firebase-hooks/auth'
+import { useRouter } from 'next/router'
 
-    export default function Login (){
-        const route = useRouter();
-        const googleProvider = new GoogleAuthProvider();
-        const googleLogIn = async () => {
-            try {
-                const result = await signInWithPopup(auth, googleProvider);
-                const userInfo = result.user;
-                route.push("/")
-            }
-            catch (error) {
-                alert(error);
-            }
+export default function Login (){
+
+   
+    const route = useRouter();
+    const googleProvider = new GoogleAuthProvider();
+    const googleLogIn = async () => {
+        try {
+            const result = await signInWithPopup(auth, googleProvider);
+            const userInfo = result.user;
+            route.push("/")
+        }
+        catch (error) {
+            alert(error);
+        }
     };
 
-    return(
+    const [user, loading] = useAuthState(auth);
 
-        <div className="className='fixed top-0 bottom-0 left-0 right-0 h-screen w-screen flex justify-center items-center">
+    if(user){
+        route.push("/")
+    }
+
+    return(
+            <div className="className='fixed top-0 bottom-0 left-0 right-0 h-screen w-screen flex justify-center items-center">
             <Head>
                 <title>
                     Log In
@@ -91,7 +99,6 @@ import { GoogleAuthProvider, signInWithPopup, getAdditionalUserInfo, signOut,} f
             </div>
 
 
-        </div>
-
+            </div>
     )
 }

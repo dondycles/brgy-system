@@ -3,8 +3,18 @@ import Link from 'next/link'
 import Head from 'next/head'
 import cityGirl from '../public/imgs/undrawCityGirl.svg'
 import {TiArrowBack} from 'react-icons/ti'
+import {useAuthState} from 'react-firebase-hooks/auth'
+import { useRouter } from 'next/router'
+import {auth} from '../utils/firebase'
 
 export default function Signup (){
+
+    const [user, loading] = useAuthState(auth);
+    const route = useRouter();
+
+    if(user){
+        route.push("/")
+    }
 
     return(
 

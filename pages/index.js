@@ -19,11 +19,11 @@ export default function Home() {
         <meta name="description" content="Welcome to Brgy. Fort!"></meta>
       </Head>
 
-      <div className='relative w-screen h-4/6 overflow-hidden shadow-customShadow'>
+      <div className='relative w-screen h-[60%] overflow-hidden shadow-customShadow'>
         <Image className='w-screen h-auto object-center '  objectFit='cover' layout='fill' width={1980} height={1080} src={bgryImg} />
       </div>
-      <div className='w-full h-2/6 flex flex-col'>
-        <div className=' flex gap-3 md:gap-5  justify-center items-center h-20 mt-0 mb-0 mx-auto text-md md:text-lg font-extrabold drop-shadow-[0px_3px_6px_rgba(0,0,0,0.5)]'>
+      <div className='w-full h-[40%] flex flex-col'>
+        <div className=' flex gap-3 md:gap-5  justify-center items-center h-[50px] mt-0 mb-0 mx-auto text-md md:text-lg font-extrabold drop-shadow-[0px_3px_6px_rgba(0,0,0,0.5)]'>
           <div className='cursor-pointer text-gray-300 hover:text-white'>
             Online Services
           </div>
@@ -70,16 +70,25 @@ export default function Home() {
         )}
 
         {user && (
-          <div className='m-auto text-center flex gap-1'>
-            <div>Welcome!</div>
-            <span>
-              {user.displayName}
-            </span>
+          <>
+          <div className='flex gap-5 flex-col m-auto'>
+            <div className='m-auto text-center flex flex-col gap-1 drop-shadow-[0px_3px_6px_rgba(0,0,0,0.5)]'>
+              <img className='m-auto rounded-full' src={user.photoURL} width={100} height={100} />
+              <span>
+                {user.displayName}
+              </span>
+            </div>
+            <div>
+              <button onClick={()=> auth.signOut()} className='mx-auto my-auto flex items-center justify-center gap-3 bg-accentColor rounded-full px-5 py-1 cursor-pointer origin-center font-medium hover:font-extrabold hover:px-[22px] transition-all ease-in-out text-gray-300 hover:text-white w-fit drop-shadow-[0px_3px_6px_rgba(0,0,0,0.5)]'>
+                Sign Out
+              </button>
+            </div>
           </div>
+          </>
         )}
 
 
-        <div className='mb-0 mx-auto font-thin opacity-[50%] text-[10px]'>
+        <div className='mb-0 mt-auto mx-auto font-thin opacity-[50%] text-[10px]'>
           All Rights Reserved 2023
         </div>
 
