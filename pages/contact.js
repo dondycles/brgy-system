@@ -12,6 +12,14 @@ export default function Home() {
 
     const [user, loading] = useAuthState(auth);
     const [toggleNav, setToggleNav] = useState(false)
+    var pfp = null;
+    if(user){
+      if(user.photoURL == null){
+        pfp = "../imgs/nullPfp.png";
+      }else{
+        pfp = user.photoURL;
+      }
+    }
 
     return (
         <div className="fixed top-0 bottom-0 left-0 right-0 ">
@@ -50,8 +58,8 @@ export default function Home() {
               </div>
               <div>
                 {user && (
-                  <div className=" outline-2 outline outline-bgColor cursor-pointer absolute top-[50%] translate-y-[-50%] right-3 rounded-full overflow-hidden w-[60px] h-[60px] drop-shadow-[0px_3px_3px_rgba(0,0,0,0.5)]">
-                    <img className="w-full h-full" src={user.photoURL} ></img>
+                  <div className=" outline-4 outline outline-white cursor-pointer absolute top-[50%] translate-y-[-50%] right-3 rounded-full overflow-hidden w-[60px] h-[60px] drop-shadow-[0px_3px_3px_rgba(0,0,0,0.5)]">
+                    <img className="w-full h-full" src={pfp} ></img>
                   </div>
                 )}
               </div>
@@ -60,9 +68,9 @@ export default function Home() {
                 <div onClick={()=>setToggleNav(!toggleNav)}  className=" text-[40px]">
                     <HiMenu/>
                 </div>
-                <div className="rounded-full outline-2 outline outline-bgColor overflow-hidden bg-accentColor h-14 w-14">
+                <div className="rounded-full outline-4 outline outline-white overflow-hidden bg-accentColor h-14 w-14">
                   {user && (
-                    <img className="w-full h-full" src={user.photoURL} ></img>
+                    <img className="w-full h-full" src={pfp} ></img>
                   )}
                   
                 </div>

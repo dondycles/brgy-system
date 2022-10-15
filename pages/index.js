@@ -9,6 +9,14 @@ import {auth} from '../utils/firebase'
 export default function Home() {
 
   const [user, loading] = useAuthState(auth);
+  var pfp = null;
+  if(user){
+    if(user.photoURL == null){
+      pfp = "../imgs/nullPfp.png";
+    }else{
+      pfp = user.photoURL;
+    }
+  }
 
   return (
     <div className='fixed top-0 bottom-0 left-0 right-0 '>
@@ -73,7 +81,7 @@ export default function Home() {
           <>
           <div className='flex gap-5 flex-col m-auto'>
             <div className='m-auto text-center flex flex-col gap-1 drop-shadow-[0px_3px_6px_rgba(0,0,0,0.5)]'>
-              <img className='m-auto rounded-full' src={user.photoURL} width={100} height={100} />
+              <img className='m-auto rounded-full outline outline-8 outline-white' src={pfp} width={100} height={100} />
               <span>
                 {user.displayName}
               </span>

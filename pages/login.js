@@ -8,6 +8,9 @@ import {auth} from '../utils/firebase'
 import { GoogleAuthProvider, signInWithPopup, getAdditionalUserInfo, signOut,} from "firebase/auth";
 import {useAuthState} from 'react-firebase-hooks/auth'
 import { useRouter } from 'next/router'
+import {signInWithEmailAndPassword } from "firebase/auth";
+import {toast} from 'react-toastify'
+
 
 export default function Login (){
 
@@ -60,16 +63,30 @@ export default function Login (){
                         Log In
                     </div>
                     <div className="flex items-center justify-between ">
-                        <input className="px-3 py-1 rounded-lg w-full bg-bgColor focus:outline-dashed shadow-[0px_3px_6px_rgba(0,0,0,0.5)] placeholder:text-gray-500 text-white" placeholder="Email"></input>
+                        <input id="emailInput" className="px-3 py-1 rounded-lg w-full bg-bgColor focus:outline-dashed shadow-[0px_3px_6px_rgba(0,0,0,0.5)] placeholder:text-gray-500 text-white" placeholder="Email"></input>
                     </div>
                     
                     <div className="flex items-center justify-between">
-                        <input className="px-3 py-1 rounded-lg w-full bg-bgColor focus:outline-dashed shadow-[0px_3px_6px_rgba(0,0,0,0.5)] placeholder:text-gray-500 text-white" placeholder="Password"></input>
+                        <input id="passwordInput" className="px-3 py-1 rounded-lg w-full bg-bgColor focus:outline-dashed shadow-[0px_3px_6px_rgba(0,0,0,0.5)] placeholder:text-gray-500 text-white" placeholder="Password"></input>
                     </div>
                     
                     <br>
                     </br>
-                    <button className="bg-white rounded-lg text-bgColor font-extrabold text-2xl shadow-[0px_5px_10px_rgba(0,0,0,0.5)] py-2 hover:shadow-[0px_5px_10px_rgba(0,0,0,0.8)] transition-all ease-in-out">
+                    <button onClick={()=>{
+                        var email = document.getElementById("emailInput").value;
+                        var password = document.getElementById("passwordInput").value;
+                        
+                        signInWithEmailAndPassword(auth, email, password)
+                          .then((userCredential) => {
+                            // Signed in 
+                            const user = userCredential.user;
+                            toast.success("Hello!")
+                            // ...
+                          })
+                          .catch((error) => {
+                            toast.error(error.message)
+                          });
+                    }} className="bg-white rounded-lg text-bgColor font-extrabold text-2xl shadow-[0px_5px_10px_rgba(0,0,0,0.5)] py-2 hover:shadow-[0px_5px_10px_rgba(0,0,0,0.8)] transition-all ease-in-out">
                         Log In
                     </button>
                     <button onClick={googleLogIn} className="bg-bgColor rounded-lg text-white font-extrabold text-md shadow-[0px_5px_10px_rgba(0,0,0,0.5)] py-1 hover:shadow-[0px_5px_10px_rgba(0,0,0,0.8)] transition-all ease-in-out flex justify-center items-center gap-1">
