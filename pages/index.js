@@ -3,8 +3,13 @@ import Image from 'next/image'
 import styles from '../styles/Home.module.css'
 import bgryImg from '../public/imgs/brgyImg.jpg'
 import Link from 'next/link';
+import {useAuthState} from 'react-firebase-hooks/auth'
+import {auth} from '../utils/firebase'
 
 export default function Home() {
+
+  const [user, loading] = useAuthState(auth);
+
   return (
     <div className='fixed top-0 bottom-0 left-0 right-0 '>
       <Head>
@@ -41,15 +46,17 @@ export default function Home() {
           </Link>
         </div>
 
-        <div className='my-auto mx-auto w-full drop-shadow-[0px_3px_6px_rgba(0,0,0,0.5)]'>
+        {!user &&(
 
-        <Link href="/signup" passHref>
-          <a>
-            <div className='mx-auto my-auto flex items-center justify-center gap-3 bg-accentColor rounded-full px-5 py-1 cursor-pointer origin-center font-medium hover:font-extrabold hover:px-[22px] transition-all ease-in-out text-gray-300 hover:text-white w-fit '>
-                Sign In
-            </div>
-          </a>
-        </Link>
+
+        <div className='my-auto mx-auto w-full drop-shadow-[0px_3px_6px_rgba(0,0,0,0.5)]'>
+          <Link href="/signup" passHref>
+            <a>
+              <div className='mx-auto my-auto flex items-center justify-center gap-3 bg-accentColor rounded-full px-5 py-1 cursor-pointer origin-center font-medium hover:font-extrabold hover:px-[22px] transition-all ease-in-out text-gray-300 hover:text-white w-fit '>
+                  Sign In
+              </div>
+            </a>
+          </Link>
 
           <div className='mx-auto my-auto flex items-center justify-center gap-3 rounded-full px-5 py-1 font-thin transition-all ease-in-out text-gray-300 w-fit'>
             or
@@ -60,6 +67,17 @@ export default function Home() {
             </Link>
           </div>
         </div>
+        )}
+
+        {user && (
+          <div className='m-auto text-center flex gap-1'>
+            <div>Welcome!</div>
+            <span>
+              {user.displayName}
+            </span>
+          </div>
+        )}
+
 
         <div className='mb-0 mx-auto font-thin opacity-[50%] text-[10px]'>
           All Rights Reserved 2023

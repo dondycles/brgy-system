@@ -1,10 +1,25 @@
 import Image from 'next/image'
 import Head from 'next/head'
 import Link from 'next/link'
+import { useRouter } from 'next/router'
 import cityGirl from '../public/imgs/undrawCityGirl.svg'
 import {TiArrowBack} from 'react-icons/ti'
+import {AiOutlineGoogle} from 'react-icons/ai'
+import {auth} from '../utils/firebase'
+import { GoogleAuthProvider, signInWithPopup, getAdditionalUserInfo, signOut,} from "firebase/auth";
 
 export default function Login (){
+    const route = useRouter();
+    const googleProvider = new GoogleAuthProvider();
+    const googleLogIn = async () => {
+    try {
+        const result = await signInWithPopup(auth, googleProvider);
+        const userInfo = result.user;
+        route.push("/")
+    }
+    catch (error) {
+    }
+    };
 
     return(
 
@@ -48,6 +63,15 @@ export default function Login (){
                     <button className="bg-white rounded-lg text-bgColor font-extrabold text-2xl shadow-[0px_5px_10px_rgba(0,0,0,0.5)] py-2 hover:shadow-[0px_5px_10px_rgba(0,0,0,0.8)] transition-all ease-in-out">
                         Log In
                     </button>
+                    <button onClick={googleLogIn} className="bg-bgColor rounded-lg text-white font-extrabold text-md shadow-[0px_5px_10px_rgba(0,0,0,0.5)] py-1 hover:shadow-[0px_5px_10px_rgba(0,0,0,0.8)] transition-all ease-in-out flex justify-center items-center gap-1">
+                        <div>
+                            Log In with 
+                        </div>
+                        <div>
+                            <AiOutlineGoogle/>
+                        </div>
+                    </button>
+
                     <div className=' m-auto flex gap-2 mt-0 mb-0'>
                         <span className='opacity-[80%] '>
                             or
