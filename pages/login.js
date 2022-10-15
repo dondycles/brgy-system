@@ -8,17 +8,18 @@ import {AiOutlineGoogle} from 'react-icons/ai'
 import {auth} from '../utils/firebase'
 import { GoogleAuthProvider, signInWithPopup, getAdditionalUserInfo, signOut,} from "firebase/auth";
 
-export default function Login (){
-    const route = useRouter();
-    const googleProvider = new GoogleAuthProvider();
-    const googleLogIn = async () => {
-    try {
-        const result = await signInWithPopup(auth, googleProvider);
-        const userInfo = result.user;
-        route.push("/")
-    }
-    catch (error) {
-    }
+    export default function Login (){
+        const route = useRouter();
+        const googleProvider = new GoogleAuthProvider();
+        const googleLogIn = async () => {
+            try {
+                const result = await signInWithPopup(auth, googleProvider);
+                const userInfo = result.user;
+                route.push("/")
+            }
+            catch (error) {
+                alert(error);
+            }
     };
 
     return(
