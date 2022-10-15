@@ -1,5 +1,6 @@
 import Image from 'next/image'
 import Link from 'next/link'
+import Head from 'next/head'
 import cityGirl from '../public/imgs/undrawCityGirl.svg'
 import {TiArrowBack} from 'react-icons/ti'
 
@@ -8,7 +9,11 @@ export default function Signup (){
     return(
 
         <div className="className='fixed top-0 bottom-0 left-0 right-0 h-screen w-screen flex justify-center items-center">
-            
+            <Head>
+                <title>
+                    Sign Up
+                </title>
+            </Head>
             <div className="m-auto h-fit w-fit p-5 bg-accentColor rounded-lg shadow-customShadow flex flex-row gap-10 relative scale-[0.75] md:scale-[1]">
                 <Link href="/" passHref className='w-0' >
                     <a className=' z-10 absolute top-0 left-0 text-2xl'>
