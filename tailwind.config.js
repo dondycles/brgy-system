@@ -9,6 +9,9 @@ module.exports = {
       colors: {
         'bgColor': '#000B44',
         'accentColor': '#007BFF'
+      },
+      boxShadow: {
+        'customShadow': '0px 0px 30px rgba(0,0,0,0.5)'
       }
     },
   },
