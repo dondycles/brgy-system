@@ -37,7 +37,12 @@ export default function Home() {
         </Link>
 
           <div className='mx-auto my-auto flex items-center justify-center gap-3 rounded-full px-5 py-1 font-thin transition-all ease-in-out text-gray-300 w-fit'>
-            or <span className='text-accentColor cursor-pointer hover:font-normal transition-all ease-in-out'>Log In</span>
+            or
+            <Link href="/login" >
+              <a>
+                <span className='text-accentColor cursor-pointer hover:font-normal transition-all ease-in-out'>Log In</span>
+              </a>
+            </Link>
           </div>
         </div>
 

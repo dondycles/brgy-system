@@ -3,7 +3,7 @@ import Link from 'next/link'
 import cityGirl from '../public/imgs/undrawCityGirl.svg'
 import {TiArrowBack} from 'react-icons/ti'
 
-export default function Signup (){
+export default function Login (){
 
     return(
 
@@ -27,37 +27,29 @@ export default function Signup (){
 
                 <div className="w-[350px] flex flex-col gap-2 justify-center" >
                     <div className="text-center font-extrabold mb-5 text-[45px] drop-shadow-[0px_3px_2px_rgba(0,0,0,0.50)]">
-                        Sign Up
+                        Log In
                     </div>
                     <div className="flex items-center justify-between ">
                         <input className="px-3 py-1 rounded-lg w-full bg-bgColor focus:outline-dashed shadow-[0px_3px_6px_rgba(0,0,0,0.5)]" placeholder="Email"></input>
                     </div>
-                    <div className="flex items-center justify-between w-full">
-                        <input className="px-3 py-1 rounded-lg w-full bg-bgColor focus:outline-dashed shadow-[0px_3px_6px_rgba(0,0,0,0.5)]" placeholder="Phone Number"></input>
-                    </div>
-                    <div className="flex items-center justify-between">
-                        <input className="px-3 py-1 rounded-lg w-full bg-bgColor focus:outline-dashed shadow-[0px_3px_6px_rgba(0,0,0,0.5)]" placeholder="Address"></input>
-                    </div>
-                    <br></br>
+                    
                     <div className="flex items-center justify-between">
                          <input className="px-3 py-1 rounded-lg w-full bg-bgColor focus:outline-dashed shadow-[0px_3px_6px_rgba(0,0,0,0.5)]" placeholder="Password"></input>
                     </div>
-                    <div className="flex items-center justify-between">
-                        <input className="px-3 py-1 rounded-lg w-full bg-bgColor focus:outline-dashed shadow-[0px_3px_6px_rgba(0,0,0,0.5)]" placeholder="Confirm password "></input>
-                    </div>
+                    
                     <br>
                     </br>
                     <button className="bg-white rounded-lg text-bgColor font-extrabold text-2xl shadow-[0px_5px_10px_rgba(0,0,0,0.5)] py-2 hover:shadow-[0px_5px_10px_rgba(0,0,0,0.8)] transition-all ease-in-out">
-                        Register
+                        Log In
                     </button>
                     <div className=' m-auto flex gap-2 mt-0 mb-0'>
                         <span className='opacity-[80%] '>
                             or
                         </span>
-                        <Link href="/login" passHref>
+                        <Link href="/signup" passHref>
                             <a>
                                 <span className='opacity-[80%] hover:opacity-[100%] font-extrabold cursor-pointer transition-all ease-in-out'>
-                                    Log In
+                                    Sign Up
                                 </span>
                             </a>
                         </Link>
