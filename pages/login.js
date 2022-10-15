@@ -15,6 +15,7 @@ import { GoogleAuthProvider, signInWithPopup, getAdditionalUserInfo, signOut,} f
             try {
                 const result = await signInWithPopup(auth, googleProvider);
                 const userInfo = result.user;
+                route.push("/")
             }
             catch (error) {
                 alert(error);
