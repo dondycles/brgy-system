@@ -1,7 +1,16 @@
 import Head from "next/head";
 import Image from "next/image";
 import styles from "../styles/Home.module.css";
-import bgryImg from "../public/imgs/brgyImg.jpg";
+import aboutImg from "../public/imgs/aboutImg.jpg";
+import dondy from "../public/imgs/dondy.jpg";
+import andrea from "../public/imgs/andrea.jpg";
+import jl from "../public/imgs/jl.jpg";
+import rica from "../public/imgs/rica.jpg";
+import sharm from "../public/imgs/sharm.jpg";
+import elijah from "../public/imgs/elijah.jpg";
+import rey from "../public/imgs/rey.jpg";
+import kenu from "../public/imgs/kenu.jpg";
+import gerand from "../public/imgs/gerand.png";
 import Link from "next/link";
 import {HiMenu, HiOutlineX} from "react-icons/hi"
 import { useState } from "react";
@@ -32,11 +41,11 @@ export default function Home() {
     }
     
     return (
-        <div className="fixed top-0 bottom-0 left-0 right-0 ">
+        <div className="">
           <Head>
             <title>Contact Us</title>
           </Head>
-          <nav className="w-screen mt-0 ">
+          <nav className="z-10 fixed top-0 left-0 right-0 w-screen mt-0 ">
             <div className=" relative hidden sm:flex flex-row bg-accentColor items-center h-20 mt-0 mb-0 mx-auto drop-shadow-[0px_3px_6px_rgba(0,0,0,0.5)]">
               <div className=" mx-auto  flex gap-3 md:gap-5 justify-center items-center  text-md md:text-lg font-extrabold drop-shadow-[0px_3px_6px_rgba(0,0,0,0.5)]">
                 <Link href="/" passHref>
@@ -85,7 +94,7 @@ export default function Home() {
             </div>
           </nav>
     
-        <div id="navMenu" className={
+          <div id="navMenu" className={
           toggleNav? "translate-x-[0%] transition-all ease-in-out duration-300 flex  flex-col justify-center gap-10 font-extrabold text-[35px] bg-accentColor fixed top-0 bottom-0 left-0 h-screen w-fit px-5 ${ }" 
           : " translate-x-[-100%] transition-all ease-in-out duration-300 flex  flex-col justify-center gap-10 font-extrabold text-[35px] bg-accentColor fixed top-0 bottom-0 left-0 h-screen w-fit px-5 ${ }" 
           }>
@@ -124,6 +133,118 @@ export default function Home() {
                 </a>
             </Link>
           </div>
+
+          <div className="w-full overflow-x-hidden h-screen">
+            <div className='relative w-screen h-[60vh] mb-[30vh] overflow-hidden shadow-customShadow'>
+              <Image className='w-screen h-auto object-center '  objectFit='cover' layout='fill'  src={aboutImg} />
+            </div>
+            <div className="text-[50px] font-extrabold text-center mt-0 mb-[10vh]">
+              OUR TEAM
+            </div>
+            <div className="w-screen h-fit p-10 flex flex-wrap justify-evenly gap-5">
+
+              <div className="flex flex-col sm:flex-row justify-start items-center gap-3 h-fit min-w-[500px]">
+                <div className="relative min-w-[200px] h-[200px] overflow-hidden rounded-xl">
+                  <Image objectFit='cover' layout='fill' src={dondy} />
+                </div>
+                <div>
+                  <div className="font-extrabold">JOHN ROD DONDOYANO</div>
+                  <div className="opacity-[50%]">
+                    Programmer/UI
+                  </div>
+                </div>  
+              </div>
+              <div className="flex flex-col sm:flex-row justify-start  items-center gap-3 h-fit min-w-[500px]">
+                <div className="relative min-w-[200px] h-[200px] overflow-hidden rounded-xl">
+                  <Image objectFit='cover' layout='fill'  src={andrea} />
+                </div>
+                <div>
+                  <div className="font-extrabold">ANDREA RINA VITORIO</div>
+                  <div className="opacity-[50%]">
+                    Programmer/UI
+                  </div>
+                </div>  
+              </div>
+              <div className="flex flex-col sm:flex-row justify-start items-center gap-3 h-fit min-w-[500px]">
+                <div className="relative min-w-[200px] h-[200px] overflow-hidden rounded-xl">
+                  <Image objectFit='cover' layout='fill'  src={jl} />
+                </div>
+                <div>
+                  <div className="font-extrabold">JOHN LOUIE LOPEZ</div>
+                  <div className="opacity-[50%]">
+                    Programmer/UI
+                  </div>
+                </div>  
+              </div>
+              <div className="flex flex-col sm:flex-row justify-start items-center gap-3 h-fit min-w-[500px]">
+                <div className="relative min-w-[200px] h-[200px] overflow-hidden rounded-xl">
+                  <Image objectFit='cover' layout='fill'  src={sharm} />
+                </div>
+                <div>
+                  <div className="font-extrabold">DANIELA SHARMELLE YLARAN</div>
+                  <div className="opacity-[50%]">
+                    Database Admin
+                  </div>
+                </div>  
+              </div>
+              <div className="flex flex-col sm:flex-row justify-start items-center gap-3 h-fit min-w-[500px]">
+                <div className="relative min-w-[200px] h-[200px] overflow-hidden rounded-xl">
+                  <Image objectFit='cover' layout='fill' src={gerand} />
+                </div>
+                <div>
+                  <div className="font-extrabold">GERAND SALAZAR</div>
+                  <div className="opacity-[50%]">
+                    Database Admin
+                  </div>
+                </div>  
+              </div>
+              <div className="flex flex-col sm:flex-row justify-start items-center gap-3 h-fit min-w-[500px]">
+                <div className="relative min-w-[200px] h-[200px] overflow-hidden rounded-xl">
+                  <Image objectFit='cover' layout='fill' className="" src={rey} />
+                </div>
+                <div>
+                  <div className="font-extrabold">JOHN REY MAQUIRANG</div>
+                  <div className="opacity-[50%]">
+                  Analyst/Documentation
+                  </div>
+                </div>  
+              </div>
+              <div className="flex flex-col sm:flex-row justify-start items-center gap-3 h-fit min-w-[500px]">
+                <div className="relative min-w-[200px] h-[200px] overflow-hidden rounded-xl">
+                  <Image objectFit='cover' layout='fill' className="" src={rica} />
+                </div>
+                <div>
+                  <div className="font-extrabold uppercase">Rica Mae Santos</div>
+                  <div className="opacity-[50%]">
+                  Tester/Documentation
+                  </div>
+                </div>  
+              </div>
+              <div className="flex flex-col sm:flex-row justify-start items-center gap-3 h-fit min-w-[500px]">
+                <div className="relative min-w-[200px] h-[200px] overflow-hidden rounded-xl">
+                  <Image objectFit='cover' layout='fill' className="" src={elijah} />
+                </div>
+                <div>
+                  <div className="font-extrabold uppercase">Elijah Paul Redondo</div>
+                  <div className="opacity-[50%]">
+                  Tester/Documentation
+                  </div>
+                </div>  
+              </div>
+              <div className="flex flex-col sm:flex-row justify-start items-center gap-3 h-fit min-w-[500px]">
+                <div className="relative min-w-[200px] h-[200px] overflow-hidden rounded-xl">
+                  <Image objectFit='cover' layout='fill' className="" src={kenu} />
+                </div>
+                <div>
+                  <div className="font-extrabold uppercase">Nehemiah Kenu Olegario</div>
+                  <div className="opacity-[50%]">
+                  Tester/Documentation
+                  </div>
+                </div>  
+              </div>
+            </div>
+          </div>
+
         </div>
       );
 }
