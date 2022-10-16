@@ -12,7 +12,12 @@ import rey from "../public/imgs/rey.jpg";
 import kenu from "../public/imgs/kenu.jpg";
 import gerand from "../public/imgs/gerand.png";
 import Link from "next/link";
-import { HiMenu, HiOutlineX } from "react-icons/hi";
+import { HiMenu, HiOutlineX, HiOutlineHome } from "react-icons/hi";
+import { BsQuestionCircle } from "react-icons/bs";
+import {
+  MdOutlineMiscellaneousServices,
+  MdOutlineConnectWithoutContact,
+} from "react-icons/md";
 import { useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth, db } from "../utils/firebase";
@@ -56,7 +61,7 @@ export default function Home() {
       </Head>
       <nav className="z-10 fixed top-0 left-0 right-0 w-screen mt-0 drop-shadow-[0px_3px_6px_rgba(0,0,0,0.5)] ">
         <div className=" relative hidden sm:flex flex-row bg-accentColor items-center h-20 mt-0 mb-0 mx-auto ">
-          <div className=" mx-auto  flex gap-3 md:gap-5 justify-center items-center  text-md md:text-lg font-extrabold ">
+          <div className=" mx-auto  flex gap-3 md:gap-5 justify-center items-center  text-md md:text-lg font-extrabold drop-shadow-[0px_3px_6px_rgba(0,0,0,0.5)] ">
             <Link href="/" passHref>
               <a>
                 <div className="cursor-pointer text-gray-300 hover:text-white hover:bg-bgColor rounded-lg px-3 leading-10">
@@ -90,15 +95,15 @@ export default function Home() {
             </div>
           )}
         </div>
-        <div className=" relative px-5 sm:hidden flex justify-between items-center h-[50px] bg-accentColor">
+        <div className=" relative px-5 sm:hidden flex justify-between items-center h-[50px] bg-accentColor ">
           <div
             onClick={() => setToggleNav(!toggleNav)}
-            className=" text-[40px]"
+            className=" text-[40px] drop-shadow-[0px_3px_1px_rgba(0,0,0,0.4)] "
           >
             <HiMenu />
           </div>
           {user && (
-            <div className="cursor-pointer absolute top-[50%] translate-y-[-50%] right-3  h-full w-[50px]  flex items-center text-right flex-row-reverse leading-4 ">
+            <div className="cursor-pointer absolute top-[50%] translate-y-[-50%] right-3  h-full w-[50px]  flex items-center text-right flex-row-reverse leading-4 drop-shadow-[0px_3px_6px_rgba(0,0,0,0.5)] ">
               <div id="userNameDisplay.m"></div>
             </div>
           )}
@@ -108,34 +113,84 @@ export default function Home() {
       <div
         id="navMenu"
         className={`${
-          toggleNav ? "translate-x-[0%]" : "translate-x-[-100%]"
-        }  translate-x-[0%] transition-all ease-in-out duration-300 flex  flex-col justify-center gap-10 font-extrabold text-[35px] bg-accentColor fixed top-0 bottom-0 left-0 h-screen w-fit px-5  z-10 `}
+          toggleNav
+            ? "translate-x-[0%] drop-shadow-[0px_3px_6px_rgba(0,0,0,0.5)]"
+            : "translate-x-[-100%]"
+        }  translate-x-[0%] transition-all ease-in-out duration-300 flex  flex-col justify-center items-start gap-5 font-extrabold text-2xl bg-accentColor fixed top-0 bottom-0 left-0 h-screen w-fit px-5  z-10 text-white `}
       >
         <div
           onClick={() => setToggleNav(!toggleNav)}
-          className="absolute top-5 left-5 text-[40px]"
+          className="absolute top-5 left-5 text-[40px] drop-shadow-[0px_3px_1px_rgba(0,0,0,0.4)]"
         >
-          <HiOutlineX />
+          <HiOutlineX
+            className={`${
+              toggleNav ? "rotate-[0deg]" : " rotate-[360deg]"
+            } transition-all duration-1000 delay-200 ease-in-out `}
+          />
         </div>
 
         <Link href="/" passHref>
-          <a>
-            <div>Home</div>
+          <a className="flex flex-row-reverse items-center gap-2 drop-shadow-[0px_3px_1px_rgba(0,0,0,0.4)]">
+            <div
+              className={`${
+                toggleNav ? "text-2xl" : " text-sm"
+              } transition-all duration-300 delay-200 ease-in-out `}
+            >
+              Home
+            </div>
+            <HiOutlineHome
+              className={`${
+                toggleNav ? "rotate-[0deg]" : " rotate-[360deg]"
+              } transition-all duration-1000 delay-200 ease-in-out `}
+            />
           </a>
         </Link>
         <Link href="/" passHref>
-          <a>
-            <div>Online Services</div>
+          <a className="flex flex-row-reverse items-center gap-2 drop-shadow-[0px_3px_1px_rgba(0,0,0,0.4)]">
+            <div
+              className={`${
+                toggleNav ? "text-2xl" : " text-sm"
+              } transition-all duration-300 delay-200 ease-in-out `}
+            >
+              Online Services
+            </div>
+            <MdOutlineMiscellaneousServices
+              className={`${
+                toggleNav ? "rotate-[0deg]" : " rotate-[360deg]"
+              } transition-all duration-1000 delay-200 ease-in-out `}
+            />
           </a>
         </Link>
         <Link href="/contact" passHref>
-          <a>
-            <div>Contact Us</div>
+          <a className="flex flex-row-reverse items-center gap-2 drop-shadow-[0px_3px_1px_rgba(0,0,0,0.4)]">
+            <div
+              className={`${
+                toggleNav ? "text-2xl" : " text-sm"
+              } transition-all duration-300 delay-200 ease-in-out `}
+            >
+              Contact Us
+            </div>
+            <MdOutlineConnectWithoutContact
+              className={`${
+                toggleNav ? "rotate-[0deg]" : " rotate-[360deg]"
+              } transition-all duration-1000 delay-200 ease-in-out `}
+            />
           </a>
         </Link>
         <Link href="/about" passHref>
-          <a>
-            <div>About</div>
+          <a className="flex flex-row-reverse items-center gap-2 drop-shadow-[0px_3px_1px_rgba(0,0,0,0.4)]">
+            <div
+              className={`${
+                toggleNav ? "text-2xl " : " text-sm"
+              } transition-all duration-300 delay-200 ease-in-out `}
+            >
+              About
+            </div>
+            <BsQuestionCircle
+              className={`${
+                toggleNav ? "rotate-[0deg]" : " rotate-[360deg]"
+              } transition-all duration-1000 delay-200 ease-in-out `}
+            />
           </a>
         </Link>
       </div>
