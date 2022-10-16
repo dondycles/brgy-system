@@ -95,8 +95,8 @@ export default function Home() {
           </nav>
     
           <div id="navMenu" className={
-          toggleNav? "translate-x-[0%] transition-all ease-in-out duration-300 flex  flex-col justify-center gap-10 font-extrabold text-[35px] bg-accentColor fixed top-0 bottom-0 left-0 h-screen w-fit px-5 ${ }" 
-          : " translate-x-[-100%] transition-all ease-in-out duration-300 flex  flex-col justify-center gap-10 font-extrabold text-[35px] bg-accentColor fixed top-0 bottom-0 left-0 h-screen w-fit px-5 ${ }" 
+          toggleNav? " z-10 translate-x-[0%] transition-all ease-in-out duration-300 flex  flex-col justify-center gap-10 font-extrabold text-[35px] bg-accentColor fixed top-0 bottom-0 left-0 h-screen w-fit px-5 ${ }" 
+          : " z-10  translate-x-[-100%] transition-all ease-in-out duration-300 flex  flex-col justify-center gap-10 font-extrabold text-[35px] bg-accentColor fixed top-0 bottom-0 left-0 h-screen w-fit px-5 ${ }" 
           }>
     
             <div onClick={()=>setToggleNav(!toggleNav)} className="absolute top-5 left-5 text-[40px]">
