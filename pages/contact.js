@@ -43,11 +43,11 @@ export default function Home() {
   }
 
   return (
-    <div className="w-full h-fit ">
+    <div className="w-full h-screen scrollbar-thin scrollbar-thumb-accentColor scrollbar-track-bgColor ">
       <Head>
         <title>Contact Us</title>
       </Head>
-      <nav className="z-10 fixed top-0 left-0 right-0 w-screen mt-0 ">
+      <nav className="z-10 fixed top-0 left-0 right-0 w-full mt-0 ">
         <div className=" relative hidden sm:flex flex-row bg-accentColor items-center h-20 mt-0 mb-0 mx-auto drop-shadow-[0px_3px_6px_rgba(0,0,0,0.5)]">
           <div className=" mx-auto  flex gap-3 md:gap-5 justify-center items-center  text-md md:text-lg font-extrabold drop-shadow-[0px_3px_6px_rgba(0,0,0,0.5)]">
             <Link href="/" passHref>
@@ -101,7 +101,7 @@ export default function Home() {
         id="navMenu"
         className={`${
           toggleNav ? "translate-x-[0%]" : "translate-x-[-100%]"
-        }  translate-x-[0%] transition-all ease-in-out duration-300 flex  flex-col justify-center gap-10 font-extrabold text-[35px] bg-accentColor fixed top-0 bottom-0 left-0 h-screen w-fit px-5  z-10`}
+        }  translate-x-[0%] transition-all ease-in-out duration-300 flex  flex-col justify-center gap-10 font-extrabold text-[35px] bg-accentColor fixed top-0 bottom-0 left-0 h-screen w-fit px-5  z-10 `}
       >
         <div
           onClick={() => setToggleNav(!toggleNav)}
@@ -132,7 +132,7 @@ export default function Home() {
         </Link>
       </div>
 
-      <div className=" w-full h-screen  text-center p-[10px] flex flex-col items-center justify-center drop-shadow-[0px_3px_6px_rgba(0,0,0,0.5)]">
+      <div className=" w-full h-screen  text-center p-[10px] flex flex-col items-center justify-center drop-shadow-[0px_3px_6px_rgba(0,0,0,0.5)] ">
         <div className="text-[30px] sm:text-[50px] font-extrabold">
           CONTACT US
         </div>
@@ -181,13 +181,13 @@ export default function Home() {
         </div>
       </div>
 
-      <div className="w-full h-screen overflow-hidden flex items-center justify-center drop-shadow-[0px_3px_6px_rgba(0,0,0,0.5)]">
+      <div className="w-full h-screen overflow-hidden flex items-center justify-center drop-shadow-[0px_3px_6px_rgba(0,0,0,0.5)] ">
         <div className=" rounded-lg m-auto relative h-[80%] w-[90%] overflow-hidden flex justify-center items-center">
           <Image src={hallImg} objectFit="cover" layout="fill"></Image>
         </div>
       </div>
 
-      <div className="m-auto flex w-screen overflow-hidden drop-shadow-[0px_3px_6px_rgba(0,0,0,0.5)]">
+      <div className="m-auto flex w-full overflow-hidden drop-shadow-[0px_3px_6px_rgba(0,0,0,0.5)] ">
         <div className="w-screen h-screen">
           <iframe
             className="rounded-lg w-[90%] h-[80%] m-auto"

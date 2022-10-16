@@ -50,11 +50,11 @@ export default function Home() {
   }
 
   return (
-    <div className="">
+    <div className=" ">
       <Head>
         <title>Contact Us</title>
       </Head>
-      <nav className="z-10 fixed top-0 left-0 right-0 w-screen mt-0 ">
+      <nav className="z-10 fixed top-0 left-0 right-0 w-screen mt-0 drop-shadow-[0px_3px_6px_rgba(0,0,0,0.5)] ">
         <div className=" relative hidden sm:flex flex-row bg-accentColor items-center h-20 mt-0 mb-0 mx-auto ">
           <div className=" mx-auto  flex gap-3 md:gap-5 justify-center items-center  text-md md:text-lg font-extrabold ">
             <Link href="/" passHref>
@@ -109,7 +109,7 @@ export default function Home() {
         id="navMenu"
         className={`${
           toggleNav ? "translate-x-[0%]" : "translate-x-[-100%]"
-        }  translate-x-[0%] transition-all ease-in-out duration-300 flex  flex-col justify-center gap-10 font-extrabold text-[35px] bg-accentColor fixed top-0 bottom-0 left-0 h-screen w-fit px-5  z-10`}
+        }  translate-x-[0%] transition-all ease-in-out duration-300 flex  flex-col justify-center gap-10 font-extrabold text-[35px] bg-accentColor fixed top-0 bottom-0 left-0 h-screen w-fit px-5  z-10 `}
       >
         <div
           onClick={() => setToggleNav(!toggleNav)}
@@ -140,7 +140,7 @@ export default function Home() {
         </Link>
       </div>
 
-      <div className="w-full overflow-x-hidden h-screen drop-shadow-[0px_3px_3px_rgba(0,0,0,0.5)]">
+      <div className="w-full overflow-x-hidden h-screen drop-shadow-[0px_3px_3px_rgba(0,0,0,0.5)] scrollbar-thin scrollbar-thumb-accentColor scrollbar-track-bgColor">
         <div className="relative w-screen h-[60vh] mb-[5vh] overflow-hidden ">
           <Image
             className="w-screen h-auto object-center "
