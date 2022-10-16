@@ -91,7 +91,7 @@ export default function Home() {
             <HiMenu />
           </div>
           {user && (
-            <div className="cursor-pointer absolute top-[50%] translate-y-[-50%] right-3  h-full w-[50px]  flex items-center drop-shadow-[0px_3px_3px_rgba(0,0,0,0.5)] text-right flex-row-reverse">
+            <div className="cursor-pointer absolute top-[50%] translate-y-[-50%] right-3  h-full w-[50px]  flex items-center drop-shadow-[0px_3px_3px_rgba(0,0,0,0.5)] text-right flex-row-reverse leading-4">
               <div id="userNameDisplay.m"></div>
             </div>
           )}
