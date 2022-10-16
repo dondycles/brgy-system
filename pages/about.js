@@ -149,10 +149,10 @@ export default function Home() {
             src={aboutImg}
           />
         </div>
-        <div className="text-[50px] font-extrabold text-center mt-0  ">
+        <div className=" text-[30px] sm:text-[50px] font-extrabold text-center mt-0  ">
           OUR TEAM
         </div>
-        <div className="mt-[5vh] mb-[20vh] text-center w-[50%] mx-auto">
+        <div className="mt-[5vh] mb-[20vh] text-justify w-[80%] sm:w-[50%] mx-auto">
           "The way a team plays as a whole determines its success. You may have
           the greatest bunch of individual stars in the world, but if they don’t
           play together, the club won’t be worth a dime." – Babe Ruth

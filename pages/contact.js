@@ -13,6 +13,8 @@ export default function Home() {
   const [user, loading] = useAuthState(auth);
   const [toggleNav, setToggleNav] = useState(false);
 
+  function initMap() {}
+
   if (user) {
     const newEmail = user.email
       .replace(".com", "")
@@ -131,43 +133,51 @@ export default function Home() {
       </div>
 
       <div className=" w-full h-screen  text-center p-[10px] flex flex-col items-center justify-center drop-shadow-[0px_3px_6px_rgba(0,0,0,0.5)]">
-        <div className="text-[50px] font-extrabold">CONTACT US</div>
+        <div className="text-[30px] sm:text-[50px] font-extrabold">
+          CONTACT US
+        </div>
         <div className="mt-[5vh] ">
-          <div className="text-[30px] font-extrabold text-accentColor">
+          <div className="text-[20px] sm:text-[30px] font-extrabold text-accentColor">
             OUR OFFICE
           </div>
-          <div className="text-[13px]">
+          <div className="text-[12px] sm:text-[13px]">
             2nd floor, Multi-Purpose Hall, Zone 1, Brgy. Fort Bonifacio, Lawton
             Ave cor Pasong Tamo extension, Taguig City
           </div>
-          <div className="text-[13px] mt-[2vh]">Tel No.: 02-8477-2106</div>
-          <div className="text-[13px]">
+          <div className="text-[12px] sm:text-[13px] mt-[2vh]">
+            Tel No.: 02-8477-2106
+          </div>
+          <div className="text-[12px] sm:text-[13px]">
             Cel. No.: +63 9190 959 803 | +63 9255 458 001
           </div>
         </div>
         <div className="mt-[5vh] ">
-          <div className="text-[30px] font-extrabold text-accentColor">
+          <div className="text-[20px] sm:text-[30px] font-extrabold text-accentColor">
             SATELLITE OFFICE
           </div>
-          <div className="text-[13px]">
+          <div className="text-[12px] sm:text-[13px]">
             2nd Floor, Market Market & SM Aura 9th Floor Bonifacio Global City,
             Taguig City
           </div>
-          <div className="text-[13px] mt-[2vh]">
+          <div className="text-[12px] sm:text-[13px] mt-[2vh]">
             Tel: (02) 7750 7636; Cel. No.: +63 925 545 8002
           </div>
         </div>
         <div className="mt-[5vh] ">
-          <div className="text-[30px] font-extrabold text-accentColor">
+          <div className="text-[20px] sm:text-[30px] font-extrabold text-accentColor">
             PEACE AND ORDER
           </div>
-          <div className="text-[13px]">Cel. No.: +63 9255 453 465</div>
+          <div className="text-[12px] sm:text-[13px]">
+            Cel. No.: +63 9255 453 465
+          </div>
         </div>
         <div className="mt-[5vh] ">
-          <div className="text-[30px] font-extrabold text-accentColor">
+          <div className="text-[20px] sm:text-[30px] font-extrabold text-accentColor">
             EMERGENCY & RESCUE
           </div>
-          <div className="text-[13px]">Cel. No.: +63 9255 453 469</div>
+          <div className="text-[12px] sm:text-[13px]">
+            Cel. No.: +63 9255 453 469
+          </div>
         </div>
       </div>
 
@@ -177,15 +187,10 @@ export default function Home() {
         </div>
       </div>
 
-      <div className="m-auto flex w-full overflow-hidden drop-shadow-[0px_3px_6px_rgba(0,0,0,0.5)]">
-        <div className="w-full h-screen">
+      <div className="m-auto flex w-screen overflow-hidden drop-shadow-[0px_3px_6px_rgba(0,0,0,0.5)]">
+        <div className="w-screen h-screen">
           <iframe
             className="rounded-lg w-[90%] h-[80%] m-auto"
-            class="gmap_iframe"
-            frameborder="0"
-            scrolling="no"
-            marginheight="0"
-            marginwidth="0"
             src="https://maps.google.com/maps?width=600&amp;height=400&amp;hl=en&amp;q=Fort Bonifacio&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"
           ></iframe>
         </div>

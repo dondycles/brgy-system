@@ -55,8 +55,7 @@ export default function Home() {
           className="w-screen h-auto object-center "
           objectFit="cover"
           layout="fill"
-          width={1980}
-          height={1080}
+          priority={true}
           src={bgryImg}
         />
       </div>
