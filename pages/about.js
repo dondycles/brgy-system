@@ -6,21 +6,31 @@ import Link from "next/link";
 import {HiMenu, HiOutlineX} from "react-icons/hi"
 import { useState } from "react";
 import {useAuthState} from 'react-firebase-hooks/auth'
-import {auth} from '../utils/firebase'
+import {auth, db} from '../utils/firebase'
+import {ref, set, onValue, update, get, child} from "firebase/database";
 
 export default function Home() {
 
     const [user, loading] = useAuthState(auth);
     const [toggleNav, setToggleNav] = useState(false)
-    var pfp = null;
-    if(user){
-      if(user.photoURL == null){
-        pfp = "../imgs/nullPfp.png";
-      }else{
-        pfp = user.photoURL;
-      }
-    }
 
+    if(user){
+      const newEmail = user.email.replace(".com","").replace("@","").replace("#","").replace("$","").replace("[","").replace("]","").replace(".","")
+  
+        get(child(ref(db), `users/${newEmail}` )).then((snapshot) => {
+  
+          if (snapshot.exists()) {
+            console.log(snapshot.val().nameInput);
+            const userNameDisplay = snapshot.val().nameInput;
+            document.getElementById("userNameDisplay").innerHTML = userNameDisplay
+          } else {
+            console.log("No data available");
+          }
+        }).catch((error) => {
+          console.error(error);
+        });
+    }
+    
     return (
         <div className="fixed top-0 bottom-0 left-0 right-0 ">
           <Head>
@@ -56,24 +66,22 @@ export default function Home() {
                   </a>
                 </Link>
               </div>
-              <div>
-                {user && (
-                  <div className=" outline-4 outline outline-white cursor-pointer absolute top-[50%] translate-y-[-50%] right-3 rounded-full overflow-hidden w-[60px] h-[60px] drop-shadow-[0px_3px_3px_rgba(0,0,0,0.5)]">
-                    <img className="w-full h-full" src={pfp} ></img>
-                  </div>
-                )}
+            {user && (
+              <div className="cursor-pointer absolute top-[50%] translate-y-[-50%] right-3  h-full w-[50px]  flex items-center drop-shadow-[0px_3px_3px_rgba(0,0,0,0.5)] text-right flex-row-reverse">
+                <div id="userNameDisplay"></div>
               </div>
+            )}
             </div>
-            <div className=" px-5 sm:hidden flex justify-between items-center h-20 bg-accentColor" >
+            <div className=" relative px-5 sm:hidden flex justify-between items-center h-20 bg-accentColor" >
                 <div onClick={()=>setToggleNav(!toggleNav)}  className=" text-[40px]">
                     <HiMenu/>
                 </div>
-                <div className="rounded-full outline-4 outline outline-white overflow-hidden bg-accentColor h-14 w-14">
-                  {user && (
-                    <img className="w-full h-full" src={pfp} ></img>
-                  )}
-                  
+                {user && (
+                <div className="cursor-pointer absolute top-[50%] translate-y-[-50%] right-3  h-full w-[50px]  flex items-center drop-shadow-[0px_3px_3px_rgba(0,0,0,0.5)] text-right flex-row-reverse">
+                    <div id="userNameDisplay">
+                    </div>
                 </div>
+                )}
             </div>
           </nav>
     

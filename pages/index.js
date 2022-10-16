@@ -4,19 +4,39 @@ import styles from '../styles/Home.module.css'
 import bgryImg from '../public/imgs/brgyImg.jpg'
 import Link from 'next/link';
 import {useAuthState} from 'react-firebase-hooks/auth'
-import {auth} from '../utils/firebase'
+import {auth, db} from '../utils/firebase'
+import {ref, set, onValue, update, get, child} from "firebase/database";
+import {GoUnverified, GoVerified} from "react-icons/go"
+import { toast } from 'react-toastify';
+import { sendEmailVerification } from 'firebase/auth'
 
 export default function Home() {
 
   const [user, loading] = useAuthState(auth);
-  var pfp = null;
   if(user){
-    if(user.photoURL == null){
-      pfp = "../imgs/nullPfp.png";
-    }else{
-      pfp = user.photoURL;
-    }
+    const newEmail = user.email.replace(".com","").replace("@","").replace("#","").replace("$","").replace("[","").replace("]","").replace(".","")
+
+      get(child(ref(db), `users/${newEmail}` )).then((snapshot) => {
+
+        if (snapshot.exists()) {
+          console.log(snapshot.val().userName);
+          document.getElementById("userNameDisplay").innerHTML = snapshot.val().userName;
+        } else {
+          console.log("No data available");
+        }
+      }).catch((error) => {
+        console.error(error);
+      });
+
+      if(user.emailVerified){
+        const newEmail = user.email.replace(".com","").replace("@","").replace("#","").replace("$","").replace("[","").replace("]","").replace(".","")
+        
+          update(ref(db, 'users/' + newEmail), {
+            userStatus: user.emailVerified
+          });
+        }
   }
+  
 
   return (
     <div className='fixed top-0 bottom-0 left-0 right-0 '>
@@ -80,11 +100,28 @@ export default function Home() {
         {user && (
           <>
           <div className='flex gap-5 flex-col m-auto'>
-            <div className='m-auto text-center flex flex-col gap-1 drop-shadow-[0px_3px_6px_rgba(0,0,0,0.5)]'>
-              <img className='m-auto rounded-full outline outline-8 outline-white' src={pfp} width={100} height={100} />
-              <span>
-                {user.displayName}
+            <div className='m-auto text-center flex flex-row items-center gap-2 drop-shadow-[0px_3px_6px_rgba(0,0,0,0.5)]'>
+              <span id="userNameDisplay">
               </span>
+              <div>
+                {!user.emailVerified &&(
+                  <div className='flex items-center justify-center gap-2'>
+                    <GoUnverified/>
+                    <button onClick={()=>{
+                        sendEmailVerification(auth.currentUser)
+                        .then(() => {
+                            console.log(user.emailVerified)
+                            toast.success("Please check your email inbox!")
+                        });
+                    }} className='bg-white rounded-full text-accentColor px-2 font-extrabold cursor-pointer'>
+                      verify
+                    </button>
+                  </div>
+                )}
+                {user.emailVerified &&(
+                  <GoVerified/>
+                )}
+              </div>
             </div>
             <div>
               <button onClick={()=> auth.signOut()} className='mx-auto my-auto flex items-center justify-center gap-3 bg-accentColor rounded-full px-5 py-1 cursor-pointer origin-center font-medium hover:font-extrabold hover:px-[22px] transition-all ease-in-out text-gray-300 hover:text-white w-fit drop-shadow-[0px_3px_6px_rgba(0,0,0,0.5)]'>
@@ -94,7 +131,6 @@ export default function Home() {
           </div>
           </>
         )}
-
 
         <div className='mb-0 mt-auto mx-auto font-thin opacity-[50%] text-[10px]'>
           All Rights Reserved 2023

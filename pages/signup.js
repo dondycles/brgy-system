@@ -5,10 +5,10 @@ import cityGirl from '../public/imgs/undrawCityGirl.svg'
 import {TiArrowBack} from 'react-icons/ti'
 import {useAuthState} from 'react-firebase-hooks/auth'
 import { useRouter } from 'next/router'
-import {auth} from '../utils/firebase'
+import {auth, db} from '../utils/firebase'
 import {createUserWithEmailAndPassword } from "firebase/auth";
 import {toast} from 'react-toastify'
-
+import {ref, set, onValue, update} from "firebase/database";
 export default function Signup (){
 
     const [user, loading] = useAuthState(auth);
@@ -16,6 +16,8 @@ export default function Signup (){
 
     if(user){
         route.push("/")
+
+        
     }
 
     return(
@@ -70,6 +72,7 @@ export default function Signup (){
                     <button onClick={()=>{
                         var nameInput = document.getElementById("nameInput").value;
                         var email = document.getElementById("emailInput").value;
+                        var addressInput = document.getElementById("addressInput").value;
                         var phoneInput = document.getElementById("phoneInput").value;
                         var password = document.getElementById("passwordInput").value;
                         var passwordCon = document.getElementById("passwordConfirmInput").value;
@@ -92,14 +95,27 @@ export default function Signup (){
                                         .then((userCredential) => {
                                         // Signed in 
                                             const user = userCredential.user;
+
                                             console.log(user)
+
+                                            const newEmail = user.email.replace(".com","").replace("@","").replace("#","").replace("$","").replace("[","").replace("]","").replace(".","")
+                                            
+                                            set(ref(db, 'users/' + newEmail), {
+                                                userName: nameInput,
+                                                userEmail: email,
+                                                userAddress : addressInput,
+                                                userPhone: phoneInput,
+                                                userStatus: user.emailVerified
+                                            });
+
                                         // ...
                                         })
                                         .catch((error) => {
                                             toast.error(error.code);
                                         // ..
                                         });
-                                        toast.success("Hello!")
+
+                                        
                                     }
                                     else{
                                         toast.error("Password did match!")
@@ -108,9 +124,6 @@ export default function Signup (){
 
                             }
                         }
-
-                       
-
                         
 
                         
