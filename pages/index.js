@@ -46,7 +46,7 @@ export default function Home() {
   }
 
   return (
-    <div className=" h-screen w-full overflow-x-hidden">
+    <div id="scrl" className="h-screen w-full overflow-x-hidden">
       <Head>
         <title>Brgy. Fort</title>
         <meta name="description" content="Welcome to Brgy. Fort!"></meta>
