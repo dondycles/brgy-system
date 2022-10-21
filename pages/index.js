@@ -175,7 +175,7 @@ export default function Home() {
         </div>
       </div>
 
-      <div className="h-[100vh] w-full my-6 p-3 flex flex-col">
+      <div className="h-[100vh] w-full my-6 py-20 px-3 flex flex-col">
         <div className="flex items-center justify-center w-fit gap-3">
           <div>
             <Image width={100} height={100} src={brgyLogo}></Image>
@@ -203,7 +203,7 @@ export default function Home() {
         </div>
       </div>
 
-      <div className="h-[100vh] w-full">
+      <div className=" h-[100vh] p-20 w-full">
         <div className="text-center text-3xl font-extrabold mb-20">
           ANY CONCERNS?
         </div>
@@ -237,16 +237,25 @@ export default function Home() {
           </div>
         </div>
       </div>
-      <div className="m-auto flex w-full overflow-hidden drop-shadow-[0px_3px_6px_rgba(0,0,0,0.5)] ">
-        <div className="w-screen h-screen">
+
+      <div className="m-auto flex flex-col h-[100vh] py-20 w-full  overflow-hidden] ">
+        <div className="text-3xl font-extrabold text-center pb-20">
+          OUR LOCATION
+        </div>
+        <div className="w-screen h-[800px] ">
           <iframe
-            className="rounded-lg w-[90%] h-[80%] m-auto"
-            src="https://maps.google.com/maps?width=600&amp;height=400&amp;hl=en&amp;q=Fort Bonifacio&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"
+            className=" rounded-lg w-[65%] h-[600px] m-auto"
+            src="https://maps.google.com/maps?hl=en&amp;q=Fort Bonifacio&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"
           ></iframe>
         </div>
-      </div>
-      <div className=" text-center mb-0 mt-auto mx-auto font-thin opacity-[50%] text-[10px]">
-        ©2022 BARANGAY FORT BONIFACIO
+        <div className=" p-10 w-full h-fit flex flex-row justify-center gap-6">
+          <div className="h-[50px] w-[50px] rounded-full bg-bgColor"></div>
+          <div className="h-[50px] w-[50px] rounded-full bg-bgColor"></div>
+          <div className="h-[50px] w-[50px] rounded-full bg-bgColor"></div>
+        </div>
+        <div className=" text-center mb-0 mt-auto mx-auto font-thin opacity-[50%] text-[10px]">
+          ©2022 BARANGAY FORT BONIFACIO
+        </div>
       </div>
     </div>
   );
