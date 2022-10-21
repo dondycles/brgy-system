@@ -18,11 +18,12 @@ a {
 
 * {
   box-sizing: border-box;
+  scroll-behavior: smooth;
 }
 
 *::-webkit-scrollbar {
-  width: 10px;
-  background-color: white;
+  width: 5px;
+  background-color: #000b44;
 }
 *::-webkit-scrollbar-thumb {
   background-color: #007bff;

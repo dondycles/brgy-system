@@ -61,7 +61,7 @@ export default function Home() {
         HOME PAGE
       </div>
 
-      <div className="h-[95vh]">
+      <div className="h-[100vh] mb-20 w-full">
         <div className=" flex gap-3 md:gap-5 w-full px-5 justify-end items-center h-[30px] mt-0 mb-0 mx-auto text-md md:text-lg font-extrabold ]">
           <div className="cursor-pointer  hover:text-accentColor">
             Online Services
@@ -75,7 +75,7 @@ export default function Home() {
             </a>
           </Link>
 
-          <Link href="/about" passHref>
+          <Link href="#aboutPage" passHref>
             <a>
               <div className="cursor-pointer  hover:text-accentColor">
                 About
@@ -83,8 +83,8 @@ export default function Home() {
             </a>
           </Link>
         </div>
-        <div className=" relative mx-auto w-full flex items-center justify-center">
-          <Image height={140} width={140} src={brgyLogo}></Image>
+        <div className=" relative mx-auto flex items-center justify-cente h-[90px] md:h-[130px] w-[90px] md:w-[130px]">
+          <Image src={brgyLogo}></Image>
         </div>
         <div className="text-center font-extrabold text-3xl p-3">
           BRGY. FORT BONIFACIO
@@ -100,9 +100,9 @@ export default function Home() {
           />
         </div>
 
-        <div className="w-full h-[150px] flex flex-col">
+        <div className="w-full h-fit flex flex-col">
           {!user && (
-            <div className="my-auto mx-auto w-full ]">
+            <div className="p-5 flex gap-1 flex-col m-auto]">
               <Link href="/signup" passHref>
                 <a>
                   <div className="mx-auto my-auto flex items-center justify-center gap-3 bg-accentColor rounded-full px-5 py-1 cursor-pointer origin-center font-medium hover:font-extrabold hover:px-[22px] transition-all ease-in-out text-gray-300 hover:text-white w-fit ">
@@ -111,7 +111,7 @@ export default function Home() {
                 </a>
               </Link>
 
-              <div className="mx-auto my-auto flex items-center justify-center gap-3 rounded-full px-5 py-1 font-thin transition-all ease-in-out text-black w-fit">
+              <div className="mx-auto my-auto flex items-center justify-center gap-1 rounded-full px-5 py-1 font-thin transition-all ease-in-out text-black w-fit">
                 or
                 <Link href="/login">
                   <a>
@@ -126,7 +126,7 @@ export default function Home() {
 
           {user && (
             <>
-              <div className="flex gap-5 flex-col m-auto">
+              <div className="p-3 flex gap-3 flex-col m-auto">
                 <div className="m-auto text-center flex flex-row items-center gap-2 ]">
                   <span id="userNameDisplay"></span>
                   <div>
@@ -175,7 +175,10 @@ export default function Home() {
         </div>
       </div>
 
-      <div className="h-[100vh] w-full my-6 py-20 px-3 flex flex-col">
+      <div
+        id="aboutPage"
+        className="h-[100vh] w-full my-6 py-3 px-3 flex flex-col"
+      >
         <div className="flex items-center justify-center w-fit gap-3">
           <div>
             <Image width={100} height={100} src={brgyLogo}></Image>
@@ -212,13 +215,13 @@ export default function Home() {
           <div className="w-full h-fit flex flex-row justify-center flex-wrap gap-20 text-xl">
             <div className="flex flex-col gap-3">
               <div className="text-accentColor font-extrabold">Main Office</div>
-              <div className="w-[500px] h-[200px] bg-bgColor"></div>
+              <div className="w-[500px] h-[200px] bg-bgColor rounded-xl"></div>
             </div>
             <div className="flex flex-col gap-3">
               <div className="text-accentColor font-extrabold">
                 Satellite Office
               </div>
-              <div className="w-[500px] h-[200px] bg-bgColor"></div>
+              <div className="w-[500px] h-[200px] bg-bgColor rounded-xl"></div>
             </div>
           </div>
           <div className="w-full h-fit flex flex-row justify-center  flex-wrap gap-20 text-xl">
@@ -226,13 +229,13 @@ export default function Home() {
               <div className="text-accentColor font-extrabold">
                 Peace and Order
               </div>
-              <div className="w-[500px] h-[200px] bg-bgColor"></div>
+              <div className="w-[500px] h-[200px] bg-bgColor rounded-xl"></div>
             </div>
             <div className="flex flex-col gap-3">
               <div className="text-accentColor font-extrabold">
                 Emergency Rescue
               </div>
-              <div className="w-[500px] h-[200px] bg-bgColor"></div>
+              <div className="w-[500px] h-[200px] bg-bgColor rounded-xl"></div>
             </div>
           </div>
         </div>
