@@ -177,7 +177,7 @@ export default function Home() {
 
       <div
         id="aboutPage"
-        className="h-[100vh] w-full my-6 py-3 px-3 flex flex-col"
+        className="min-h-[100vh] w-full my-6 py-3 px-[10px] flex flex-col"
       >
         <div className="flex items-center justify-center w-fit gap-3">
           <div>
@@ -188,7 +188,7 @@ export default function Home() {
             <div>BARANGAY FORT BONIFACIO</div>
           </div>
         </div>
-        <div className=" box-content bg-accentColor p-10 text-justify w-[400px] rounded-lg mx-auto text-white">
+        <div className=" bg-accentColor p-10 text-justify w-full sm:w-[600px] rounded-lg mx-auto text-white">
           Lorem ipsum dolor, sit amet consectetur adipisicing elit. Veniam
           placeat dolore consequatur qui illo sit similique corrupti corporis
           repudiandae odio velit id eaque iusto, tempora reiciendis minus
@@ -206,59 +206,59 @@ export default function Home() {
         </div>
       </div>
 
-      <div className=" h-[100vh] p-20 w-full">
+      <div className=" min-h-[100vh] px-[10px] py-20 w-full ">
         <div className="text-center text-3xl font-extrabold mb-20">
           ANY CONCERNS?
         </div>
 
-        <div className="flex flex-col gap-20">
+        <div className="flex flex-col gap-20 ">
           <div className="w-full h-fit flex flex-row justify-center flex-wrap gap-20 text-xl">
-            <div className="flex flex-col gap-3">
+            <div className=" relative w-full sm:w-fit flex flex-col gap-3">
               <div className="text-accentColor font-extrabold">Main Office</div>
-              <div className="w-[500px] h-[200px] bg-bgColor rounded-xl"></div>
+              <div className="w-full sm:w-[500px] h-[200px] bg-bgColor rounded-xl"></div>
             </div>
-            <div className="flex flex-col gap-3">
+            <div className="relative w-full sm:w-fit flex flex-col gap-3">
               <div className="text-accentColor font-extrabold">
                 Satellite Office
               </div>
-              <div className="w-[500px] h-[200px] bg-bgColor rounded-xl"></div>
+              <div className="w-full sm:w-[500px] h-[200px] bg-bgColor rounded-xl"></div>
             </div>
           </div>
           <div className="w-full h-fit flex flex-row justify-center  flex-wrap gap-20 text-xl">
-            <div className="flex flex-col gap-3">
+            <div className="relative w-full sm:w-fit flex flex-col gap-3">
               <div className="text-accentColor font-extrabold">
                 Peace and Order
               </div>
-              <div className="w-[500px] h-[200px] bg-bgColor rounded-xl"></div>
+              <div className="w-full sm:w-[500px] h-[200px] bg-bgColor rounded-xl"></div>
             </div>
-            <div className="flex flex-col gap-3">
+            <div className="relative w-full sm:w-fit flex flex-col gap-3">
               <div className="text-accentColor font-extrabold">
                 Emergency Rescue
               </div>
-              <div className="w-[500px] h-[200px] bg-bgColor rounded-xl"></div>
+              <div className="w-full sm:w-[500px] h-[200px] bg-bgColor rounded-xl"></div>
             </div>
           </div>
         </div>
       </div>
 
-      <div className="m-auto flex flex-col h-[100vh] py-20 w-full  overflow-hidden] ">
-        <div className="text-3xl font-extrabold text-center pb-20">
+      <div className="m-auto flex flex-col px-[10px] min-h-fit py-20 w-full  overflow-hidden] ">
+        <div className="text-3xl font-extrabold text-center pb-10">
           OUR LOCATION
         </div>
-        <div className="w-screen h-[800px] ">
+        <div className="w-full h-[500px] ">
           <iframe
-            className=" rounded-lg w-[65%] h-[600px] m-auto"
+            className=" rounded-lg w-full sm:w-2/3 h-full m-auto"
             src="https://maps.google.com/maps?hl=en&amp;q=Fort Bonifacio&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"
           ></iframe>
         </div>
-        <div className=" p-10 w-full h-fit flex flex-row justify-center gap-6">
-          <div className="h-[50px] w-[50px] rounded-full bg-bgColor"></div>
-          <div className="h-[50px] w-[50px] rounded-full bg-bgColor"></div>
-          <div className="h-[50px] w-[50px] rounded-full bg-bgColor"></div>
-        </div>
-        <div className=" text-center mb-0 mt-auto mx-auto font-thin opacity-[50%] text-[10px]">
-          ©2022 BARANGAY FORT BONIFACIO
-        </div>
+      </div>
+      <div className=" p-10 w-full h-fit flex flex-row justify-center gap-6">
+        <div className="h-[50px] w-[50px] rounded-full bg-bgColor"></div>
+        <div className="h-[50px] w-[50px] rounded-full bg-bgColor"></div>
+        <div className="h-[50px] w-[50px] rounded-full bg-bgColor"></div>
+      </div>
+      <div className=" text-center mb-0 mt-auto mx-auto font-thin opacity-[50%] text-[10px]">
+        ©2022 BARANGAY FORT BONIFACIO
       </div>
     </div>
   );
