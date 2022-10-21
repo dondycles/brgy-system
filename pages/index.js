@@ -1,7 +1,6 @@
 import Head from "next/head";
 import Image from "next/image";
 import styles from "../styles/Home.module.css";
-import bgryImg from "../public/imgs/brgyImg.jpg";
 import Link from "next/link";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth, db } from "../utils/firebase";
@@ -11,6 +10,7 @@ import { toast } from "react-toastify";
 import { sendEmailVerification } from "firebase/auth";
 
 import brgyLogo from "../public/imgs/logo.png";
+import bgryImg from "../public/imgs/brgyImg.jpg";
 
 export default function Home() {
   const [user, loading] = useAuthState(auth);
@@ -46,7 +46,7 @@ export default function Home() {
   }
 
   return (
-    <div id="scrl" className="h-screen w-full overflow-x-hidden">
+    <div id="scrl" className="relative h-screen w-full">
       <Head>
         <title>Brgy. Fort</title>
         <meta name="description" content="Welcome to Brgy. Fort!"></meta>
@@ -57,32 +57,41 @@ export default function Home() {
         />
       </Head>
 
-      <div className="bg-accentColor text-white font-extrabold p-3">
-        HOME PAGE
-      </div>
-
-      <div className="h-[100vh] mb-20 w-full">
-        <div className=" flex gap-3 md:gap-5 w-full px-5 justify-end items-center h-[30px] mt-0 mb-0 mx-auto text-md md:text-lg font-extrabold ]">
-          <div className="cursor-pointer  hover:text-accentColor">
+      <div className="fixed top-0 left-0 right-0 z-10">
+        <div className="bg-accentColor text-white font-extrabold p-[10px]">
+          HOME PAGE
+        </div>
+        <div className=" bg-white flex gap-3 md:gap-5 w-full px-[10px] justify-end items-center h-[50px] mt-0 mb-0 mx-auto text-md md:text-lg font-extrabold ]">
+          <div className="cursor-pointer  hover:text-accentColor transition-all duration-300 ease-in-out border-b-2 border-transparent hover:border-accentColor">
             Online Services
           </div>
 
           <Link href="/contact" passHref>
             <a>
-              <div className="cursor-pointer  hover:text-accentColor">
+              <div className="cursor-pointer  hover:text-accentColor transition-all duration-300 ease-in-out border-b-2 border-transparent hover:border-accentColor">
                 Contact Us
               </div>
             </a>
           </Link>
 
-          <Link href="#aboutPage" passHref>
+          <Link href="/about" passHref>
             <a>
-              <div className="cursor-pointer  hover:text-accentColor">
+              <div className="cursor-pointer  hover:text-accentColor transition-all duration-300 ease-in-out border-b-2 border-transparent hover:border-accentColor">
                 About
               </div>
             </a>
           </Link>
+          <Link href="/" passHref>
+            <a>
+              <div className="cursor-pointer  hover:text-accentColor transition-all duration-300 ease-in-out border-b-2 border-transparent hover:border-accentColor">
+                Home
+              </div>
+            </a>
+          </Link>
         </div>
+      </div>
+
+      <div className="h-[100vh] mb-20 w-full mt-32">
         <div className=" relative mx-auto flex items-center justify-cente h-[90px] md:h-[130px] w-[90px] md:w-[130px]">
           <Image src={brgyLogo}></Image>
         </div>
@@ -90,7 +99,7 @@ export default function Home() {
           BRGY. FORT BONIFACIO
         </div>
 
-        <div className="relative w-screen h-[50%] overflow-hidden ">
+        <div className="relative w-full h-[50%] overflow-hidden ">
           <Image
             className="w-screen h-auto object-center "
             objectFit="cover"
