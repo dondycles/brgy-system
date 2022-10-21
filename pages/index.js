@@ -10,6 +10,8 @@ import { GoUnverified, GoVerified } from "react-icons/go";
 import { toast } from "react-toastify";
 import { sendEmailVerification } from "firebase/auth";
 
+import brgyLogo from "../public/imgs/logo.png";
+
 export default function Home() {
   const [user, loading] = useAuthState(auth);
   if (user) {
@@ -44,30 +46,30 @@ export default function Home() {
   }
 
   return (
-    <div className="fixed top-0 bottom-0 left-0 right-0 ">
+    <div className=" h-screen w-full overflow-x-hidden">
       <Head>
         <title>Brgy. Fort</title>
         <meta name="description" content="Welcome to Brgy. Fort!"></meta>
+        <link
+          rel="shortcut icon"
+          type="image/png"
+          href="../public/imgs/logo.png"
+        />
       </Head>
 
-      <div className="relative w-screen h-[60%] overflow-hidden shadow-customShadow">
-        <Image
-          className="w-screen h-auto object-center "
-          objectFit="cover"
-          layout="fill"
-          priority={true}
-          src={bgryImg}
-        />
+      <div className="bg-accentColor text-white font-extrabold p-3">
+        HOME PAGE
       </div>
-      <div className="w-full h-[40%] flex flex-col">
-        <div className=" flex gap-3 md:gap-5  justify-center items-center h-[50px] mt-0 mb-0 mx-auto text-md md:text-lg font-extrabold drop-shadow-[0px_3px_6px_rgba(0,0,0,0.5)]">
-          <div className="cursor-pointer text-gray-300 hover:text-white">
+
+      <div className="h-[95vh]">
+        <div className=" flex gap-3 md:gap-5 w-full px-5 justify-end items-center h-[30px] mt-0 mb-0 mx-auto text-md md:text-lg font-extrabold ]">
+          <div className="cursor-pointer  hover:text-accentColor">
             Online Services
           </div>
 
           <Link href="/contact" passHref>
             <a>
-              <div className="cursor-pointer text-gray-300 hover:text-white">
+              <div className="cursor-pointer  hover:text-accentColor">
                 Contact Us
               </div>
             </a>
@@ -75,76 +77,176 @@ export default function Home() {
 
           <Link href="/about" passHref>
             <a>
-              <div className="cursor-pointer text-gray-300 hover:text-white">
+              <div className="cursor-pointer  hover:text-accentColor">
                 About
               </div>
             </a>
           </Link>
         </div>
+        <div className=" relative mx-auto w-full flex items-center justify-center">
+          <Image height={140} width={140} src={brgyLogo}></Image>
+        </div>
+        <div className="text-center font-extrabold text-3xl p-3">
+          BRGY. FORT BONIFACIO
+        </div>
 
-        {!user && (
-          <div className="my-auto mx-auto w-full drop-shadow-[0px_3px_6px_rgba(0,0,0,0.5)]">
-            <Link href="/signup" passHref>
-              <a>
-                <div className="mx-auto my-auto flex items-center justify-center gap-3 bg-accentColor rounded-full px-5 py-1 cursor-pointer origin-center font-medium hover:font-extrabold hover:px-[22px] transition-all ease-in-out text-gray-300 hover:text-white w-fit ">
-                  Sign In
-                </div>
-              </a>
-            </Link>
+        <div className="relative w-screen h-[50%] overflow-hidden ">
+          <Image
+            className="w-screen h-auto object-center "
+            objectFit="cover"
+            layout="fill"
+            priority={true}
+            src={bgryImg}
+          />
+        </div>
 
-            <div className="mx-auto my-auto flex items-center justify-center gap-3 rounded-full px-5 py-1 font-thin transition-all ease-in-out text-gray-300 w-fit">
-              or
-              <Link href="/login">
+        <div className="w-full h-[150px] flex flex-col">
+          {!user && (
+            <div className="my-auto mx-auto w-full ]">
+              <Link href="/signup" passHref>
                 <a>
-                  <span className="text-accentColor cursor-pointer font-medium hover:font-extrabold transition-all ease-in-out">
-                    Log In
-                  </span>
+                  <div className="mx-auto my-auto flex items-center justify-center gap-3 bg-accentColor rounded-full px-5 py-1 cursor-pointer origin-center font-medium hover:font-extrabold hover:px-[22px] transition-all ease-in-out text-gray-300 hover:text-white w-fit ">
+                    Sign In
+                  </div>
                 </a>
               </Link>
-            </div>
-          </div>
-        )}
 
-        {user && (
-          <>
-            <div className="flex gap-5 flex-col m-auto">
-              <div className="m-auto text-center flex flex-row items-center gap-2 drop-shadow-[0px_3px_6px_rgba(0,0,0,0.5)]">
-                <span id="userNameDisplay"></span>
+              <div className="mx-auto my-auto flex items-center justify-center gap-3 rounded-full px-5 py-1 font-thin transition-all ease-in-out text-black w-fit">
+                or
+                <Link href="/login">
+                  <a>
+                    <span className="text-accentColor cursor-pointer font-medium hover:font-extrabold transition-all ease-in-out">
+                      Log In
+                    </span>
+                  </a>
+                </Link>
+              </div>
+            </div>
+          )}
+
+          {user && (
+            <>
+              <div className="flex gap-5 flex-col m-auto">
+                <div className="m-auto text-center flex flex-row items-center gap-2 ]">
+                  <span id="userNameDisplay"></span>
+                  <div>
+                    {!user.emailVerified && (
+                      <div className="flex items-center justify-center gap-2">
+                        <GoUnverified />
+                        <button
+                          onClick={() => {
+                            sendEmailVerification(auth.currentUser).then(() => {
+                              console.log(user.emailVerified);
+                              toast.success("Please check your email inbox!");
+                            });
+                          }}
+                          className="bg-white rounded-full text-accentColor px-2 font-extrabold cursor-pointer"
+                        >
+                          verify
+                        </button>
+                      </div>
+                    )}
+                    {user.emailVerified && <GoVerified />}
+                  </div>
+                </div>
                 <div>
-                  {!user.emailVerified && (
-                    <div className="flex items-center justify-center gap-2">
-                      <GoUnverified />
-                      <button
-                        onClick={() => {
-                          sendEmailVerification(auth.currentUser).then(() => {
-                            console.log(user.emailVerified);
-                            toast.success("Please check your email inbox!");
-                          });
-                        }}
-                        className="bg-white rounded-full text-accentColor px-2 font-extrabold cursor-pointer"
-                      >
-                        verify
-                      </button>
-                    </div>
-                  )}
-                  {user.emailVerified && <GoVerified />}
+                  <button
+                    onClick={() => auth.signOut()}
+                    className="mx-auto my-auto flex items-center justify-center gap-3 bg-accentColor rounded-full px-5 py-1 cursor-pointer origin-center font-medium hover:font-extrabold hover:px-[22px] transition-all ease-in-out text-gray-300 hover:text-white w-fit ]"
+                  >
+                    Sign Out
+                  </button>
                 </div>
               </div>
-              <div>
-                <button
-                  onClick={() => auth.signOut()}
-                  className="mx-auto my-auto flex items-center justify-center gap-3 bg-accentColor rounded-full px-5 py-1 cursor-pointer origin-center font-medium hover:font-extrabold hover:px-[22px] transition-all ease-in-out text-gray-300 hover:text-white w-fit drop-shadow-[0px_3px_6px_rgba(0,0,0,0.5)]"
-                >
-                  Sign Out
-                </button>
-              </div>
-            </div>
-          </>
-        )}
-
-        <div className="mb-0 mt-auto mx-auto font-thin opacity-[50%] text-[10px]">
-          All Rights Reserved 2023
+            </>
+          )}
         </div>
+      </div>
+
+      <div className="relative min-h-[40vh] w-full">
+        <div className="text-center text-3xl font-extrabold p-3">
+          ANNOUNCEMENTS
+        </div>
+        <div className="w-full h-full bg-accentColor flex flex-wrap justify-center p-3 gap-3">
+          <div className="h-[400px] min-w-[300px] bg-white rounded-xl"></div>
+          <div className="h-[400px] min-w-[300px] bg-white rounded-xl"></div>
+          <div className="h-[400px] min-w-[300px] bg-white rounded-xl"></div>
+          <div className="h-[400px] min-w-[300px] bg-white rounded-xl"></div>
+        </div>
+      </div>
+
+      <div className="h-[100vh] w-full my-6 p-3 flex flex-col">
+        <div className="flex items-center justify-center w-fit gap-3">
+          <div>
+            <Image width={100} height={100} src={brgyLogo}></Image>
+          </div>
+          <div className="font-extrabold">
+            <div className="text-3xl">ABOUT US</div>
+            <div>BARANGAY FORT BONIFACIO</div>
+          </div>
+        </div>
+        <div className=" box-content bg-accentColor p-10 text-justify w-[400px] rounded-lg mx-auto text-white">
+          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Veniam
+          placeat dolore consequatur qui illo sit similique corrupti corporis
+          repudiandae odio velit id eaque iusto, tempora reiciendis minus
+          veritatis saepe esse? Lorem ipsum dolor sit amet consectetur
+          adipisicing elit. Officiis voluptatem laborum deserunt perferendis
+          corrupti voluptates, quam vitae sapiente rem distinctio tempora hic
+          praesentium quibusdam recusandae modi ipsam et nostrum ipsa?Lorem
+          ipsum, dolor sit amet consectetur adipisicing elit. Praesentium
+          corporis quidem ullam tempora iste nisi quas, distinctio aliquid
+          fugiat. Nisi molestiae quis ea natus provident explicabo iure dolor
+          maxime enim. Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+          Blanditiis quos voluptates reiciendis? Iure id, omnis voluptatum
+          suscipit deserunt nulla soluta incidunt nihil voluptatibus expedita
+          quo a ipsum, quas, consequatur repudiandae!
+        </div>
+      </div>
+
+      <div className="h-[100vh] w-full">
+        <div className="text-center text-3xl font-extrabold mb-20">
+          ANY CONCERNS?
+        </div>
+
+        <div className="flex flex-col gap-20">
+          <div className="w-full h-fit flex flex-row justify-center flex-wrap gap-20 text-xl">
+            <div className="flex flex-col gap-3">
+              <div className="text-accentColor font-extrabold">Main Office</div>
+              <div className="w-[500px] h-[200px] bg-bgColor"></div>
+            </div>
+            <div className="flex flex-col gap-3">
+              <div className="text-accentColor font-extrabold">
+                Satellite Office
+              </div>
+              <div className="w-[500px] h-[200px] bg-bgColor"></div>
+            </div>
+          </div>
+          <div className="w-full h-fit flex flex-row justify-center  flex-wrap gap-20 text-xl">
+            <div className="flex flex-col gap-3">
+              <div className="text-accentColor font-extrabold">
+                Peace and Order
+              </div>
+              <div className="w-[500px] h-[200px] bg-bgColor"></div>
+            </div>
+            <div className="flex flex-col gap-3">
+              <div className="text-accentColor font-extrabold">
+                Emergency Rescue
+              </div>
+              <div className="w-[500px] h-[200px] bg-bgColor"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className="m-auto flex w-full overflow-hidden drop-shadow-[0px_3px_6px_rgba(0,0,0,0.5)] ">
+        <div className="w-screen h-screen">
+          <iframe
+            className="rounded-lg w-[90%] h-[80%] m-auto"
+            src="https://maps.google.com/maps?width=600&amp;height=400&amp;hl=en&amp;q=Fort Bonifacio&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"
+          ></iframe>
+        </div>
+      </div>
+      <div className=" text-center mb-0 mt-auto mx-auto font-thin opacity-[50%] text-[10px]">
+        ©2022 BARANGAY FORT BONIFACIO
       </div>
     </div>
   );
