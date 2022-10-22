@@ -93,7 +93,7 @@ export default function Home() {
         </div>
       </div>
 
-      <div className="w-full h-screen  ">
+      <div className="w-full h-screen">
         <div className="relative w-full h-[60vh] mb-[5vh] overflow-hidden ">
           <Image
             className="w-full h-auto object-center "
@@ -202,6 +202,14 @@ export default function Home() {
               <div className="opacity-[50%]">Tester/Documentation</div>
             </div>
           </div>
+        </div>
+        <div className=" p-10 w-full h-fit flex flex-row justify-center gap-6">
+          <div className="h-[50px] w-[50px] rounded-full bg-bgColor"></div>
+          <div className="h-[50px] w-[50px] rounded-full bg-bgColor"></div>
+          <div className="h-[50px] w-[50px] rounded-full bg-bgColor"></div>
+        </div>
+        <div className=" text-center mb-0 mt-auto mx-auto font-thin opacity-[50%] text-[10px]">
+          ©2022 BARANGAY FORT BONIFACIO
         </div>
       </div>
     </div>
