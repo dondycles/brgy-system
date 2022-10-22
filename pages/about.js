@@ -55,150 +55,48 @@ export default function Home() {
   }
 
   return (
-    <div className=" ">
+    <div className="w-full h-screen">
       <Head>
-        <title>Contact Us</title>
+        <title>About</title>
       </Head>
-      <nav className="z-10 fixed top-0 left-0 right-0 w-screen mt-0 drop-shadow-[0px_3px_6px_rgba(0,0,0,0.5)] ">
-        <div className=" relative hidden sm:flex flex-row bg-accentColor items-center h-20 mt-0 mb-0 mx-auto ">
-          <div className=" mx-auto  flex gap-3 md:gap-5 justify-center items-center  text-md md:text-lg font-extrabold drop-shadow-[0px_3px_6px_rgba(0,0,0,0.5)] ">
-            <Link href="/" passHref>
-              <a>
-                <div className="cursor-pointer text-gray-300 hover:text-white hover:bg-bgColor rounded-lg px-3 leading-10">
-                  Home
-                </div>
-              </a>
-            </Link>
-            <div className="cursor-pointer text-gray-300 hover:text-white hover:bg-bgColor rounded-lg px-3 leading-10">
-              Online Services
-            </div>
-
-            <Link href="/contact" passHref>
-              <a>
-                <div className="cursor-pointer text-gray-300 hover:text-white hover:bg-bgColor rounded-lg px-3 leading-10">
-                  Contact Us
-                </div>
-              </a>
-            </Link>
-
-            <Link href="/about" passHref>
-              <a>
-                <div className="cursor-pointer text-gray-300 hover:text-white bg-bgColor rounded-lg px-3 leading-10">
-                  About
-                </div>
-              </a>
-            </Link>
+      <div className="fixed top-0 left-0 right-0 z-10">
+        <div className="bg-accentColor text-white font-extrabold p-[10px]">
+          ABOUT US
+        </div>
+        <div className=" bg-white flex gap-3 md:gap-5 w-full px-[10px] justify-end items-center h-[50px] mt-0 mb-0 mx-auto text-md md:text-lg font-extrabold ]">
+          <div className="cursor-pointer  hover:text-accentColor transition-all duration-300 ease-in-out border-b-2 border-transparent hover:border-accentColor">
+            Online Services
           </div>
-          {user && (
-            <div className="cursor-pointer absolute top-[50%] translate-y-[-50%] right-3  h-full w-[50px]  flex items-center  text-right flex-row-reverse">
-              <div id="userNameDisplay"></div>
-            </div>
-          )}
-        </div>
-        <div className=" relative px-5 sm:hidden flex justify-between items-center h-[50px] bg-accentColor ">
-          <div
-            onClick={() => setToggleNav(!toggleNav)}
-            className=" text-[40px] drop-shadow-[0px_3px_1px_rgba(0,0,0,0.4)] "
-          >
-            <HiMenu />
-          </div>
-          {user && (
-            <div className="cursor-pointer absolute top-[50%] translate-y-[-50%] right-3  h-full w-[50px]  flex items-center text-right flex-row-reverse leading-4 drop-shadow-[0px_3px_6px_rgba(0,0,0,0.5)] ">
-              <div id="userNameDisplay.m"></div>
-            </div>
-          )}
-        </div>
-      </nav>
 
-      <div
-        id="navMenu"
-        className={`${
-          toggleNav
-            ? "translate-x-[0%] drop-shadow-[0px_3px_6px_rgba(0,0,0,0.5)]"
-            : "translate-x-[-100%]"
-        }  translate-x-[0%] transition-all ease-in-out duration-300 flex  flex-col justify-center items-start gap-5 font-extrabold text-2xl bg-accentColor fixed top-0 bottom-0 left-0 h-screen w-fit px-5  z-10 text-white `}
-      >
-        <div
-          onClick={() => setToggleNav(!toggleNav)}
-          className="absolute top-5 left-5 text-[40px] drop-shadow-[0px_3px_1px_rgba(0,0,0,0.4)]"
-        >
-          <HiOutlineX
-            className={`${
-              toggleNav ? "rotate-[0deg]" : " rotate-[360deg]"
-            } transition-all duration-1000 delay-200 ease-in-out `}
-          />
-        </div>
+          <Link href="/contact" passHref>
+            <a>
+              <div className="cursor-pointer  hover:text-accentColor transition-all duration-300 ease-in-out border-b-2 border-transparent hover:border-accentColor">
+                Contact Us
+              </div>
+            </a>
+          </Link>
 
-        <Link href="/" passHref>
-          <a className="flex flex-row-reverse items-center gap-2 drop-shadow-[0px_3px_1px_rgba(0,0,0,0.4)]">
-            <div
-              className={`${
-                toggleNav ? "text-2xl" : " text-sm"
-              } transition-all duration-300 delay-200 ease-in-out `}
-            >
-              Home
-            </div>
-            <HiOutlineHome
-              className={`${
-                toggleNav ? "rotate-[0deg]" : " rotate-[360deg]"
-              } transition-all duration-1000 delay-200 ease-in-out `}
-            />
-          </a>
-        </Link>
-        <Link href="/" passHref>
-          <a className="flex flex-row-reverse items-center gap-2 drop-shadow-[0px_3px_1px_rgba(0,0,0,0.4)]">
-            <div
-              className={`${
-                toggleNav ? "text-2xl" : " text-sm"
-              } transition-all duration-300 delay-200 ease-in-out `}
-            >
-              Online Services
-            </div>
-            <MdOutlineMiscellaneousServices
-              className={`${
-                toggleNav ? "rotate-[0deg]" : " rotate-[360deg]"
-              } transition-all duration-1000 delay-200 ease-in-out `}
-            />
-          </a>
-        </Link>
-        <Link href="/contact" passHref>
-          <a className="flex flex-row-reverse items-center gap-2 drop-shadow-[0px_3px_1px_rgba(0,0,0,0.4)]">
-            <div
-              className={`${
-                toggleNav ? "text-2xl" : " text-sm"
-              } transition-all duration-300 delay-200 ease-in-out `}
-            >
-              Contact Us
-            </div>
-            <MdOutlineConnectWithoutContact
-              className={`${
-                toggleNav ? "rotate-[0deg]" : " rotate-[360deg]"
-              } transition-all duration-1000 delay-200 ease-in-out `}
-            />
-          </a>
-        </Link>
-        <Link href="/about" passHref>
-          <a className="flex flex-row-reverse items-center gap-2 drop-shadow-[0px_3px_1px_rgba(0,0,0,0.4)]">
-            <div
-              className={`${
-                toggleNav ? "text-2xl " : " text-sm"
-              } transition-all duration-300 delay-200 ease-in-out `}
-            >
-              About
-            </div>
-            <BsQuestionCircle
-              className={`${
-                toggleNav ? "rotate-[0deg]" : " rotate-[360deg]"
-              } transition-all duration-1000 delay-200 ease-in-out `}
-            />
-          </a>
-        </Link>
+          <Link href="/about" passHref>
+            <a>
+              <div className="cursor-pointer  hover:text-accentColor transition-all duration-300 ease-in-out border-b-2 border-transparent hover:border-accentColor">
+                About
+              </div>
+            </a>
+          </Link>
+          <Link href="/" passHref>
+            <a>
+              <div className="cursor-pointer  hover:text-accentColor transition-all duration-300 ease-in-out border-b-2 border-transparent hover:border-accentColor">
+                Home
+              </div>
+            </a>
+          </Link>
+        </div>
       </div>
 
-      <div className="w-full overflow-x-hidden h-screen drop-shadow-[0px_3px_3px_rgba(0,0,0,0.5)] scrollbar-thin scrollbar-thumb-accentColor scrollbar-track-bgColor">
-        <div className="relative w-screen h-[60vh] mb-[5vh] overflow-hidden ">
+      <div className="w-full h-screen  ">
+        <div className="relative w-full h-[60vh] mb-[5vh] overflow-hidden ">
           <Image
-            className="w-screen h-auto object-center "
+            className="w-full h-auto object-center "
             objectFit="cover"
             layout="fill"
             src={aboutImg}
@@ -212,8 +110,8 @@ export default function Home() {
           the greatest bunch of individual stars in the world, but if they don’t
           play together, the club won’t be worth a dime." – Babe Ruth
         </div>
-        <div className="w-screen h-fit p-10 flex flex-wrap justify-evenly gap-5 ">
-          <div className="flex flex-col sm:flex-row justify-start items-center gap-3 h-fit min-w-[500px]">
+        <div className="w-full h-fit p-10 flex flex-wrap justify-evenly gap-5 ">
+          <div className="flex flex-col sm:flex-row justify-start items-center gap-3 h-fit sm:min-w-[500px] w-[300px]">
             <div className="relative min-w-[200px] h-[200px] overflow-hidden rounded-xl">
               <Image objectFit="cover" layout="fill" src={dondy} />
             </div>
@@ -222,7 +120,7 @@ export default function Home() {
               <div className="opacity-[50%]">Programmer/UI</div>
             </div>
           </div>
-          <div className="flex flex-col sm:flex-row justify-start  items-center gap-3 h-fit min-w-[500px]">
+          <div className="flex flex-col sm:flex-row justify-start  items-center gap-3 h-fit sm:min-w-[500px] w-[300px]">
             <div className="relative min-w-[200px] h-[200px] overflow-hidden rounded-xl">
               <Image objectFit="cover" layout="fill" src={andrea} />
             </div>
@@ -231,7 +129,7 @@ export default function Home() {
               <div className="opacity-[50%]">Programmer/UI</div>
             </div>
           </div>
-          <div className="flex flex-col sm:flex-row justify-start items-center gap-3 h-fit min-w-[500px]">
+          <div className="flex flex-col sm:flex-row justify-start items-center gap-3 h-fit sm:min-w-[500px] w-[300px]">
             <div className="relative min-w-[200px] h-[200px] overflow-hidden rounded-xl">
               <Image objectFit="cover" layout="fill" src={jl} />
             </div>
@@ -240,7 +138,7 @@ export default function Home() {
               <div className="opacity-[50%]">Programmer/UI</div>
             </div>
           </div>
-          <div className="flex flex-col sm:flex-row justify-start items-center gap-3 h-fit min-w-[500px]">
+          <div className="flex flex-col sm:flex-row justify-start items-center gap-3 h-fit sm:min-w-[500px] w-[300px]">
             <div className="relative min-w-[200px] h-[200px] overflow-hidden rounded-xl">
               <Image objectFit="cover" layout="fill" src={sharm} />
             </div>
@@ -250,7 +148,7 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="flex flex-col sm:flex-row justify-start items-center gap-3 h-fit min-w-[500px]">
+          <div className="flex flex-col sm:flex-row justify-start items-center gap-3 h-fit sm:min-w-[500px] w-[300px]">
             <div className="relative min-w-[200px] h-[200px] overflow-hidden rounded-xl">
               <Image objectFit="cover" layout="fill" src={gerand} />
             </div>
@@ -259,7 +157,7 @@ export default function Home() {
               <div className="opacity-[50%]">Database Admin</div>
             </div>
           </div>
-          <div className="flex flex-col sm:flex-row justify-start items-center gap-3 h-fit min-w-[500px]">
+          <div className="flex flex-col sm:flex-row justify-start items-center gap-3 h-fit sm:min-w-[500px] w-[300px]">
             <div className="relative min-w-[200px] h-[200px] overflow-hidden rounded-xl">
               <Image objectFit="cover" layout="fill" className="" src={rey} />
             </div>
@@ -268,7 +166,7 @@ export default function Home() {
               <div className="opacity-[50%]">Analyst/Documentation</div>
             </div>
           </div>
-          <div className="flex flex-col sm:flex-row justify-start items-center gap-3 h-fit min-w-[500px]">
+          <div className="flex flex-col sm:flex-row justify-start items-center gap-3 h-fit sm:min-w-[500px] w-[300px]">
             <div className="relative min-w-[200px] h-[200px] overflow-hidden rounded-xl">
               <Image objectFit="cover" layout="fill" className="" src={rica} />
             </div>
@@ -277,7 +175,7 @@ export default function Home() {
               <div className="opacity-[50%]">Tester/Documentation</div>
             </div>
           </div>
-          <div className="flex flex-col sm:flex-row justify-start items-center gap-3 h-fit min-w-[500px]">
+          <div className="flex flex-col sm:flex-row justify-start items-center gap-3 h-fit sm:min-w-[500px] w-[300px]">
             <div className="relative min-w-[200px] h-[200px] overflow-hidden rounded-xl">
               <Image
                 objectFit="cover"
@@ -293,7 +191,7 @@ export default function Home() {
               <div className="opacity-[50%]">Tester/Documentation</div>
             </div>
           </div>
-          <div className="flex flex-col sm:flex-row justify-start items-center gap-3 h-fit min-w-[500px]">
+          <div className="flex flex-col sm:flex-row justify-start items-center gap-3 h-fit sm:min-w-[500px] w-[300px]">
             <div className="relative min-w-[200px] h-[200px] overflow-hidden rounded-xl">
               <Image objectFit="cover" layout="fill" className="" src={kenu} />
             </div>
