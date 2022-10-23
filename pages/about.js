@@ -43,8 +43,6 @@ export default function Home() {
           console.log(snapshot.val().userName);
           document.getElementById("userNameDisplay").innerHTML =
             snapshot.val().userName;
-          document.getElementById("userNameDisplay.m").innerHTML =
-            snapshot.val().userName;
         } else {
           console.log("No data available");
         }
@@ -60,13 +58,18 @@ export default function Home() {
         <title>About</title>
       </Head>
       <div className="fixed top-0 left-0 right-0 z-10">
-        <div className="bg-accentColor text-white font-extrabold p-[10px]">
-          ABOUT US
+        <div className="bg-accentColor text-white font-extrabold p-[10px] flex flex-row justify-between">
+          <div>ABOUT US</div>
+          {user && <div id="userNameDisplay"></div>}
         </div>
         <div className=" bg-white flex gap-3 md:gap-5 w-full px-[10px] justify-end items-center h-[50px] mt-0 mb-0 mx-auto text-md md:text-lg font-extrabold ]">
-          <div className="cursor-pointer  hover:text-accentColor transition-all duration-300 ease-in-out border-b-2 border-transparent hover:border-accentColor">
-            Online Services
-          </div>
+          <Link href="/onlineservices" passHref>
+            <a>
+              <div className="cursor-pointer  hover:text-accentColor transition-all duration-300 ease-in-out border-b-2 border-transparent hover:border-accentColor">
+                Online Services
+              </div>
+            </a>
+          </Link>
 
           <Link href="/contact" passHref>
             <a>
