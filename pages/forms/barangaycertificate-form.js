@@ -43,12 +43,6 @@ export default function brgyCertFrom() {
       .catch((error) => {
         console.error(error);
       });
-
-    if (user.emailVerified) {
-      update(ref(db, "users/" + newEmail), {
-        userStatus: user.emailVerified,
-      });
-    }
   }
 
   const apply = async () => {
@@ -68,9 +62,10 @@ export default function brgyCertFrom() {
     const userGender = document.getElementById("gender").value;
     const userBlood = document.getElementById("blood").value;
 
-    const ref = collection(dbF, "brgyCert");
+    const refF = collection(dbF, "brgyCert");
 
     if (
+      userPurpose == "" ||
       userFirst == "" ||
       userMiddle == "" ||
       userLast == "" ||
@@ -81,71 +76,99 @@ export default function brgyCertFrom() {
     ) {
       toast.error("Please check the fields");
     } else {
-      await addDoc(ref, {
-        purpose: userPurpose,
+      if (!user.emailVerified) {
+        toast.error("You are not verified!");
+      } else {
+        const newEmail = user.email
+          .replace(".com", "")
+          .replace("@", "")
+          .replace("#", "")
+          .replace("$", "")
+          .replace("[", "")
+          .replace("]", "")
+          .replace(".", "");
 
-        firstName: userFirst,
-        middleName: userMiddle,
-        lastName: userLast,
+        await get(child(ref(db), `users/${newEmail}/brgyClr`))
+          .then((snapshot) => {
+            if (snapshot.exists()) {
+              toast.error("Only one request is allowed!");
+            } else {
+              addDoc(refF, {
+                purpose: userPurpose,
 
-        email: userEmail,
-        address: userAdd,
-        phoneTel: userNum,
+                firstName: userFirst,
+                middleName: userMiddle,
+                lastName: userLast,
 
-        age: userAge,
-        bday: userBday,
-        placeBday: userPlace,
-        gender: userGender,
-        blood: userBlood,
+                email: userEmail,
+                address: userAdd,
+                phoneTel: userNum,
 
-        phHealth: document.getElementById("phHealth").value,
-        sss: document.getElementById("sss").value,
-        tin: document.getElementById("tin").value,
+                age: userAge,
+                bday: userBday,
+                placeBday: userPlace,
+                gender: userGender,
+                blood: userBlood,
 
-        addressE: document.getElementById("addressE").value,
-        contactE: document.getElementById("contactE").value,
-      }).then(() => {
-        const templateParams = {
-          to_email: userEmail,
-          to_name: userFirst,
-        };
+                phHealth: document.getElementById("phHealth").value,
+                sss: document.getElementById("sss").value,
+                tin: document.getElementById("tin").value,
 
-        document.getElementById("purpose").value = "";
-        document.getElementById("firstName").value = "";
-        document.getElementById("middleName").value = "";
-        document.getElementById("lastName").value = "";
-        document.getElementById("email").value = "";
-        document.getElementById("address").value = "";
-        document.getElementById("phoneTel").value = "";
-        document.getElementById("age").value = "";
-        document.getElementById("bday").value = "";
-        document.getElementById("placeBday").value = "";
-        document.getElementById("gender").value = "";
-        document.getElementById("blood").value = "";
-        document.getElementById("phHealth").value = "";
-        document.getElementById("sss").value = "";
-        document.getElementById("tin").value = "";
-        document.getElementById("addressE").value = "";
-        document.getElementById("contactE").value = "";
+                addressE: document.getElementById("addressE").value,
+                contactE: document.getElementById("contactE").value,
+              }).then(() => {
+                const templateParams = {
+                  to_email: userEmail,
+                  to_name: userFirst,
+                };
 
-        emailjs
-          .send(
-            "service_bup01x9",
-            "template_tbb9llr",
-            templateParams,
-            "Hmo8d3cG1IBa4DXz0"
-          )
-          .then(
-            (response) => {
-              toast.success(
-                "Your application has been submitted. Please check you email."
-              );
-            },
-            (err) => {
-              toast.success(err);
+                console.log(user);
+
+                update(ref(db, "users/" + newEmail), {
+                  brgyClr: "requested",
+                });
+                document.getElementById("purpose").value = "";
+                document.getElementById("firstName").value = "";
+                document.getElementById("middleName").value = "";
+                document.getElementById("lastName").value = "";
+                document.getElementById("email").value = "";
+                document.getElementById("address").value = "";
+                document.getElementById("phoneTel").value = "";
+                document.getElementById("age").value = "";
+                document.getElementById("bday").value = "";
+                document.getElementById("placeBday").value = "";
+                document.getElementById("gender").value = "";
+                document.getElementById("blood").value = "";
+                document.getElementById("phHealth").value = "";
+                document.getElementById("sss").value = "";
+                document.getElementById("tin").value = "";
+                document.getElementById("addressE").value = "";
+                document.getElementById("contactE").value = "";
+
+                emailjs
+                  .send(
+                    "service_bup01x9",
+                    "template_tbb9llr",
+                    templateParams,
+                    "Hmo8d3cG1IBa4DXz0"
+                  )
+                  .then(
+                    (response) => {
+                      toast.success(
+                        "Your application has been submitted. Please check you email."
+                      );
+                    },
+                    (err) => {
+                      toast.success(err);
+                    }
+                  );
+              });
             }
-          );
-      });
+          })
+          .catch((error) => {
+            console.error(error);
+          });
+      }
     }
   };
 
