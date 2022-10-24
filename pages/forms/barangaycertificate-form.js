@@ -242,11 +242,13 @@ export default function brgyCertFrom() {
           </Link>
         </div>
       </div>
-      <div className=" relative mx-auto flex items-center justify-cente h-[90px] md:h-[130px] w-[90px] md:w-[130px]">
-        <Image src={brgyLogo}></Image>
-      </div>
-      <div className="text-center font-extrabold text-3xl pt-3 text-bgColor">
-        BRGY. FORT BONIFACIO
+      <div className="flex mx-auto items-center justify-center mb-2 text-bgColor">
+        <div className=" relative  flex items-center justify-cente h-[50px] md:h-[130px] w-[50px] md:w-[130px]">
+          <Image src={brgyLogo}></Image>
+        </div>
+        <div className="text-center font-extrabold text-xl md:text-3xl p-3">
+          BRGY. FORT BONIFACIO
+        </div>
       </div>
 
       <div className="bg-bgColor w-[full] h-fit p-20 mt-10 flex flex-col gap-10 sm:items-start items-center ">

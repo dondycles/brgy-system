@@ -179,10 +179,10 @@ export default function Home() {
             <Image src={brgyLogo}></Image>
           </div>
           <div className="font-extrabold  p-3">
-            <div className="text-3xl">CONTACT US</div>
-            <div className="text-xl">BARANGAY FORT BONIFACIO</div>
+            <div className="text-xl md:text-3xl">CONTACT US</div>
+            <div className="text-md md:text-xl">BARANGAY FORT BONIFACIO</div>
             <div className="h-1 w-full bg-bgColor"></div>
-            <div className="text-lg">
+            <div className="text-sm md:text-lg">
               We are willing to assist you with your concerns.
             </div>
           </div>

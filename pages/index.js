@@ -6,8 +6,10 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import { auth, db } from "../utils/firebase";
 import { ref, set, onValue, update, get, child } from "firebase/database";
 import { GoUnverified, GoVerified } from "react-icons/go";
+import { ImArrowDown } from "react-icons/im";
 import { toast } from "react-toastify";
 import { sendEmailVerification } from "firebase/auth";
+import { useState } from "react";
 
 import brgyLogo from "../public/imgs/logo.png";
 import bgryImg from "../public/imgs/brgyImg.jpg";
@@ -15,6 +17,8 @@ import { useRouter } from "next/router";
 
 export default function Home() {
   const [user, loading] = useAuthState(auth);
+  const [verifyClick, setVerifyClick] = useState(false);
+  const [verifyReload, setVerifyReload] = useState(false);
   const route = useRouter();
   if (user) {
     const newEmail = user.email
@@ -175,12 +179,14 @@ export default function Home() {
         </div>
       </div>
 
-      <div className="h-[100vh] mb-20 w-full mt-32  text-bgColor">
-        <div className=" relative mx-auto flex items-center justify-cente h-[90px] md:h-[130px] w-[90px] md:w-[130px]">
-          <Image src={brgyLogo}></Image>
-        </div>
-        <div className="text-center font-extrabold text-3xl p-3">
-          BRGY. FORT BONIFACIO
+      <div className="h-[100vh] mb-20 w-full pt-28 text-bgColor">
+        <div className="flex mx-auto items-center justify-center mb-2">
+          <div className=" relative  flex items-center justify-cente h-[50px] md:h-[130px] w-[50px] md:w-[130px]">
+            <Image src={brgyLogo}></Image>
+          </div>
+          <div className="text-center font-extrabold text-xl md:text-3xl p-3">
+            BRGY. FORT BONIFACIO
+          </div>
         </div>
 
         <div className="relative w-full h-[50%] overflow-hidden ">
@@ -269,22 +275,60 @@ export default function Home() {
           {user && (
             <>
               <div className="p-3 flex gap-3 flex-col m-auto">
-                <div className="m-auto text-center flex flex-row items-center gap-2 ]">
-                  <span id="userNameDisplayCenter"></span>
+                <div className="m-auto text-center flex flex-col items-center ]">
                   <div>
                     {!user.emailVerified && (
-                      <div className="flex items-center justify-center gap-2">
-                        <GoUnverified />
+                      <div className="relative">
+                        <div className="flex items-center flex-row justify-center gap-2">
+                          <span id="userNameDisplayCenter"></span>
+
+                          <GoUnverified />
+                        </div>
+                        <div
+                          className={`absolute top-[-100%] left-[50%] translate-x-[-50%] bg-bgColor px-4 py-2 rounded-lg text-white  w-[300px] ${
+                            verifyReload ? "block" : "hidden"
+                          } `}
+                        >
+                          Click this after clicking the confirmation link that
+                          has been sent to your email inbox/spam
+                        </div>
+                        <div
+                          className={`absolute top-[-100%] left-[50%] translate-x-[-50%] bg-bgColor px-4 py-2 rounded-lg text-white  w-[300px] ${
+                            verifyReload ? "hidden" : "block"
+                          } `}
+                        >
+                          Click this to verify your account. You must be verfied
+                          first to be eligble for requesting documents!
+                        </div>
+                        <ImArrowDown
+                          className={`absolute top-[25%] left-[50%] translate-x-[-50%] `}
+                        />
                         <button
                           onClick={() => {
                             sendEmailVerification(auth.currentUser).then(() => {
                               console.log(user.emailVerified);
-                              toast.success("Please check your email inbox!");
+                              toast.success(
+                                "Please check your inbox or spam folder and go back to this website!"
+                              );
                             });
+                            setVerifyClick(true);
+                            setVerifyReload(true);
                           }}
-                          className="bg-white rounded-full text-accentColor px-2 font-extrabold cursor-pointer"
+                          className={`bg-bgColor rounded-full mt-3 mx-auto text-white px-4 py-1 font-extrabold cursor-pointer text-center ${
+                            verifyClick ? "hidden" : "block"
+                          }`}
                         >
                           verify
+                        </button>
+                        <button
+                          onClick={() => {
+                            location.reload();
+                          }}
+                          className={`bg-bgColor rounded-full mt-3 mx-auto text-white px-4 py-1 font-extrabold cursor-pointer text-center  ${
+                            verifyClick ? "block" : "hidden"
+                          }`}
+                        >
+                          check verification
                         </button>
                       </div>
                     )}

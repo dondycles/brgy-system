@@ -177,14 +177,14 @@ export default function Home() {
 
       <div className=" w-full pt-32 flex flex-col text-bgColor">
         <div className="flex flex-row justify-center items-center w-fit mx-auto mb-5">
-          <div className=" relative mx-auto flex items-center justify-cente h-[90px] md:h-[130px] w-[90px] md:w-[130px]">
+          <div className=" relative flex items-center justify-cente h-[90px] md:h-[130px] w-[90px] md:w-[130px] mx-[10px]">
             <Image src={brgyLogo}></Image>
           </div>
           <div className="font-extrabold  p-3">
-            <div className="text-3xl">ONLINE SERVICES</div>
-            <div className="text-xl">BARANGAY FORT BONIFACIO</div>
+            <div className="text-xl md:text-3xl">ONLINE SERVICES</div>
+            <div className="text-md md:text-xl">BARANGAY FORT BONIFACIO</div>
             <div className="h-1 w-full bg-bgColor"></div>
-            <div className="text-lg">
+            <div className="text-sm md:text-lg">
               Quality Online Services We Offered For You
             </div>
           </div>
