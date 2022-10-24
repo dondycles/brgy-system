@@ -264,9 +264,7 @@ export default function Home() {
                       document.getElementById("btn2").style.transform =
                         "scale(1)";
                     }}
-                    onClick={() => {
-                      route.push("/forms/barangaycertificate-form");
-                    }}
+                    onClick={() => {}}
                     className="bg-accentColor rounded-full font-extrabold px-4 hover:px-5 py-2 mt-4 transition-all duration-150 ease-in-out"
                   >
                     Click to Request
