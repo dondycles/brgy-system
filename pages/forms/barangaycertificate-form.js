@@ -209,7 +209,7 @@ export default function brgyCertFrom() {
           <div>Barangay Certificate Application Form</div>
           {user && <div id="userNameDisplay"></div>}
         </div>
-        <div className=" bg-white flex gap-3 md:gap-5 w-full px-[10px] justify-end items-center h-[50px] mt-0 mb-0 mx-auto text-md md:text-lg font-extrabold ]">
+        <div className=" text-bgColor bg-white flex gap-3 md:gap-5 w-full px-[10px] justify-end items-center h-[50px] mt-0 mb-0 mx-auto text-md md:text-lg font-extrabold ]">
           <Link href="/onlineservices" passHref>
             <a>
               <div className="cursor-pointer  hover:text-accentColor transition-all duration-300 ease-in-out border-b-2 border-transparent hover:border-accentColor">
