@@ -285,7 +285,7 @@ export default function Home() {
                           <GoUnverified />
                         </div>
                         <div
-                          className={`absolute top-[-100%] left-[50%] translate-x-[-50%] bg-bgColor px-4 py-2 rounded-lg text-white  w-[300px] ${
+                          className={`dialogue absolute top-[-100%] left-[50%] translate-x-[-50%] bg-bgColor px-4 py-2 rounded-lg text-white  w-[300px] animate-dialougeAnim  ${
                             verifyReload ? "block" : "hidden"
                           } `}
                         >
@@ -293,7 +293,7 @@ export default function Home() {
                           has been sent to your email inbox/spam
                         </div>
                         <div
-                          className={`absolute top-[-100%] left-[50%] translate-x-[-50%] bg-bgColor px-4 py-2 rounded-lg text-white  w-[300px] ${
+                          className={`dialogue absolute top-[-100%] left-[50%] translate-x-[-50%] bg-bgColor px-4 py-2 rounded-lg text-white  w-[300px] animate-dialougeAnim ${
                             verifyReload ? "hidden" : "block"
                           } `}
                         >
@@ -314,7 +314,33 @@ export default function Home() {
                             setVerifyClick(true);
                             setVerifyReload(true);
                           }}
-                          className={`bg-bgColor rounded-full mt-3 mx-auto text-white px-4 py-1 font-extrabold cursor-pointer text-center ${
+                          id="verifyBtn"
+                          onMouseDown={() => {
+                            document.getElementById(
+                              "verifyBtn"
+                            ).style.transform = "scale(0.95)";
+                          }}
+                          onMouseUp={() => {
+                            document.getElementById(
+                              "verifyBtn"
+                            ).style.transform = "scale(1)";
+                          }}
+                          onMouseLeave={() => {
+                            document.getElementById(
+                              "verifyBtn"
+                            ).style.transform = "scale(1)";
+                          }}
+                          onTouchStart={() => {
+                            document.getElementById(
+                              "verifyBtn"
+                            ).style.transform = "scale(0.95)";
+                          }}
+                          onTouchEnd={() => {
+                            document.getElementById(
+                              "verifyBtn"
+                            ).style.transform = "scale(1)";
+                          }}
+                          className={`bg-bgColor rounded-full mt-3 mx-auto text-white px-4 hover:px-6 transition-all duration-150 ease-in-out py-1 font-extrabold cursor-pointer text-center ${
                             verifyClick ? "hidden" : "block"
                           }`}
                         >
@@ -324,7 +350,33 @@ export default function Home() {
                           onClick={() => {
                             location.reload();
                           }}
-                          className={`bg-bgColor rounded-full mt-3 mx-auto text-white px-4 py-1 font-extrabold cursor-pointer text-center  ${
+                          id="chkverifyBtn"
+                          onMouseDown={() => {
+                            document.getElementById(
+                              "chkverifyBtn"
+                            ).style.transform = "scale(0.95)";
+                          }}
+                          onMouseUp={() => {
+                            document.getElementById(
+                              "chkverifyBtn"
+                            ).style.transform = "scale(1)";
+                          }}
+                          onMouseLeave={() => {
+                            document.getElementById(
+                              "chkverifyBtn"
+                            ).style.transform = "scale(1)";
+                          }}
+                          onTouchStart={() => {
+                            document.getElementById(
+                              "chkverifyBtn"
+                            ).style.transform = "scale(0.95)";
+                          }}
+                          onTouchEnd={() => {
+                            document.getElementById(
+                              "chkverifyBtn"
+                            ).style.transform = "scale(1)";
+                          }}
+                          className={`bg-bgColor rounded-full mt-3 mx-auto text-white px-4 hover:px-6 transition-all duration-150 ease-in-out py-1 font-extrabold cursor-pointer text-center  ${
                             verifyClick ? "block" : "hidden"
                           }`}
                         >
