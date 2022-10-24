@@ -60,7 +60,7 @@ export default function Home() {
       <div className="fixed top-0 left-0 right-0 z-10">
         <div className="bg-accentColor text-white font-extrabold p-[10px] flex flex-row justify-between">
           <div>ABOUT US</div>
-          {user && <div id="userNameDisplay"></div>}
+          {user && <div className=" text-right" id="userNameDisplay"></div>}
         </div>
         <div className="  text-bgColor bg-white flex gap-3 md:gap-5 w-full px-[10px] justify-end items-center h-[50px] mt-0 mb-0 mx-auto text-md md:text-lg font-extrabold ]">
           <Link href="/onlineservices" passHref>
