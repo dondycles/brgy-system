@@ -64,7 +64,27 @@ export default function Home() {
         <div className=" bg-white flex gap-3 md:gap-5 w-full px-[10px] justify-end items-center h-[50px] mt-0 mb-0 mx-auto text-md md:text-lg font-extrabold ]">
           <Link href="/onlineservices" passHref>
             <a>
-              <div className="cursor-pointer  hover:text-accentColor transition-all duration-300 ease-in-out border-b-2 border-transparent hover:border-accentColor">
+              <div
+                id="osBtn"
+                onMouseDown={() => {
+                  document.getElementById("osBtn").style.transform =
+                    "scale(0.95)";
+                }}
+                onMouseUp={() => {
+                  document.getElementById("osBtn").style.transform = "scale(1)";
+                }}
+                onMouseLeave={() => {
+                  document.getElementById("osBtn").style.transform = "scale(1)";
+                }}
+                onTouchStart={() => {
+                  document.getElementById("osBtn").style.transform =
+                    "scale(0.95)";
+                }}
+                onTouchEnd={() => {
+                  document.getElementById("osBtn").style.transform = "scale(1)";
+                }}
+                className="cursor-pointer  hover:text-accentColor transition-all duration-150 ease-in-out border-b-2 border-transparent hover:border-accentColor"
+              >
                 Online Services
               </div>
             </a>
@@ -72,7 +92,27 @@ export default function Home() {
 
           <Link href="/contact" passHref>
             <a>
-              <div className="cursor-pointer  hover:text-accentColor transition-all duration-300 ease-in-out border-b-2 border-transparent hover:border-accentColor">
+              <div
+                id="csBtn"
+                onMouseDown={() => {
+                  document.getElementById("csBtn").style.transform =
+                    "scale(0.95)";
+                }}
+                onMouseUp={() => {
+                  document.getElementById("csBtn").style.transform = "scale(1)";
+                }}
+                onMouseLeave={() => {
+                  document.getElementById("csBtn").style.transform = "scale(1)";
+                }}
+                onTouchStart={() => {
+                  document.getElementById("csBtn").style.transform =
+                    "scale(0.95)";
+                }}
+                onTouchEnd={() => {
+                  document.getElementById("csBtn").style.transform = "scale(1)";
+                }}
+                className="cursor-pointer  hover:text-accentColor transition-all duration-300 ease-in-out border-b-2 border-transparent hover:border-accentColor"
+              >
                 Contact Us
               </div>
             </a>
@@ -80,14 +120,54 @@ export default function Home() {
 
           <Link href="/about" passHref>
             <a>
-              <div className="cursor-pointer  hover:text-accentColor transition-all duration-300 ease-in-out border-b-2 border-transparent hover:border-accentColor">
+              <div
+                id="aBtn"
+                onMouseDown={() => {
+                  document.getElementById("aBtn").style.transform =
+                    "scale(0.95)";
+                }}
+                onMouseUp={() => {
+                  document.getElementById("aBtn").style.transform = "scale(1)";
+                }}
+                onMouseLeave={() => {
+                  document.getElementById("aBtn").style.transform = "scale(1)";
+                }}
+                onTouchStart={() => {
+                  document.getElementById("aBtn").style.transform =
+                    "scale(0.95)";
+                }}
+                onTouchEnd={() => {
+                  document.getElementById("aBtn").style.transform = "scale(1)";
+                }}
+                className="cursor-pointer  hover:text-accentColor transition-all duration-300 ease-in-out border-b-2 border-transparent hover:border-accentColor"
+              >
                 About
               </div>
             </a>
           </Link>
           <Link href="/" passHref>
             <a>
-              <div className="cursor-pointer  hover:text-accentColor transition-all duration-300 ease-in-out border-b-2 border-transparent hover:border-accentColor">
+              <div
+                id="hBtn"
+                onMouseDown={() => {
+                  document.getElementById("hBtn").style.transform =
+                    "scale(0.95)";
+                }}
+                onMouseUp={() => {
+                  document.getElementById("hBtn").style.transform = "scale(1)";
+                }}
+                onMouseLeave={() => {
+                  document.getElementById("hBtn").style.transform = "scale(1)";
+                }}
+                onTouchStart={() => {
+                  document.getElementById("hBtn").style.transform =
+                    "scale(0.95)";
+                }}
+                onTouchEnd={() => {
+                  document.getElementById("hBtn").style.transform = "scale(1)";
+                }}
+                className="cursor-pointer  hover:text-accentColor transition-all duration-300 ease-in-out border-b-2 border-transparent hover:border-accentColor"
+              >
                 Home
               </div>
             </a>
@@ -123,10 +203,31 @@ export default function Home() {
                   </div>
                   <div className="text-md">Application/ Renewal/ Closure</div>
                   <button
+                    id="btn1"
+                    onMouseDown={() => {
+                      document.getElementById("btn1").style.transform =
+                        "scale(0.95)";
+                    }}
+                    onMouseUp={() => {
+                      document.getElementById("btn1").style.transform =
+                        "scale(1)";
+                    }}
+                    onMouseLeave={() => {
+                      document.getElementById("btn1").style.transform =
+                        "scale(1)";
+                    }}
+                    onTouchStart={() => {
+                      document.getElementById("btn1").style.transform =
+                        "scale(0.95)";
+                    }}
+                    onTouchEnd={() => {
+                      document.getElementById("btn1").style.transform =
+                        "scale(1)";
+                    }}
                     onClick={() => {
                       route.push("/forms/barangaycertificate-form");
                     }}
-                    className="bg-accentColor rounded-full font-extrabold px-4 py-2 mt-4"
+                    className="bg-accentColor rounded-full font-extrabold px-4 hover:px-5 py-2 mt-4 transition-all duration-150 ease-in-out"
                   >
                     Click to Request
                   </button>
@@ -138,10 +239,36 @@ export default function Home() {
                 </div>
                 <div className=" flex flex-col items-start">
                   <div className="text-2xl font-extrabold">
-                    Barangay Clearance / Certificate
+                    Barangay Clearance/ Certificate
                   </div>
                   <div className="text-md">For Personal Use</div>
-                  <button className="bg-accentColor rounded-full font-extrabold px-4 py-2 mt-4">
+                  <button
+                    id="btn2"
+                    onMouseDown={() => {
+                      document.getElementById("btn2").style.transform =
+                        "scale(0.95)";
+                    }}
+                    onMouseUp={() => {
+                      document.getElementById("btn2").style.transform =
+                        "scale(1)";
+                    }}
+                    onMouseLeave={() => {
+                      document.getElementById("btn2").style.transform =
+                        "scale(1)";
+                    }}
+                    onTouchStart={() => {
+                      document.getElementById("btn2").style.transform =
+                        "scale(0.95)";
+                    }}
+                    onTouchEnd={() => {
+                      document.getElementById("btn2").style.transform =
+                        "scale(1)";
+                    }}
+                    onClick={() => {
+                      route.push("/forms/barangaycertificate-form");
+                    }}
+                    className="bg-accentColor rounded-full font-extrabold px-4 hover:px-5 py-2 mt-4 transition-all duration-150 ease-in-out"
+                  >
                     Click to Request
                   </button>
                 </div>
@@ -155,7 +282,30 @@ export default function Home() {
                   <div className="text-md">
                     Barangay ID for Fort Bonifacio Residents
                   </div>
-                  <button className="bg-accentColor rounded-full font-extrabold px-4 py-2 mt-4">
+                  <button
+                    id="btn3"
+                    onMouseDown={() => {
+                      document.getElementById("btn3").style.transform =
+                        "scale(0.95)";
+                    }}
+                    onMouseUp={() => {
+                      document.getElementById("btn3").style.transform =
+                        "scale(1)";
+                    }}
+                    onMouseLeave={() => {
+                      document.getElementById("btn3").style.transform =
+                        "scale(1)";
+                    }}
+                    onTouchStart={() => {
+                      document.getElementById("btn3").style.transform =
+                        "scale(0.95)";
+                    }}
+                    onTouchEnd={() => {
+                      document.getElementById("btn3").style.transform =
+                        "scale(1)";
+                    }}
+                    className="bg-accentColor rounded-full font-extrabold px-4 hover:px-5 py-2 mt-4 transition-all duration-150 ease-in-out"
+                  >
                     Click to Request
                   </button>
                 </div>

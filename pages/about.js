@@ -65,7 +65,27 @@ export default function Home() {
         <div className=" bg-white flex gap-3 md:gap-5 w-full px-[10px] justify-end items-center h-[50px] mt-0 mb-0 mx-auto text-md md:text-lg font-extrabold ]">
           <Link href="/onlineservices" passHref>
             <a>
-              <div className="cursor-pointer  hover:text-accentColor transition-all duration-300 ease-in-out border-b-2 border-transparent hover:border-accentColor">
+              <div
+                id="osBtn"
+                onMouseDown={() => {
+                  document.getElementById("osBtn").style.transform =
+                    "scale(0.95)";
+                }}
+                onMouseUp={() => {
+                  document.getElementById("osBtn").style.transform = "scale(1)";
+                }}
+                onMouseLeave={() => {
+                  document.getElementById("osBtn").style.transform = "scale(1)";
+                }}
+                onTouchStart={() => {
+                  document.getElementById("osBtn").style.transform =
+                    "scale(0.95)";
+                }}
+                onTouchEnd={() => {
+                  document.getElementById("osBtn").style.transform = "scale(1)";
+                }}
+                className="cursor-pointer  hover:text-accentColor transition-all duration-150 ease-in-out border-b-2 border-transparent hover:border-accentColor"
+              >
                 Online Services
               </div>
             </a>
@@ -73,7 +93,27 @@ export default function Home() {
 
           <Link href="/contact" passHref>
             <a>
-              <div className="cursor-pointer  hover:text-accentColor transition-all duration-300 ease-in-out border-b-2 border-transparent hover:border-accentColor">
+              <div
+                id="csBtn"
+                onMouseDown={() => {
+                  document.getElementById("csBtn").style.transform =
+                    "scale(0.95)";
+                }}
+                onMouseUp={() => {
+                  document.getElementById("csBtn").style.transform = "scale(1)";
+                }}
+                onMouseLeave={() => {
+                  document.getElementById("csBtn").style.transform = "scale(1)";
+                }}
+                onTouchStart={() => {
+                  document.getElementById("csBtn").style.transform =
+                    "scale(0.95)";
+                }}
+                onTouchEnd={() => {
+                  document.getElementById("csBtn").style.transform = "scale(1)";
+                }}
+                className="cursor-pointer  hover:text-accentColor transition-all duration-150 ease-in-out border-b-2 border-transparent hover:border-accentColor"
+              >
                 Contact Us
               </div>
             </a>
@@ -81,14 +121,54 @@ export default function Home() {
 
           <Link href="/about" passHref>
             <a>
-              <div className="cursor-pointer  hover:text-accentColor transition-all duration-300 ease-in-out border-b-2 border-transparent hover:border-accentColor">
+              <div
+                id="aBtn"
+                onMouseDown={() => {
+                  document.getElementById("aBtn").style.transform =
+                    "scale(0.95)";
+                }}
+                onMouseUp={() => {
+                  document.getElementById("aBtn").style.transform = "scale(1)";
+                }}
+                onMouseLeave={() => {
+                  document.getElementById("aBtn").style.transform = "scale(1)";
+                }}
+                onTouchStart={() => {
+                  document.getElementById("aBtn").style.transform =
+                    "scale(0.95)";
+                }}
+                onTouchEnd={() => {
+                  document.getElementById("aBtn").style.transform = "scale(1)";
+                }}
+                className="cursor-pointer  hover:text-accentColor transition-all duration-150 ease-in-out border-b-2 border-transparent hover:border-accentColor"
+              >
                 About
               </div>
             </a>
           </Link>
           <Link href="/" passHref>
             <a>
-              <div className="cursor-pointer  hover:text-accentColor transition-all duration-300 ease-in-out border-b-2 border-transparent hover:border-accentColor">
+              <div
+                id="hBtn"
+                onMouseDown={() => {
+                  document.getElementById("hBtn").style.transform =
+                    "scale(0.95)";
+                }}
+                onMouseUp={() => {
+                  document.getElementById("hBtn").style.transform = "scale(1)";
+                }}
+                onMouseLeave={() => {
+                  document.getElementById("hBtn").style.transform = "scale(1)";
+                }}
+                onTouchStart={() => {
+                  document.getElementById("hBtn").style.transform =
+                    "scale(0.95)";
+                }}
+                onTouchEnd={() => {
+                  document.getElementById("hBtn").style.transform = "scale(1)";
+                }}
+                className="cursor-pointer  hover:text-accentColor transition-all duration-150 ease-in-out border-b-2 border-transparent hover:border-accentColor"
+              >
                 Home
               </div>
             </a>

@@ -76,99 +76,125 @@ export default function brgyCertFrom() {
     ) {
       toast.error("Please check the fields");
     } else {
-      if (!user.emailVerified) {
-        toast.error("You are not verified!");
-      } else {
-        const newEmail = user.email
-          .replace(".com", "")
-          .replace("@", "")
-          .replace("#", "")
-          .replace("$", "")
-          .replace("[", "")
-          .replace("]", "")
-          .replace(".", "");
-
-        await get(child(ref(db), `users/${newEmail}/brgyClr`))
-          .then((snapshot) => {
-            if (snapshot.exists()) {
-              toast.error("Only one request is allowed!");
+      const newEmail = user.email
+        .replace(".com", "")
+        .replace("@", "")
+        .replace("#", "")
+        .replace("$", "")
+        .replace("[", "")
+        .replace("]", "")
+        .replace(".", "");
+      await get(child(ref(db), `users/${newEmail}`))
+        .then((snapshot) => {
+          if (
+            snapshot.val().userName != `${userFirst} ${userMiddle} ${userLast}`
+          ) {
+            toast.error(
+              "Make sure your full name matches with your account name"
+            );
+          } else {
+            if (!user.email.match(userEmail)) {
+              toast.error("Your email does not match!");
             } else {
-              addDoc(refF, {
-                purpose: userPurpose,
+              if (!user.emailVerified) {
+                toast.error("You are not verified!");
+              } else {
+                const newEmail = user.email
+                  .replace(".com", "")
+                  .replace("@", "")
+                  .replace("#", "")
+                  .replace("$", "")
+                  .replace("[", "")
+                  .replace("]", "")
+                  .replace(".", "");
 
-                firstName: userFirst,
-                middleName: userMiddle,
-                lastName: userLast,
+                get(child(ref(db), `users/${newEmail}/brgyClr`))
+                  .then((snapshot) => {
+                    if (snapshot.exists()) {
+                      toast.error("Only one request is allowed!");
+                    } else {
+                      addDoc(refF, {
+                        purpose: userPurpose,
 
-                email: userEmail,
-                address: userAdd,
-                phoneTel: userNum,
+                        firstName: userFirst,
+                        middleName: userMiddle,
+                        lastName: userLast,
 
-                age: userAge,
-                bday: userBday,
-                placeBday: userPlace,
-                gender: userGender,
-                blood: userBlood,
+                        email: userEmail,
+                        address: userAdd,
+                        phoneTel: userNum,
 
-                phHealth: document.getElementById("phHealth").value,
-                sss: document.getElementById("sss").value,
-                tin: document.getElementById("tin").value,
+                        age: userAge,
+                        bday: userBday,
+                        placeBday: userPlace,
+                        gender: userGender,
+                        blood: userBlood,
 
-                addressE: document.getElementById("addressE").value,
-                contactE: document.getElementById("contactE").value,
-              }).then(() => {
-                const templateParams = {
-                  to_email: userEmail,
-                  to_name: userFirst,
-                };
+                        phHealth: document.getElementById("phHealth").value,
+                        sss: document.getElementById("sss").value,
+                        tin: document.getElementById("tin").value,
 
-                console.log(user);
+                        addressE: document.getElementById("addressE").value,
+                        contactE: document.getElementById("contactE").value,
+                      }).then(() => {
+                        const templateParams = {
+                          to_email: userEmail,
+                          to_name: userFirst,
+                        };
 
-                update(ref(db, "users/" + newEmail), {
-                  brgyClr: "requested",
-                });
-                document.getElementById("purpose").value = "";
-                document.getElementById("firstName").value = "";
-                document.getElementById("middleName").value = "";
-                document.getElementById("lastName").value = "";
-                document.getElementById("email").value = "";
-                document.getElementById("address").value = "";
-                document.getElementById("phoneTel").value = "";
-                document.getElementById("age").value = "";
-                document.getElementById("bday").value = "";
-                document.getElementById("placeBday").value = "";
-                document.getElementById("gender").value = "";
-                document.getElementById("blood").value = "";
-                document.getElementById("phHealth").value = "";
-                document.getElementById("sss").value = "";
-                document.getElementById("tin").value = "";
-                document.getElementById("addressE").value = "";
-                document.getElementById("contactE").value = "";
+                        console.log(user);
 
-                emailjs
-                  .send(
-                    "service_bup01x9",
-                    "template_tbb9llr",
-                    templateParams,
-                    "Hmo8d3cG1IBa4DXz0"
-                  )
-                  .then(
-                    (response) => {
-                      toast.success(
-                        "Your application has been submitted. Please check you email."
-                      );
-                    },
-                    (err) => {
-                      toast.success(err);
+                        update(ref(db, "users/" + newEmail), {
+                          brgyClr: "requested",
+                        });
+                        document.getElementById("purpose").value = "";
+                        document.getElementById("firstName").value = "";
+                        document.getElementById("middleName").value = "";
+                        document.getElementById("lastName").value = "";
+                        document.getElementById("email").value = "";
+                        document.getElementById("address").value = "";
+                        document.getElementById("phoneTel").value = "";
+                        document.getElementById("age").value = "";
+                        document.getElementById("bday").value = "";
+                        document.getElementById("placeBday").value = "";
+                        document.getElementById("gender").value = "";
+                        document.getElementById("blood").value = "";
+                        document.getElementById("phHealth").value = "";
+                        document.getElementById("sss").value = "";
+                        document.getElementById("tin").value = "";
+                        document.getElementById("addressE").value = "";
+                        document.getElementById("contactE").value = "";
+
+                        emailjs
+                          .send(
+                            "service_bup01x9",
+                            "template_tbb9llr",
+                            templateParams,
+                            "Hmo8d3cG1IBa4DXz0"
+                          )
+                          .then(
+                            (response) => {
+                              toast.success(
+                                "Your application has been submitted. Please check you email."
+                              );
+                            },
+                            (err) => {
+                              toast.success(err);
+                            }
+                          );
+                      });
                     }
-                  );
-              });
+                  })
+                  .catch((error) => {
+                    console.error(error);
+                  });
+              }
             }
-          })
-          .catch((error) => {
-            console.error(error);
-          });
-      }
+          }
+        })
+        .catch((error) => {
+          console.error(error);
+        });
     }
   };
 

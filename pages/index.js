@@ -11,9 +11,11 @@ import { sendEmailVerification } from "firebase/auth";
 
 import brgyLogo from "../public/imgs/logo.png";
 import bgryImg from "../public/imgs/brgyImg.jpg";
+import { useRouter } from "next/router";
 
 export default function Home() {
   const [user, loading] = useAuthState(auth);
+  const route = useRouter();
   if (user) {
     const newEmail = user.email
       .replace(".com", "")
@@ -62,7 +64,27 @@ export default function Home() {
         <div className=" bg-white flex gap-3 md:gap-5 w-full px-[10px] justify-end items-center h-[50px] mt-0 mb-0 mx-auto text-md md:text-lg font-extrabold ]">
           <Link href="/onlineservices" passHref>
             <a>
-              <div className="cursor-pointer  hover:text-accentColor transition-all duration-300 ease-in-out border-b-2 border-transparent hover:border-accentColor">
+              <div
+                id="osBtn"
+                onMouseDown={() => {
+                  document.getElementById("osBtn").style.transform =
+                    "scale(0.95)";
+                }}
+                onMouseUp={() => {
+                  document.getElementById("osBtn").style.transform = "scale(1)";
+                }}
+                onMouseLeave={() => {
+                  document.getElementById("osBtn").style.transform = "scale(1)";
+                }}
+                onTouchStart={() => {
+                  document.getElementById("osBtn").style.transform =
+                    "scale(0.95)";
+                }}
+                onTouchEnd={() => {
+                  document.getElementById("osBtn").style.transform = "scale(1)";
+                }}
+                className="cursor-pointer  hover:text-accentColor transition-all duration-150 ease-in-out border-b-2 border-transparent hover:border-accentColor"
+              >
                 Online Services
               </div>
             </a>
@@ -70,7 +92,27 @@ export default function Home() {
 
           <Link href="/contact" passHref>
             <a>
-              <div className="cursor-pointer  hover:text-accentColor transition-all duration-300 ease-in-out border-b-2 border-transparent hover:border-accentColor">
+              <div
+                id="csBtn"
+                onMouseDown={() => {
+                  document.getElementById("csBtn").style.transform =
+                    "scale(0.95)";
+                }}
+                onMouseUp={() => {
+                  document.getElementById("csBtn").style.transform = "scale(1)";
+                }}
+                onMouseLeave={() => {
+                  document.getElementById("csBtn").style.transform = "scale(1)";
+                }}
+                onTouchStart={() => {
+                  document.getElementById("csBtn").style.transform =
+                    "scale(0.95)";
+                }}
+                onTouchEnd={() => {
+                  document.getElementById("csBtn").style.transform = "scale(1)";
+                }}
+                className="cursor-pointer  hover:text-accentColor transition-all duration-150 ease-in-out border-b-2 border-transparent hover:border-accentColor"
+              >
                 Contact Us
               </div>
             </a>
@@ -78,14 +120,54 @@ export default function Home() {
 
           <Link href="/about" passHref>
             <a>
-              <div className="cursor-pointer  hover:text-accentColor transition-all duration-300 ease-in-out border-b-2 border-transparent hover:border-accentColor">
+              <div
+                id="aBtn"
+                onMouseDown={() => {
+                  document.getElementById("aBtn").style.transform =
+                    "scale(0.95)";
+                }}
+                onMouseUp={() => {
+                  document.getElementById("aBtn").style.transform = "scale(1)";
+                }}
+                onMouseLeave={() => {
+                  document.getElementById("aBtn").style.transform = "scale(1)";
+                }}
+                onTouchStart={() => {
+                  document.getElementById("aBtn").style.transform =
+                    "scale(0.95)";
+                }}
+                onTouchEnd={() => {
+                  document.getElementById("aBtn").style.transform = "scale(1)";
+                }}
+                className="cursor-pointer  hover:text-accentColor transition-all duration-150 ease-in-out border-b-2 border-transparent hover:border-accentColor"
+              >
                 About
               </div>
             </a>
           </Link>
           <Link href="/" passHref>
             <a>
-              <div className="cursor-pointer  hover:text-accentColor transition-all duration-300 ease-in-out border-b-2 border-transparent hover:border-accentColor">
+              <div
+                id="hBtn"
+                onMouseDown={() => {
+                  document.getElementById("hBtn").style.transform =
+                    "scale(0.95)";
+                }}
+                onMouseUp={() => {
+                  document.getElementById("hBtn").style.transform = "scale(1)";
+                }}
+                onMouseLeave={() => {
+                  document.getElementById("hBtn").style.transform = "scale(1)";
+                }}
+                onTouchStart={() => {
+                  document.getElementById("hBtn").style.transform =
+                    "scale(0.95)";
+                }}
+                onTouchEnd={() => {
+                  document.getElementById("hBtn").style.transform = "scale(1)";
+                }}
+                className="cursor-pointer  hover:text-accentColor transition-all duration-150 ease-in-out border-b-2 border-transparent hover:border-accentColor"
+              >
                 Home
               </div>
             </a>
@@ -114,23 +196,72 @@ export default function Home() {
         <div className="w-full h-fit flex flex-col">
           {!user && (
             <div className="p-5 flex gap-1 flex-col m-auto]">
-              <Link href="/signup" passHref>
-                <a>
-                  <div className="mx-auto my-auto flex items-center justify-center gap-3 bg-accentColor rounded-full px-5 py-1 cursor-pointer origin-center font-medium hover:font-extrabold hover:px-[22px] transition-all ease-in-out text-gray-300 hover:text-white w-fit ">
-                    Sign In
-                  </div>
-                </a>
-              </Link>
+              <div
+                id="signInBtn"
+                onMouseDown={() => {
+                  document.getElementById("signInBtn").style.transform =
+                    "scale(0.95)";
+                }}
+                onMouseUp={() => {
+                  document.getElementById("signInBtn").style.transform =
+                    "scale(1)";
+                }}
+                onMouseLeave={() => {
+                  document.getElementById("signInBtn").style.transform =
+                    "scale(1)";
+                }}
+                onTouchStart={() => {
+                  document.getElementById("signInBtn").style.transform =
+                    "scale(0.95)";
+                }}
+                onTouchEnd={() => {
+                  document.getElementById("signInBtn").style.transform =
+                    "scale(1)";
+                }}
+                onClick={() => {
+                  setTimeout(() => {
+                    route.push("/signup");
+                  }, 500);
+                }}
+                className={`mx-auto my-auto flex items-center justify-center gap-3 bg-accentColor rounded-full px-5 py-1 cursor-pointer origin-center font-medium hover:font-extrabold hover:px-[22px] transition-all ease-in-out text-gray-150 hover:text-white w-fit 
+                    `}
+              >
+                Sign In
+              </div>
 
               <div className="mx-auto my-auto flex items-center justify-center gap-1 rounded-full px-5 py-1 font-thin transition-all ease-in-out text-black w-fit">
                 or
-                <Link href="/login">
-                  <a>
-                    <span className="text-accentColor cursor-pointer font-medium hover:font-extrabold transition-all ease-in-out">
-                      Log In
-                    </span>
-                  </a>
-                </Link>
+                <span
+                  id="logInBtn"
+                  onMouseDown={() => {
+                    document.getElementById("logInBtn").style.transform =
+                      "scale(0.98)";
+                  }}
+                  onMouseUp={() => {
+                    document.getElementById("logInBtn").style.transform =
+                      "scale(1)";
+                  }}
+                  onMouseLeave={() => {
+                    document.getElementById("logInBtn").style.transform =
+                      "scale(1)";
+                  }}
+                  onTouchStart={() => {
+                    document.getElementById("logInBtn").style.transform =
+                      "scale(0.98)";
+                  }}
+                  onTouchEnd={() => {
+                    document.getElementById("logInBtn").style.transform =
+                      "scale(1)";
+                  }}
+                  onClick={() => {
+                    setTimeout(() => {
+                      route.push("/login");
+                    }, 500);
+                  }}
+                  className="text-accentColor opacity-[80%] hover:opacity-[100%] font-extrabold cursor-pointer transition-all ease-in-out"
+                >
+                  Log In
+                </span>
               </div>
             </div>
           )}
@@ -163,7 +294,7 @@ export default function Home() {
                 <div>
                   <button
                     onClick={() => auth.signOut()}
-                    className="mx-auto my-auto flex items-center justify-center gap-3 bg-accentColor rounded-full px-5 py-1 cursor-pointer origin-center font-medium hover:font-extrabold hover:px-[22px] transition-all ease-in-out text-gray-300 hover:text-white w-fit ]"
+                    className="mx-auto my-auto flex items-center justify-center gap-3 bg-accentColor rounded-full px-5 py-1 cursor-pointer origin-center font-medium hover:font-extrabold hover:px-[22px] transition-all ease-in-out text-gray-150 hover:text-white w-fit ]"
                   >
                     Sign Out
                   </button>
