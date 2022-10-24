@@ -61,7 +61,7 @@ export default function Home() {
           <div>ONLINE SERVICES</div>
           {user && <div id="userNameDisplay"></div>}
         </div>
-        <div className=" bg-white flex gap-3 md:gap-5 w-full px-[10px] justify-end items-center h-[50px] mt-0 mb-0 mx-auto text-md md:text-lg font-extrabold ]">
+        <div className=" text-bgColor bg-white flex gap-3 md:gap-5 w-full px-[10px] justify-end items-center h-[50px] mt-0 mb-0 mx-auto text-md md:text-lg font-extrabold ]">
           <Link href="/onlineservices" passHref>
             <a>
               <div
@@ -83,7 +83,7 @@ export default function Home() {
                 onTouchEnd={() => {
                   document.getElementById("osBtn").style.transform = "scale(1)";
                 }}
-                className="cursor-pointer  hover:text-accentColor transition-all duration-150 ease-in-out border-b-2 border-transparent hover:border-accentColor"
+                className="scale-[1] cursor-pointer  hover:text-accentColor transition-all duration-150 ease-in-out border-b-2 border-transparent hover:border-accentColor"
               >
                 Online Services
               </div>
@@ -175,7 +175,7 @@ export default function Home() {
         </div>
       </div>
 
-      <div className=" w-full pt-32 flex flex-col">
+      <div className=" w-full pt-32 flex flex-col text-bgColor">
         <div className="flex flex-row justify-center items-center w-fit mx-auto mb-5">
           <div className=" relative mx-auto flex items-center justify-cente h-[90px] md:h-[130px] w-[90px] md:w-[130px]">
             <Image src={brgyLogo}></Image>

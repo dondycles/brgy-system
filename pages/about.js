@@ -62,7 +62,7 @@ export default function Home() {
           <div>ABOUT US</div>
           {user && <div id="userNameDisplay"></div>}
         </div>
-        <div className=" bg-white flex gap-3 md:gap-5 w-full px-[10px] justify-end items-center h-[50px] mt-0 mb-0 mx-auto text-md md:text-lg font-extrabold ]">
+        <div className="  text-bgColor bg-white flex gap-3 md:gap-5 w-full px-[10px] justify-end items-center h-[50px] mt-0 mb-0 mx-auto text-md md:text-lg font-extrabold ]">
           <Link href="/onlineservices" passHref>
             <a>
               <div
@@ -176,7 +176,7 @@ export default function Home() {
         </div>
       </div>
 
-      <div className="w-full h-screen">
+      <div className="w-full h-screen  text-bgColor">
         <div className="relative w-full h-[60vh] mb-[5vh] overflow-hidden ">
           <Image
             className="w-full h-auto object-center "

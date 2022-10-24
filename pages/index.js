@@ -61,7 +61,7 @@ export default function Home() {
           <div>HOME</div>
           {user && <div id="userNameDisplay"></div>}
         </div>
-        <div className=" bg-white flex gap-3 md:gap-5 w-full px-[10px] justify-end items-center h-[50px] mt-0 mb-0 mx-auto text-md md:text-lg font-extrabold ]">
+        <div className=" text-bgColor bg-white flex gap-3 md:gap-5 w-full px-[10px] justify-end items-center h-[50px] mt-0 mb-0 mx-auto text-md md:text-lg font-extrabold ]">
           <Link href="/onlineservices" passHref>
             <a>
               <div
@@ -175,7 +175,7 @@ export default function Home() {
         </div>
       </div>
 
-      <div className="h-[100vh] mb-20 w-full mt-32">
+      <div className="h-[100vh] mb-20 w-full mt-32  text-bgColor">
         <div className=" relative mx-auto flex items-center justify-cente h-[90px] md:h-[130px] w-[90px] md:w-[130px]">
           <Image src={brgyLogo}></Image>
         </div>
@@ -193,7 +193,7 @@ export default function Home() {
           />
         </div>
 
-        <div className="w-full h-fit flex flex-col">
+        <div className="w-full h-fit flex flex-col  text-bgColor">
           {!user && (
             <div className="p-5 flex gap-1 flex-col m-auto]">
               <div
