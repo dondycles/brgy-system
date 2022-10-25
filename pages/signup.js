@@ -8,7 +8,9 @@ import { useRouter } from "next/router";
 import { auth, db } from "../utils/firebase";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { toast } from "react-toastify";
-import { ref, set, onValue, update } from "firebase/database";
+import { ref, set } from "firebase/database";
+import { motion as m } from "framer-motion";
+
 export default function Signup() {
   const [user, loading] = useAuthState(auth);
   const route = useRouter();
@@ -18,7 +20,13 @@ export default function Signup() {
   }
 
   return (
-    <div className="className='fixed top-0 bottom-0 left-0 right-0 h-screen w-screen flex justify-center items-center bg-bgColor">
+    <m.div
+      initial={{ opacity: 1 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.75, ease: "easeOut" }}
+      exit={{ opacity: 0 }}
+      className="abosolut top-0 left-0 h-screen w-full flex justify-center items-center bg-bgColor"
+    >
       <Head>
         <title>Sign Up</title>
       </Head>
@@ -265,6 +273,6 @@ export default function Signup() {
           </div>
         </div>
       </div>
-    </div>
+    </m.div>
   );
 }

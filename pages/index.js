@@ -11,6 +11,8 @@ import { toast } from "react-toastify";
 import { sendEmailVerification } from "firebase/auth";
 import { useState } from "react";
 
+import { motion as m } from "framer-motion";
+
 import brgyLogo from "../public/imgs/logo.png";
 import bgryImg from "../public/imgs/brgyImg.jpg";
 import { useRouter } from "next/router";
@@ -20,6 +22,7 @@ export default function Home() {
   const [verifyClick, setVerifyClick] = useState(false);
   const [verifyReload, setVerifyReload] = useState(false);
   const route = useRouter();
+
   if (user) {
     const newEmail = user.email
       .replace(".com", "")
@@ -54,144 +57,22 @@ export default function Home() {
   }
 
   return (
-    <div id="scrl" className="relative h-screen w-full">
+    <m.div
+      initial={{ y: "100%" }}
+      animate={{ y: "0%" }}
+      transition={{ duration: 0.75, ease: "easeOut" }}
+      exit={{ opacity: 0 }}
+      id="scrl"
+      className="absolute top-56 left-0 h-screen w-full bg-white"
+    >
       <Head>
         <title>Brgy. Fort</title>
         <meta name="description" content="Welcome to Brgy. Fort!"></meta>
       </Head>
 
-      <div className="fixed top-0 left-0 right-0 z-10">
-        <div className="bg-accentColor text-white font-extrabold p-[10px] flex justify-between">
-          <div>HOME</div>
-          {user && <div className=" text-right" id="userNameDisplay"></div>}
-        </div>
-        <div className=" text-bgColor bg-white flex gap-3 md:gap-5 w-full px-[10px] justify-end items-center h-[50px] mt-0 mb-0 mx-auto text-md md:text-lg font-extrabold ]">
-          <Link href="/onlineservices" passHref>
-            <a>
-              <div
-                id="osBtn"
-                onMouseDown={() => {
-                  document.getElementById("osBtn").style.transform =
-                    "scale(0.95)";
-                }}
-                onMouseUp={() => {
-                  document.getElementById("osBtn").style.transform = "scale(1)";
-                }}
-                onMouseLeave={() => {
-                  document.getElementById("osBtn").style.transform = "scale(1)";
-                }}
-                onTouchStart={() => {
-                  document.getElementById("osBtn").style.transform =
-                    "scale(0.95)";
-                }}
-                onTouchEnd={() => {
-                  document.getElementById("osBtn").style.transform = "scale(1)";
-                }}
-                className="cursor-pointer  hover:text-accentColor transition-all duration-150 ease-in-out border-b-2 border-transparent hover:border-accentColor"
-              >
-                Online Services
-              </div>
-            </a>
-          </Link>
-
-          <Link href="/contact" passHref>
-            <a>
-              <div
-                id="csBtn"
-                onMouseDown={() => {
-                  document.getElementById("csBtn").style.transform =
-                    "scale(0.95)";
-                }}
-                onMouseUp={() => {
-                  document.getElementById("csBtn").style.transform = "scale(1)";
-                }}
-                onMouseLeave={() => {
-                  document.getElementById("csBtn").style.transform = "scale(1)";
-                }}
-                onTouchStart={() => {
-                  document.getElementById("csBtn").style.transform =
-                    "scale(0.95)";
-                }}
-                onTouchEnd={() => {
-                  document.getElementById("csBtn").style.transform = "scale(1)";
-                }}
-                className="cursor-pointer  hover:text-accentColor transition-all duration-150 ease-in-out border-b-2 border-transparent hover:border-accentColor"
-              >
-                Contact Us
-              </div>
-            </a>
-          </Link>
-
-          <Link href="/about" passHref>
-            <a>
-              <div
-                id="aBtn"
-                onMouseDown={() => {
-                  document.getElementById("aBtn").style.transform =
-                    "scale(0.95)";
-                }}
-                onMouseUp={() => {
-                  document.getElementById("aBtn").style.transform = "scale(1)";
-                }}
-                onMouseLeave={() => {
-                  document.getElementById("aBtn").style.transform = "scale(1)";
-                }}
-                onTouchStart={() => {
-                  document.getElementById("aBtn").style.transform =
-                    "scale(0.95)";
-                }}
-                onTouchEnd={() => {
-                  document.getElementById("aBtn").style.transform = "scale(1)";
-                }}
-                className="cursor-pointer  hover:text-accentColor transition-all duration-150 ease-in-out border-b-2 border-transparent hover:border-accentColor"
-              >
-                About
-              </div>
-            </a>
-          </Link>
-          <Link href="/" passHref>
-            <a>
-              <div
-                id="hBtn"
-                onMouseDown={() => {
-                  document.getElementById("hBtn").style.transform =
-                    "scale(0.95)";
-                }}
-                onMouseUp={() => {
-                  document.getElementById("hBtn").style.transform = "scale(1)";
-                }}
-                onMouseLeave={() => {
-                  document.getElementById("hBtn").style.transform = "scale(1)";
-                }}
-                onTouchStart={() => {
-                  document.getElementById("hBtn").style.transform =
-                    "scale(0.95)";
-                }}
-                onTouchEnd={() => {
-                  document.getElementById("hBtn").style.transform = "scale(1)";
-                }}
-                className="cursor-pointer  hover:text-accentColor transition-all duration-150 ease-in-out border-b-2 border-transparent hover:border-accentColor"
-              >
-                Home
-              </div>
-            </a>
-          </Link>
-        </div>
-      </div>
-
-      <div className="h-[100vh] mb-20 w-full pt-28 text-bgColor">
-        <div className="flex mx-auto items-center justify-center mb-2">
-          <div className=" relative  flex items-center justify-cente h-[50px] md:h-[130px] w-[50px] md:w-[130px]">
-            <Image src={brgyLogo}></Image>
-          </div>
-          <div className="text-center font-extrabold text-xl md:text-3xl p-3">
-            BRGY. FORT BONIFACIO
-          </div>
-        </div>
-
-        <div className="relative w-full h-[50%] overflow-hidden ">
+      <div className="h-[calc(100vh-224px)] w-full  text-bgColor">
+        <div className="relative w-full h-[80%] overflow-hidden ">
           <Image
-            className="w-screen h-auto object-center "
             objectFit="cover"
             layout="fill"
             priority={true}
@@ -498,6 +379,6 @@ export default function Home() {
       <div className=" text-center mb-0 mt-auto mx-auto font-thin opacity-[50%] text-[10px]">
         ©2022 BARANGAY FORT BONIFACIO
       </div>
-    </div>
+    </m.div>
   );
 }

@@ -8,6 +8,7 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import { useRouter } from "next/router";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { toast } from "react-toastify";
+import { motion as m } from "framer-motion";
 
 export default function Login() {
   const route = useRouter();
@@ -19,7 +20,13 @@ export default function Login() {
   }
 
   return (
-    <div className="className='fixed top-0 bottom-0 left-0 right-0 h-screen w-screen flex justify-center items-center bg-bgColor">
+    <m.div
+      initial={{ opacity: 1 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.75, ease: "easeOut" }}
+      exit={{ opacity: 0 }}
+      className="abosolut top-0 left-0 h-screen w-full flex justify-center items-center bg-bgColor"
+    >
       <Head>
         <title>Log In</title>
       </Head>
@@ -133,6 +140,6 @@ export default function Login() {
           </div>
         </div>
       </div>
-    </div>
+    </m.div>
   );
 }

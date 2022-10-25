@@ -1,18 +1,14 @@
 import Head from "next/head";
 import Image from "next/image";
-import styles from "../../styles/Home.module.css";
-import Link from "next/link";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth, db, dbF } from "../../utils/firebase";
-import { ref, set, onValue, update, get, child } from "firebase/database";
-import { GoUnverified, GoVerified } from "react-icons/go";
+import { ref, update, get, child } from "firebase/database";
 import { toast } from "react-toastify";
-import { sendEmailVerification } from "firebase/auth";
 import { addDoc, collection } from "firebase/firestore";
 import brgyLogo from "../../public/imgs/logo.png";
-import bgryImg from "../../public/imgs/brgyImg.jpg";
 import { useRouter } from "next/router";
 import emailjs from "@emailjs/browser";
+import { motion as m } from "framer-motion";
 
 export default function brgyCertFrom() {
   const [user, loading] = useAuthState(auth);
@@ -199,63 +195,19 @@ export default function brgyCertFrom() {
   };
 
   return (
-    <div className="mt-32 relative h-screen w-full text-white">
+    <m.div
+      initial={{ y: "100%" }}
+      animate={{ y: "0%" }}
+      transition={{ duration: 0.75, ease: "easeOut" }}
+      exit={{ opacity: 0 }}
+      className="absolute top-56 left-0 h-[calc(1 00vh-240px)] w-full bg-white"
+    >
       <Head>
         <title>Barangay Certificate Application Form</title>
         <link rel="shortcut icon" href="../logo.png" type="image/png" />
       </Head>
-      <div className="fixed top-0 left-0 right-0 z-10">
-        <div className="bg-accentColor text-white font-extrabold p-[10px] flex flex-row justify-between">
-          <div>Barangay Certificate Application Form</div>
-          {user && <div className=" text-right" id="userNameDisplay"></div>}
-        </div>
-        <div className=" text-bgColor bg-white flex gap-3 md:gap-5 w-full px-[10px] justify-end items-center h-[50px] mt-0 mb-0 mx-auto text-md md:text-lg font-extrabold ]">
-          <Link href="/onlineservices" passHref>
-            <a>
-              <div className="cursor-pointer  hover:text-accentColor transition-all duration-300 ease-in-out border-b-2 border-transparent hover:border-accentColor">
-                Online Services
-              </div>
-            </a>
-          </Link>
 
-          <Link href="/contact" passHref>
-            <a>
-              <div className="cursor-pointer  hover:text-accentColor transition-all duration-300 ease-in-out border-b-2 border-transparent hover:border-accentColor">
-                Contact Us
-              </div>
-            </a>
-          </Link>
-
-          <Link href="/about" passHref>
-            <a>
-              <div className="cursor-pointer  hover:text-accentColor transition-all duration-300 ease-in-out border-b-2 border-transparent hover:border-accentColor">
-                About
-              </div>
-            </a>
-          </Link>
-          <Link href="/" passHref>
-            <a>
-              <div className="cursor-pointer  hover:text-accentColor transition-all duration-300 ease-in-out border-b-2 border-transparent hover:border-accentColor">
-                Home
-              </div>
-            </a>
-          </Link>
-        </div>
-      </div>
-      <div className="flex mx-auto items-center justify-center mb-2 text-bgColor">
-        <div className=" relative  flex items-center justify-cente h-[50px] md:h-[130px] w-[50px] md:w-[130px]">
-          <Image src={brgyLogo}></Image>
-        </div>
-        <div className="text-center font-extrabold text-xl md:text-3xl p-3">
-          BRGY. FORT BONIFACIO
-        </div>
-      </div>
-
-      <div className="bg-bgColor w-[full] h-fit p-20 mt-10 flex flex-col gap-10 sm:items-start items-center ">
-        <div className="text-center font-extrabold text-2xl text-white w-full">
-          Barangay Certificate Application Form
-        </div>
-
+      <div className="bg-bgColor w-[full] h-fit px-20 py-10 flex flex-col gap-1 sm:items-start items-center ">
         <div className="flex flex-col w-[300px] gap-1">
           <label htmlFor="purpose">Purpose of Request*</label>
           <input
@@ -447,6 +399,6 @@ export default function brgyCertFrom() {
           </button>
         </div>
       </div>
-    </div>
+    </m.div>
   );
 }

@@ -6,7 +6,7 @@ html,
 body {
   padding: 0;
   margin: 0;
-  font-family: "Ubuntu";
+  font-family: "Barlow", sans-serif;
   background: white;
   color: #000b44;
 }
@@ -19,4 +19,5 @@ a {
 * {
   box-sizing: border-box;
   scroll-behavior: smooth;
+  font-family: "Barlow", sans-serif;
 }
