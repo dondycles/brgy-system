@@ -25,12 +25,12 @@ export default function Signup() {
       animate={{ opacity: 1 }}
       transition={{ duration: 0.75, ease: "easeOut" }}
       exit={{ opacity: 0 }}
-      className="abosolut top-0 left-0 h-screen w-full flex justify-center items-center bg-bgColor"
+      className="bg-black h-screen w-full flex  justify-center items-center z-20"
     >
       <Head>
         <title>Sign Up</title>
       </Head>
-      <div className="m-auto h-fit w-fit p-5 bg-accentColor rounded-lg  flex flex-row gap-10 relative scale-[0.75] md:scale-[1]">
+      <div className=" h-fit w-fit p-5 bg-accentColor rounded-lg  flex flex-row gap-10 relative scale-[0.75] md:scale-[1]">
         <Link href="/" passHref className="w-0">
           <a className=" z-10 absolute top-0 left-0 text-2xl">
             <div className=" absolute top-5 left-5 text-2xl cursor-pointer hover:scale-[1.5] transition-all ease-in-out">

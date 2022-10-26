@@ -44,7 +44,6 @@ export default function Home() {
       animate={{ y: "0%" }}
       transition={{ duration: 0.75, ease: "easeOut" }}
       exit={{ opacity: 0 }}
-      className="absolute top-56 left-0 h-screen w-full bg-white"
     >
       <Head>
         <title>Contact Us</title>

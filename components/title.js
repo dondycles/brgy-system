@@ -21,6 +21,7 @@ export default function Title() {
           {router.route == "/contact" && "CONTACT"}
           {router.route == "/onlineservices" && "SERVICES"}
           {router.route == "/forms/barangaycertificate-form" && "REQUEST FORM"}
+          {router.route == "/profile" && "PROFILE"}
         </div>
         <div className="text-md md:text-xl">BARANGAY FORT BONIFACIO</div>
         <div className="h-1 w-full bg-bgColor"></div>

@@ -14,6 +14,15 @@ export default function brgyCertFrom() {
   const [user, loading] = useAuthState(auth);
   const route = useRouter();
 
+  var today = new Date();
+  var dd = String(today.getDate()).padStart(2, "0");
+  var mm = String(today.getMonth() + 1).padStart(2, "0"); //January is 0!
+  var yyyy = today.getFullYear();
+
+  today = mm + "/" + dd + "/" + yyyy;
+
+  console.log(today);
+
   if (user) {
     const newEmail = user.email
       .replace(".com", "")
@@ -57,6 +66,10 @@ export default function brgyCertFrom() {
     const userPlace = document.getElementById("placeBday").value;
     const userGender = document.getElementById("gender").value;
     const userBlood = document.getElementById("blood").value;
+
+    toast.info("Please wait...", {
+      autoClose: 1500,
+    });
 
     const refF = collection(dbF, "brgyCert");
 
@@ -111,6 +124,7 @@ export default function brgyCertFrom() {
                     } else {
                       addDoc(refF, {
                         purpose: userPurpose,
+                        reqDate: today,
 
                         firstName: userFirst,
                         middleName: userMiddle,
@@ -142,24 +156,8 @@ export default function brgyCertFrom() {
 
                         update(ref(db, "users/" + newEmail), {
                           brgyClr: "requested",
+                          reqDate: today,
                         });
-                        document.getElementById("purpose").value = "";
-                        document.getElementById("firstName").value = "";
-                        document.getElementById("middleName").value = "";
-                        document.getElementById("lastName").value = "";
-                        document.getElementById("email").value = "";
-                        document.getElementById("address").value = "";
-                        document.getElementById("phoneTel").value = "";
-                        document.getElementById("age").value = "";
-                        document.getElementById("bday").value = "";
-                        document.getElementById("placeBday").value = "";
-                        document.getElementById("gender").value = "";
-                        document.getElementById("blood").value = "";
-                        document.getElementById("phHealth").value = "";
-                        document.getElementById("sss").value = "";
-                        document.getElementById("tin").value = "";
-                        document.getElementById("addressE").value = "";
-                        document.getElementById("contactE").value = "";
 
                         emailjs
                           .send(
@@ -170,6 +168,23 @@ export default function brgyCertFrom() {
                           )
                           .then(
                             (response) => {
+                              document.getElementById("purpose").value = "";
+                              document.getElementById("firstName").value = "";
+                              document.getElementById("middleName").value = "";
+                              document.getElementById("lastName").value = "";
+                              document.getElementById("email").value = "";
+                              document.getElementById("address").value = "";
+                              document.getElementById("phoneTel").value = "";
+                              document.getElementById("age").value = "";
+                              document.getElementById("bday").value = "";
+                              document.getElementById("placeBday").value = "";
+                              document.getElementById("gender").value = "";
+                              document.getElementById("blood").value = "";
+                              document.getElementById("phHealth").value = "";
+                              document.getElementById("sss").value = "";
+                              document.getElementById("tin").value = "";
+                              document.getElementById("addressE").value = "";
+                              document.getElementById("contactE").value = "";
                               toast.success(
                                 "Your application has been submitted. Please check you email."
                               );
