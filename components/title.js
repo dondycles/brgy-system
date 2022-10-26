@@ -21,6 +21,8 @@ export default function Title() {
           {router.route == "/contact" && "CONTACT"}
           {router.route == "/onlineservices" && "SERVICES"}
           {router.route == "/forms/barangaycertificate-form" && "REQUEST FORM"}
+          {router.route == "/forms/brgyid-form" && "REQUEST FORM"}
+          {router.route == "/forms/businesscertificate-form" && "REQUEST FORM"}
           {router.route == "/profile" && "PROFILE"}
         </div>
         <div className="text-md md:text-xl">BARANGAY FORT BONIFACIO</div>
@@ -29,11 +31,23 @@ export default function Title() {
           {router.route == "/" && "WELCOME!"}
           {router.route == "/about" &&
             "Meet the dedicated team for a better Fort!"}
+
           {router.route == "/contact" &&
             "We are willing to assist you with your concerns."}
+
           {router.route == "/onlineservices" &&
             "Quality Online Services We Offered For You"}
+
           {router.route == "/forms/barangaycertificate-form" &&
+            "Barangay Certificate Application Form"}
+
+          {router.route == "/forms/businesscertificate-form" &&
+            "Business Certificate Application Form"}
+
+          {router.route == "/forms/brgyid-form" &&
+            "Barangay ID Application Form"}
+
+          {router.route == "/profile" &&
             "Barangay Certificate Application Form"}
         </div>
       </div>

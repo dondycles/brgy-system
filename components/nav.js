@@ -539,6 +539,7 @@ export default function Nav() {
 
                                 setloadSignUp(false);
                                 toast.success("Account Successfully created");
+                                router.push("/profile");
 
                                 // ...
                               })

@@ -58,8 +58,8 @@ export default function Home() {
         <title>About</title>
       </Head>
 
-      <div className="w-full h-[calc(100vh-224px)]  text-bgColor">
-        <div className="relative w-full h-[60%] mb-[5vh] overflow-hidden ">
+      <div className="w-full min-h-[calc(100vh-224px)]  text-bgColor">
+        <div className="relative w-full h-[400px] mb-[5vh] overflow-hidden ">
           <Image objectFit="cover" layout="fill" src={aboutImg} />
         </div>
         <div className=" text-[30px] sm:text-[50px] font-extrabold text-center mt-0  ">

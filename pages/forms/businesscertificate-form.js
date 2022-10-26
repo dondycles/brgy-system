@@ -10,7 +10,7 @@ import { useRouter } from "next/router";
 import emailjs from "@emailjs/browser";
 import { motion as m } from "framer-motion";
 
-export default function brgyCertFrom() {
+export default function bsnsCertFrom() {
   const [user, loading] = useAuthState(auth);
   const route = useRouter();
 
@@ -71,7 +71,7 @@ export default function brgyCertFrom() {
       autoClose: 1500,
     });
 
-    const refF = collection(dbF, "brgyCert");
+    const refF = collection(dbF, "bsnsCert");
 
     if (
       userPurpose == "" ||
@@ -117,14 +117,14 @@ export default function brgyCertFrom() {
                   .replace("]", "")
                   .replace(".", "");
 
-                get(child(ref(db), `users/${newEmail}/brgyCert`))
+                get(child(ref(db), `users/${newEmail}/bsnsCert`))
                   .then((snapshot) => {
                     if (snapshot.exists()) {
                       toast.error("Only one request is allowed!");
                     } else {
                       addDoc(refF, {
                         purpose: userPurpose,
-                        brgyCertReqDate: today,
+                        bsnsCertReqDate: today,
 
                         firstName: userFirst,
                         middleName: userMiddle,
@@ -155,8 +155,8 @@ export default function brgyCertFrom() {
                         console.log(user);
 
                         update(ref(db, "users/" + newEmail), {
-                          brgyCert: "requested",
-                          brgyCertReqDate: today,
+                          bsnsCert: "requested",
+                          bsnsCertReqDate: today,
                         });
 
                         emailjs
@@ -222,7 +222,7 @@ export default function brgyCertFrom() {
         <link rel="shortcut icon" href="../logo.png" type="image/png" />
       </Head>
 
-      <div className="bg-bgColor w-[full] h-fit px-20 py-10 flex flex-col gap-2 text-white sm:items-start items-center  ">
+      <div className="bg-bgColor w-[full] h-fit px-20 py-10 flex flex-col gap-2 text-white sm:items-start items-center ">
         <div className="flex flex-col w-[300px] gap-1">
           <label htmlFor="purpose">Purpose of Request*</label>
           <input

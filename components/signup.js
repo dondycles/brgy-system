@@ -4,7 +4,7 @@ import Head from "next/head";
 import cityGirl from "../public/imgs/undrawCityGirl.svg";
 import { TiArrowBack } from "react-icons/ti";
 import { useAuthState } from "react-firebase-hooks/auth";
-import { useRouter } from "next/router";
+import Router, { useRouter } from "next/router";
 import { auth, db } from "../utils/firebase";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { toast } from "react-toastify";
@@ -14,10 +14,6 @@ import { motion as m } from "framer-motion";
 export default function Signup() {
   const [user, loading] = useAuthState(auth);
   const route = useRouter();
-
-  if (user) {
-    route.push("/");
-  }
 
   return (
     <m.div
@@ -218,6 +214,8 @@ export default function Signup() {
                             userPhone: phoneInput,
                             userStatus: user.emailVerified,
                           });
+
+                          route.push("/profile");
 
                           // ...
                         })

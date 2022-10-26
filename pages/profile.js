@@ -37,12 +37,49 @@ export default function Profile() {
             snapshot.val().userPhone;
           document.querySelector(".userAddressDisplay").innerHTML =
             snapshot.val().userAddress;
-          document.querySelector(".userReqDateDisplay").innerHTML =
-            snapshot.val().reqDate;
-          document.querySelector(".noHis").style.display = "none";
 
-          if (snapshot.val().reqDate == "" || snapshot.val().reqDate == null) {
+          document.querySelector(".noHis").style.display = "none";
+          var no1 = false;
+          var no2 = false;
+          var no3 = false;
+
+          if (
+            snapshot.val().brgyCertReqDate == "" ||
+            snapshot.val().brgyCertReqDate == null ||
+            snapshot.val().brgyCertReqDate == undefined
+          ) {
             document.querySelector(".reqBrgyClr").style.display = "none";
+            no1 = true;
+          } else {
+            document.querySelector(".userbrgyCertReqDateDisplay").innerHTML =
+              snapshot.val().brgyCertReqDate;
+          }
+
+          if (
+            snapshot.val().brgyIdReqDate == "" ||
+            snapshot.val().brgyIdReqDate == null ||
+            snapshot.val().brgyIdReqDate == undefined
+          ) {
+            document.querySelector(".reqBrgyId").style.display = "none";
+            no2 = true;
+          } else {
+            document.querySelector(".userbrgyIdReqDateDisplay").innerHTML =
+              snapshot.val().brgyIdReqDate;
+          }
+
+          if (
+            snapshot.val().bsnsCertReqDate == "" ||
+            snapshot.val().bsnsCertReqDate == null ||
+            snapshot.val().bsnsCertReqDate == undefined
+          ) {
+            document.querySelector(".reqBsnsClr").style.display = "none";
+            no3 = true;
+          } else {
+            document.querySelector(".userBsnsCertReqDateDisplay").innerHTML =
+              snapshot.val().bsnsCertReqDate;
+          }
+
+          if (no1 == true && no2 == true && no3 == true) {
             document.querySelector(".noHis").style.display = "block";
           }
         } else {
@@ -72,17 +109,17 @@ export default function Profile() {
         `}
         >
           <div className="h-[calc(100vh-224px)] w-full  text-bgColor flex items-center justify-center">
-            <div className="flex flex-col bg-accentColor md:px-20 px-10 md:py-20 py-10 text-white gap-5 rounded-xl">
+            <div className="flex flex-col bg-accentColor sm:md-20px md:px-10 px-5 md:py-20 py-10 text-white gap-5 rounded-xl">
               <div className="flex flex-col  gap-1  rounded-lg w-fit h-fit ">
-                <div className="text-2xl font-bold flex flex-row items-center gap-2">
+                <div className=" md:text-2xl text-md font-bold flex flex-row items-center gap-2">
                   <CgProfile />
-                  <div className="userNameDisplay "></div>
+                  <div className="userNameDisplay"></div>
                   <>
                     {!user.emailVerified && <GoUnverified />}
                     {user.emailVerified && <GoVerified />}
                   </>
                 </div>
-                <div className="ml-8 mb-8">
+                <div className="ml-8 mb-8 md:text-md text-sm">
                   <div className="flex flex-row items-center gap-2">
                     {user && (
                       <>
@@ -101,72 +138,94 @@ export default function Profile() {
                   </div>
                 </div>
 
-                <div className="text-xl font-bold flex flex-row items-center gap-2">
+                <div className=" md:text-2xl text-md font-bold flex flex-row items-center gap-2">
                   <RiHistoryLine /> REQUEST HISTORY
                 </div>
-                <div className="ml-8 mb-8">
+                <div className="ml-8 mb-8 md:text-md text-sm">
                   {user && (
                     <>
                       <div className="reqBrgyClr flex flex-row items-center gap-2">
                         <HiOutlineDocumentText />
                         <div>Requested for Brgy. Clearance</div>
-                        <div className="userReqDateDisplay"></div>
+                        <div className="userbrgyCertReqDateDisplay"></div>
+                      </div>
+                      <div className="reqBrgyId flex flex-row items-center gap-2">
+                        <HiOutlineDocumentText />
+                        <div>Requested for Brgy. ID</div>
+                        <div className="userbrgyIdReqDateDisplay"></div>
+                      </div>
+                      <div className="reqBsnsClr flex flex-row items-center gap-2">
+                        <HiOutlineDocumentText />
+                        <div>Requested for Business Clearance</div>
+                        <div className="userBsnsCertReqDateDisplay"></div>
                       </div>
                     </>
                   )}
                   <div className="noHis">no history yet...</div>
                 </div>
               </div>
-              <div className="flex flex-col rounded-lg w-fit h-fit gap-4 justify-center m-auto">
+              <div className="flex flex-col rounded-lg w-fit h-fit gap-1 justify-center m-auto">
                 {!user.emailVerified && (
                   <>
                     <div
-                      className={` items-center gap-1 ${
+                      className={` items-center gap-1 text-sm w-full text-justify mb-4 ${
                         verifyClick ? "hidden" : "flex"
                       }`}
                     >
-                      <p className="m-0 p-0 ">please click </p>
-                      <button
-                        onClick={() => {
-                          sendEmailVerification(auth.currentUser).then(() => {
-                            console.log(user.emailVerified);
-                            toast.success(
-                              "Please check your inbox or spam folder and go back to this website!"
-                            );
-                          });
-                          setVerifyClick(true);
-                        }}
-                        className=" bg-bgColor rounded-full my-0 px-4  py-1 transition-all ease-in-out duration-150"
-                      >
-                        VERIFY
-                      </button>
-                      <p>to be able to request documents </p>
+                      <p className="m-0 p-0 ">
+                        please click
+                        <span
+                          onClick={() => {
+                            sendEmailVerification(auth.currentUser).then(() => {
+                              console.log(user.emailVerified);
+                              toast.success(
+                                "Please check your inbox or spam folder and go back to this website!"
+                              );
+                            });
+                            setVerifyClick(true);
+                          }}
+                          className=" bg-bgColor rounded-full my-0 mx-2 px-4  py-1 transition-all ease-in-out duration-150 cursor-pointer"
+                        >
+                          VERIFY
+                        </span>
+                        to be able to request documents{" "}
+                      </p>
                     </div>
                     <div
-                      className={` items-center gap-1 ${
+                      className={` items-center gap-1 text-sm w-full text-justify mb-4 ${
                         verifyClick ? "flex" : "hidden"
                       }`}
                     >
-                      <p className="m-0 p-0 ">please click </p>
-                      <button
-                        onClick={() => {
-                          location.reload();
-                        }}
-                        className=" bg-bgColor rounded-full my-0 px-4  py-1 transition-all ease-in-out duration-150"
-                      >
-                        CHECK VERIFICATION
-                      </button>
-                      <p>to check your verification status </p>
+                      <p className="m-0 p-0 ">
+                        please click
+                        <span
+                          onClick={() => {
+                            location.reload();
+                          }}
+                          className=" bg-bgColor rounded-full my-0 mx-2 px-4  py-1 transition-all ease-in-out duration-150 cursor-pointer"
+                        >
+                          CHECK VERIFICATION
+                        </span>
+                        to check your verification status{" "}
+                      </p>
                     </div>
                   </>
                 )}
 
                 <button
                   onClick={() => {
+                    route.push("/onlineservices");
+                  }}
+                  className=" bg-bgColor rounded-full px-2 py-1 w-[200px] mx-auto"
+                >
+                  REQUEST
+                </button>
+                <button
+                  onClick={() => {
                     route.push("/");
                     auth.signOut();
                   }}
-                  className=" bg-bgColor rounded-full px-2 py-1 w-[200px]"
+                  className=" bg-bgColor rounded-full px-2 py-1 w-[200px] mx-auto"
                 >
                   LOG OUT
                 </button>
