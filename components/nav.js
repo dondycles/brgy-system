@@ -233,6 +233,7 @@ export default function Nav() {
                     id="passwordInput"
                     className="px-3 py-1 rounded-lg w-full bg-bgColor focus:outline-dashed  placeholder:text-gray-500 text-white"
                     placeholder="Password"
+                    type="password"
                   ></input>
                 </div>
 
@@ -404,7 +405,7 @@ export default function Nav() {
                     id="passwordInput"
                     className="px-3 py-1 rounded-lg w-full bg-bgColor focus:outline-dashed  placeholder:text-gray-500 text-white"
                     placeholder="Password"
-                    type="text"
+                    type="password"
                   ></input>
                 </div>
                 <div className="flex items-center justify-between">
@@ -412,6 +413,7 @@ export default function Nav() {
                     id="passwordConfirmInput"
                     className="px-3 py-1 rounded-lg w-full bg-bgColor focus:outline-dashed  placeholder:text-gray-500 text-white"
                     placeholder="Confirm password "
+                    type="password"
                   ></input>
                 </div>
                 <br></br>

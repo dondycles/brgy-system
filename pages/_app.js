@@ -7,7 +7,6 @@ import { useRouter } from "next/router";
 import Nav from "../components/nav";
 import Title from "../components/title";
 import Login from "../components/login";
-Login;
 
 function MyApp({ Component, pageProps }) {
   const router = useRouter();
