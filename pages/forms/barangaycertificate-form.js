@@ -1,14 +1,16 @@
 import Head from "next/head";
-import Image from "next/image";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth, db, dbF } from "../../utils/firebase";
 import { ref, update, get, child } from "firebase/database";
 import { toast } from "react-toastify";
 import { addDoc, collection } from "firebase/firestore";
-import brgyLogo from "../../public/imgs/logo.png";
 import { useRouter } from "next/router";
 import emailjs from "@emailjs/browser";
 import { motion as m } from "framer-motion";
+
+import downloadjs from "downloadjs";
+
+import { PDFDocument, rgb, StandardFonts } from "pdf-lib";
 
 export default function brgyCertFrom() {
   const [user, loading] = useAuthState(auth);
@@ -16,10 +18,77 @@ export default function brgyCertFrom() {
 
   var today = new Date();
   var dd = String(today.getDate()).padStart(2, "0");
-  var mm = String(today.getMonth() + 1).padStart(2, "0"); //January is 0!
+  var mm = String(today.getMonth() + 1).padStart(2, "0");
   var yyyy = today.getFullYear();
 
   today = mm + "/" + dd + "/" + yyyy;
+
+  var month, day;
+
+  if (mm == 12) {
+    month = "December";
+  }
+  if (mm == 11) {
+    month = "November";
+  }
+  if (mm == 10) {
+    month = "October";
+  }
+  if (mm == 9) {
+    month = "September";
+  }
+  if (mm == 8) {
+    month = "August";
+  }
+  if (mm == 7) {
+    month = "July";
+  }
+  if (mm == 6) {
+    month = "June";
+  }
+  if (mm == 5) {
+    month = "May";
+  }
+  if (mm == 4) {
+    month = "April";
+  }
+  if (mm == 3) {
+    month = "March";
+  }
+  if (mm == 2) {
+    month = "February";
+  }
+  if (mm == 1) {
+    month = "January";
+  }
+
+  if (dd == 1) {
+    day = "1st";
+  }
+  if (dd == 2) {
+    day = "2nd";
+  }
+  if (dd == 3) {
+    day = "3rd";
+  }
+  if (dd > 3 && dd < 21) {
+    day = dd + "th";
+  }
+  if (dd == 21) {
+    day = "21st";
+  }
+  if (dd == 22) {
+    day = "22nd";
+  }
+  if (dd == 23) {
+    day = "23rd";
+  }
+  if (dd > 23 && dd < 31) {
+    day = dd + "th";
+  }
+  if (dd == 31) {
+    day = "31st";
+  }
 
   console.log(today);
 
@@ -66,6 +135,58 @@ export default function brgyCertFrom() {
     const userPlace = document.getElementById("placeBday").value;
     const userGender = document.getElementById("gender").value;
     const userBlood = document.getElementById("blood").value;
+
+    const url = "../assets/BrgyCert.pdf";
+    const existingPdfBytes = await fetch(url).then((res) => res.arrayBuffer());
+
+    const pdfDoc = await PDFDocument.load(existingPdfBytes);
+    const helveticaFont = await pdfDoc.embedFont(StandardFonts.Helvetica);
+
+    const pages = pdfDoc.getPages();
+    const firstPage = pages[0];
+    const { width, height } = firstPage.getSize();
+
+    firstPage.drawText(userFirst + " " + userMiddle + " " + userLast, {
+      x: 210,
+      y: 480,
+      size: 10,
+      font: helveticaFont,
+      color: rgb(0, 0, 0),
+    });
+
+    firstPage.drawText(userAge, {
+      x: 425,
+      y: 480,
+      size: 10,
+      font: helveticaFont,
+      color: rgb(0, 0, 0),
+    });
+
+    firstPage.drawText(day, {
+      x: 180,
+      y: 375,
+      size: 10,
+      font: helveticaFont,
+      color: rgb(0, 0, 0),
+    });
+
+    firstPage.drawText(month, {
+      x: 290,
+      y: 375,
+      size: 10,
+      font: helveticaFont,
+      color: rgb(0, 0, 0),
+    });
+
+    firstPage.drawText("22", {
+      x: 385,
+      y: 375,
+      size: 10,
+      font: helveticaFont,
+      color: rgb(0, 0, 0),
+    });
+
+    const pdfBytes = await pdfDoc.save();
 
     toast.info("Please wait...", {
       autoClose: 1500,
@@ -187,6 +308,11 @@ export default function brgyCertFrom() {
                               document.getElementById("contactE").value = "";
                               toast.success(
                                 "Your application has been submitted. Please check you email."
+                              );
+                              downloadjs(
+                                pdfBytes,
+                                userFirst + " Brgy Certificate",
+                                "application/pdf"
                               );
                             },
                             (err) => {
@@ -402,7 +528,7 @@ export default function brgyCertFrom() {
             className="px-4 py-1 bg-accentColor rounded-lg"
             type="submit"
           >
-            SUBMIT
+            SUBMIT & PRINT
           </button>
           <button
             onClick={() => {

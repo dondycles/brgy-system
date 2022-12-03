@@ -108,8 +108,8 @@ export default function Profile() {
           className={`absolute top-56 left-0  w-full transition-all duration-300 ease-in-out
         `}
         >
-          <div className="h-[calc(100vh-224px)] w-full  text-bgColor flex items-center justify-center">
-            <div className="flex flex-col bg-accentColor sm:md-20px md:px-10 px-5 md:py-20 py-10 text-white gap-5 rounded-xl">
+          <div className="h-[calc(100vh-224px)] w-full bg-bgColor  text-bgColor flex items-center justify-center">
+            <div className="flex flex-col bg-gradient-to-r from-white  to-accentColor sm:md-20px md:px-10 px-5 md:py-20 py-10  gap-5 rounded-xl text-bgColor">
               <div className="flex flex-col  gap-1  rounded-lg w-fit h-fit ">
                 <div className=" md:text-2xl text-md font-bold flex flex-row items-center gap-2">
                   <CgProfile />
@@ -184,7 +184,7 @@ export default function Profile() {
                             });
                             setVerifyClick(true);
                           }}
-                          className=" bg-bgColor rounded-full my-0 mx-2 px-4  py-1 transition-all ease-in-out duration-150 cursor-pointer"
+                          className="text-white bg-bgColor rounded-full my-0 mx-2 px-4  py-1 transition-all ease-in-out duration-150 cursor-pointer"
                         >
                           VERIFY
                         </span>
@@ -192,7 +192,7 @@ export default function Profile() {
                       </p>
                     </div>
                     <div
-                      className={` items-center gap-1 text-sm w-full text-justify mb-4 ${
+                      className={`  items-center gap-1 text-sm w-full text-justify mb-4 ${
                         verifyClick ? "flex" : "hidden"
                       }`}
                     >
@@ -202,7 +202,7 @@ export default function Profile() {
                           onClick={() => {
                             location.reload();
                           }}
-                          className=" bg-bgColor rounded-full my-0 mx-2 px-4  py-1 transition-all ease-in-out duration-150 cursor-pointer"
+                          className=" bg-bgColor rounded-full my-0 mx-2 px-4  py-1 transition-all ease-in-out duration-150 cursor-pointer text-white"
                         >
                           CHECK VERIFICATION
                         </span>
@@ -216,7 +216,7 @@ export default function Profile() {
                   onClick={() => {
                     route.push("/onlineservices");
                   }}
-                  className=" bg-bgColor rounded-full px-2 py-1 w-[200px] mx-auto"
+                  className=" text-white bg-bgColor rounded-full px-2 py-1 w-[200px] mx-auto"
                 >
                   REQUEST
                 </button>
@@ -225,7 +225,7 @@ export default function Profile() {
                     route.push("/");
                     auth.signOut();
                   }}
-                  className=" bg-bgColor rounded-full px-2 py-1 w-[200px] mx-auto"
+                  className=" text-white bg-bgColor rounded-full px-2 py-1 w-[200px] mx-auto"
                 >
                   LOG OUT
                 </button>

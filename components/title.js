@@ -7,9 +7,16 @@ export default function Title() {
 
   return (
     <div
-      className={`flex flex-row justify-start items-center w-full  h-[144px] px-[10px] mx-auto mt-20 mb-5 ${
+      className={`  flex flex-row justify-start items-center w-full  h-[144px] px-[10px] mx-auto mb-5 ${
         router.route == "/login" && " hidden"
-      } ${router.route == "/signup" && " hidden"}`}
+      } ${router.route == "/signup" && " hidden"}
+      ${router.route == "/profile" && " bg-bgColor text-white"}
+      ${
+        router.route == "/admin"
+          ? " mt-0 bg-bgColor text-white"
+          : "mt-20 bg-white"
+      }
+      `}
     >
       <div className=" relative flex items-center justify-center max-h-[75px] md:max-h-[100px] max-w-[75px] md:max-w-[100px]">
         <Image src={brgyLogo}></Image>
@@ -24,6 +31,7 @@ export default function Title() {
           {router.route == "/forms/brgyid-form" && "REQUEST FORM"}
           {router.route == "/forms/businesscertificate-form" && "REQUEST FORM"}
           {router.route == "/profile" && "PROFILE"}
+          {router.route == "/admin" && "ADMINISTRATOR"}
         </div>
         <div className="text-md md:text-xl">BARANGAY FORT BONIFACIO</div>
         <div className="h-1 w-full bg-bgColor"></div>

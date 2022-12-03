@@ -87,7 +87,7 @@ export default function Home() {
                         "scale(1)";
                     }}
                     onClick={() => {
-                      route.push("/forms/barangaycertificate-form");
+                      route.push("/forms/businesscertificate-form");
                     }}
                     className="bg-accentColor rounded-full font-extrabold px-4 hover:px-5 py-2 mt-4 transition-all duration-150 ease-in-out"
                   >
@@ -127,7 +127,7 @@ export default function Home() {
                         "scale(1)";
                     }}
                     onClick={() => {
-                      route.push("/forms/businesscertificate-form");
+                      route.push("/forms/barangaycertificate-form");
                     }}
                     className="bg-accentColor rounded-full font-extrabold px-4 hover:px-5 py-2 mt-4 transition-all duration-150 ease-in-out"
                   >

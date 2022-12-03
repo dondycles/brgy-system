@@ -42,9 +42,14 @@ export default function Nav() {
   }
 
   const router = useRouter();
+
   return (
     <>
-      <div className="fixed top-0 left-0 right-0 z-10 text-bgColor text-md md:text-lg bg-gradient-to-r from-white  to-accentColor h-[80px] font-medium">
+      <div
+        className={` fixed top-0 left-0 right-0 z-10 text-bgColor text-md md:text-lg bg-gradient-to-r from-white  to-accentColor h-[80px] font-medium
+        ${router.route == "/admin" ? " hidden " : ""}
+        `}
+      >
         <nav className=" absolute z-10 top-0 left-0   flex gap-3 md:gap-5 w-full px-[10px] justify-end items-center h-[50px]  mb-0 mx-auto  ">
           <Link href="/onlineservices" passHref>
             <a>
@@ -198,10 +203,10 @@ export default function Nav() {
             transition={{ duration: 0.75, ease: "easeOut" }}
             exit={{ opacity: 0 }}
             key={loadLogIn}
-            className="h-screen w-full flex  justify-center items-center z-20"
+            className="h-screen w-full flex  justify-center items-center z-20 "
           >
             <div className="absolute top-0 bottom-0 right-0 left-0 bg-black opacity-75 -z-10"></div>
-            <div className=" h-fit w-fit p-5 bg-accentColor rounded-lg  flex flex-row gap-10 relative scale-[0.75] md:scale-[1]">
+            <div className=" h-fit w-fit p-5  bg-gradient-to-r from-white  to-accentColor rounded-lg  flex flex-row gap-10 relative scale-[0.75] md:scale-[1]">
               <a className=" z-10 absolute top-0 left-0 text-2xl">
                 <div className=" absolute top-5 left-5 text-2xl cursor-pointer hover:scale-[1.5] transition-all ease-in-out ">
                   <TiArrowBack
@@ -217,7 +222,7 @@ export default function Nav() {
               </div>
 
               <div className="w-[350px] flex flex-col gap-2 justify-center">
-                <div className="text-white text-center font-extrabold mb-5 text-[45px] ">
+                <div className="text-bgColor text-center font-extrabold mb-5 text-[45px] ">
                   Log In
                 </div>
                 <div className="flex items-center justify-between ">
@@ -334,7 +339,7 @@ export default function Nav() {
             className="h-screen w-full flex  justify-center items-center z-20"
           >
             <div className="absolute top-0 bottom-0 right-0 left-0 bg-black opacity-75 -z-10"></div>
-            <div className=" h-fit w-fit p-5 bg-accentColor rounded-lg  flex flex-row gap-10 relative scale-[0.75] md:scale-[1]">
+            <div className=" h-fit w-fit p-5  bg-gradient-to-r from-white  to-accentColor rounded-lg  flex flex-row gap-10 relative scale-[0.75] md:scale-[1]">
               <a className=" z-10 absolute top-0 left-0 text-2xl">
                 <div className=" absolute top-5 left-5 text-2xl cursor-pointer hover:scale-[1.5] transition-all ease-in-out">
                   <TiArrowBack
@@ -350,7 +355,7 @@ export default function Nav() {
               </div>
 
               <div className="w-[350px] flex flex-col gap-2 justify-center">
-                <div className=" text-white text-center font-extrabold mb-5 text-[45px]">
+                <div className=" text-bgColor text-center font-extrabold mb-5 text-[45px]">
                   Sign Up
                 </div>
                 <div className="flex items-center justify-between ">
