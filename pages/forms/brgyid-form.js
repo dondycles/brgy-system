@@ -150,6 +150,14 @@ export default function brgyIDFrom() {
     const firstPage = pages[0];
     const { width, height } = firstPage.getSize();
 
+    firstPage.drawText(userFirst + " " + userMiddle + " " + userLast, {
+      x: 40,
+      y: 111,
+      size: 10,
+      font: helveticaFont,
+      color: rgb(0, 0, 0),
+    });
+
     firstPage.drawText(userAdd, {
       x: 58,
       y: 102,
@@ -555,7 +563,7 @@ export default function brgyIDFrom() {
             className="px-4 py-1 bg-accentColor rounded-lg"
             type="submit"
           >
-            SUBMIT
+            SUBMIT & PRINT
           </button>
           <button
             onClick={() => {

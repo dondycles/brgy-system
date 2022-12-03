@@ -437,7 +437,7 @@ export default function bsnsCertFrom() {
             className="px-4 py-1 bg-accentColor rounded-lg"
             type="submit"
           >
-            SUBMIT
+            SUBMIT & PRINT
           </button>
           <button
             onClick={() => {
