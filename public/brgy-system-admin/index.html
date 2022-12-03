@@ -48,29 +48,33 @@
 </head>
 
 <body class="bg-bgColor p-[10px]">
-    <header class="font-extrabold text-white text-2xl flex items-center gap-5">
-        <img class="h-[150px]" src="/imgs/logo.png" alt="" />
+    <header class="font-extrabold text-white text-lg flex items-center gap-5">
+        <img class="h-[100px]" src="imgs/logo.png" alt="" />
         <div>
             <div>ADMINISTRATOR</div>
             <div>BARANGAY FORT BONIFACIO</div>
         </div>
     </header>
-    <div class=" bg-bgColor fixed top-0 bottom-0 left-0 right-0 -z-10 flex">
-        <div class=" p-[20px] bg-gradient-to-r from-white  to-accentColor h-[500px] w-[1000px] m-auto rounded-xl">
+    <div class=" bg-bgColor fixed top-0 bottom-0 left-0 right-0 -z-10 flex p-[10px]">
+        <div
+            class=" p-[20px] x] bg-gradient-to-r from-white  to-accentColor h-[400px] w-[1000px] m-auto rounded-xl overflow-hidden">
             <div class="text-center font-extrabold text-2xl ">
                 REQUEST HISTORY
             </div>
-            <table class="mt-10">
-                <thead>
-                    <th>NO.</th>
-                    <th>NAME</th>
-                    <th>BRGY ID</th>
-                    <th>BRGY CERTIFICATE</th>
-                    <th>BUSINESS CLEARANCE</th>
-                    <th>VERIFIED?</th>
-                </thead>
-                <tbody id="tbody"></tbody>
-            </table>
+            <div id="tableScroll" class=" h-[330px] w-full overflow-auto flex ">
+                <table class="mt-10 mx-auto">
+                    <thead class="text-normal">
+                        <th>NO.</th>
+                        <th>NAME</th>
+                        <th>BRGY ID</th>
+                        <th>BRGY CERTIFICATE</th>
+                        <th>BUSINESS CLEARANCE</th>
+                        <th>VERIFIED?</th>
+                    </thead>
+                    <tbody id="tbody" class="text-sm"></tbody>
+                </table>
+            </div>
+
         </div>
     </div>
     <script type="module">
@@ -112,18 +116,36 @@
 
             if (brgyId == undefined) {
                 id = "N/A";
+                td3.style.backgroundColor = "#aabbbb"
+
             } else {
                 id = brgyId;
+                td3.style.backgroundColor = "#aaffbb"
+
             }
             if (brgyCert == undefined) {
                 cert = "N/A";
+                td4.style.backgroundColor = "#aabbbb"
             } else {
                 cert = brgyCert;
+                td4.style.backgroundColor = "#aaffbb"
+
             }
             if (bsClr == undefined) {
                 clr = "N/A";
+                td5.style.backgroundColor = "#aabbbb"
+
             } else {
                 clr = bsClr;
+                td5.style.backgroundColor = "#aaffbb"
+
+            }
+
+            if (verified == true) {
+                td6.style.backgroundColor = "#aaffbb"
+            }
+            else {
+                td6.style.backgroundColor = "#aabbbb"
             }
 
             td1.innerHTML = ++num;
@@ -147,7 +169,7 @@
             tbody.innerHTML = "";
 
             requests.forEach((element) => {
-                addItemsToTable((element.userLName + ", " + element.userFName + " "), element.brgyIdReqDate, element.brgyCertReqDate, element.bsClrReqDate, element.userStatus);
+                addItemsToTable((element.userLName + ", " + element.userFName + " "), element.brgyIdReqDate, element.brgyCertReqDate, element.bsnsCertReqDate, element.userStatus);
             });
         }
 

@@ -4,6 +4,17 @@
   padding: 0;
 }
 
+#tableScroll::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+#tableScroll::-webkit-scrollbar-thumb {
+  background-color: #000b44;
+}
+#tableScroll::-webkit-scrollbar {
+  height: 10px;
+  background-color: none;
+}
+
 tr,
 td,
 th {
@@ -12,6 +23,6 @@ th {
 
 table {
   text-align: center;
-  width: 100%;
-  border-collapse: collapse;
+  min-width: 800px;
+  height: 300px;
 }
