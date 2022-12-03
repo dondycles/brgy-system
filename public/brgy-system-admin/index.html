@@ -43,44 +43,9 @@
             },
         };
     </script>
-
-    <title>Admin</title>
-</head>
-
-<body class="bg-bgColor p-[10px]">
-    <header class="font-extrabold text-white text-lg flex items-center gap-5">
-        <img class="h-[100px]" src="imgs/logo.png" alt="" />
-        <div>
-            <div>ADMINISTRATOR</div>
-            <div>BARANGAY FORT BONIFACIO</div>
-        </div>
-    </header>
-    <div class=" bg-bgColor fixed top-0 bottom-0 left-0 right-0 -z-10 flex p-[10px]">
-        <div
-            class=" p-[20px] x] bg-gradient-to-r from-white  to-accentColor h-[400px] w-[1000px] m-auto rounded-xl overflow-hidden">
-            <div class="text-center font-extrabold text-2xl ">
-                REQUEST HISTORY
-            </div>
-            <div id="tableScroll" class=" h-[330px] w-full overflow-auto flex ">
-                <table class="mt-10 mx-auto">
-                    <thead class="text-normal">
-                        <th>NO.</th>
-                        <th>NAME</th>
-                        <th>BRGY ID</th>
-                        <th>BRGY CERTIFICATE</th>
-                        <th>BUSINESS CLEARANCE</th>
-                        <th>VERIFIED?</th>
-                    </thead>
-                    <tbody id="tbody" class="text-sm"></tbody>
-                </table>
-            </div>
-
-        </div>
-    </div>
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-app.js";
-
-
+        import { getDatabase, ref, get, child } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-database.js";
         const firebaseConfig = {
             apiKey: "AIzaSyDo3VmqGDYXzEcRcs8HUsdqdg1rqm4C9Xg",
             authDomain: "brgy-fort.firebaseapp.com",
@@ -91,16 +56,11 @@
             appId: "1:794542922168:web:b542b8b4eaf92ed1e7574d",
             measurementId: "G-V77WGG00CB"
         };
-
         const app = initializeApp(firebaseConfig);
-
-        import { getDatabase, ref, get, child } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-database.js";
-
         const db = getDatabase();
 
 
         var num = 0;
-
         var tbody = document.getElementById("tbody");
 
         function addItemsToTable(name, brgyId, brgyCert, bsClr, verified) {
@@ -164,7 +124,6 @@
 
             tbody.appendChild(trow);
         }
-
         function addAllItemsToTable(requests) {
             tbody.innerHTML = "";
 
@@ -172,7 +131,6 @@
                 addItemsToTable((element.userLName + ", " + element.userFName + " "), element.brgyIdReqDate, element.brgyCertReqDate, element.bsnsCertReqDate, element.userStatus);
             });
         }
-
         function prepareTheData() {
             const dbRef = ref(db);
 
@@ -186,9 +144,97 @@
                 addAllItemsToTable(reqs);
             });
         }
-
         window.onload = prepareTheData();
+
+
+        const dataTable = document.getElementById("dataTable")
+        const loginTable = document.getElementById("loginTable")
+
+        dataTable.style.display = "none"
+        loginTable.style.display = "flex"
+
+
+
+        const logInBtn = document.getElementById("logInBtn");
+        const dbRef = ref(db);
+        let pw, un;
+
+
+        get(child(dbRef, "admin")).then((snapshot) => {
+            un = snapshot.val().un;
+            pw = snapshot.val().pw;
+        });
+
+        logInBtn.addEventListener("click", () => {
+            const inputPW = document.getElementById("password").value;
+            const inputUN = document.getElementById("username").value;
+            if (inputPW == pw && inputUN == un) {
+                alert("Successfully Logged In")
+                document.getElementById("password").value = "";
+                document.getElementById("username").value = "";
+
+                dataTable.style.display = "unset"
+                loginTable.style.display = "none"
+            } else {
+                alert("Wrong credentials")
+
+                document.getElementById("password").value = "";
+                document.getElementById("username").value = "";
+            }
+        })
+
     </script>
+
+    <title>Admin</title>
+</head>
+
+<body class="bg-bgColor p-[10px]">
+    <header class="font-extrabold text-white text-lg flex items-center gap-5">
+        <img class="h-[100px]" src="imgs/logo.png" alt="" />
+        <div>
+            <div>ADMINISTRATOR</div>
+            <div>BARANGAY FORT BONIFACIO</div>
+        </div>
+    </header>
+    <div class=" bg-bgColor fixed top-0 bottom-0 left-0 right-0 -z-10 flex p-[10px]">
+        <div id="loginTable"
+            class=" p-[20px] x] bg-gradient-to-r from-white  to-accentColor h-[400px] w-[1000px] m-auto rounded-xl overflow-hidden flex flex-col items-center justify-center gap-3">
+            <h1 class="font-bold text-bgColor text-xl">ADMINISTRATOR</h1>
+            <div class="flex justify-center items-center flex-col gap-3 w-[300px] mx-auto">
+                <div>
+                    <input type="text" placeholder="username" id="username"
+                        class="rounded-lg p-1 w-[300px] text-center">
+                </div>
+                <div>
+                    <input type="password" placeholder="password" id="password"
+                        class="rounded-lg p-1 w-[300px] text-center">
+                </div>
+            </div>
+            <button id="logInBtn" class="w-[300px] bg-bgColor rounded-lg px-4 py-2 text-white ">LOG IN</button>
+        </div>
+        <div id="dataTable"
+            class=" p-[20px] x] bg-gradient-to-r from-white  to-accentColor h-[400px] w-[1000px] m-auto rounded-xl overflow-hidden ">
+            <div class="text-center font-extrabold text-2xl ">
+                REQUEST HISTORY
+            </div>
+            <div id="tableScroll" class=" h-[330px] w-full overflow-auto flex ">
+                <table class="mt-10 mx-auto">
+                    <thead class="text-normal">
+                        <th>NO.</th>
+                        <th>NAME</th>
+                        <th>BRGY ID</th>
+                        <th>BRGY CERTIFICATE</th>
+                        <th>BUSINESS CLEARANCE</th>
+                        <th>VERIFIED?</th>
+                    </thead>
+                    <tbody id="tbody" class="text-sm"></tbody>
+                </table>
+            </div>
+
+
+        </div>
+    </div>
+
 </body>
 
 </html>
