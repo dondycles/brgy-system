@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        bgColor: "#000B44",
+                        accentColor: "#007BFF",
+                    },
+                    boxShadow: {
+                        customShadow: "0px 0px 30px rgba(0,0,0,0.5)",
+                    },
+                    keyframes: {
+                        dialougeAnim: {
+                            "0%": {
+                                transform: "translateY(5%) translateX(-50%) translateZ(0)",
+                            },
+                            "50%": {
+                                transform: "translateY(0%) translateX(-50%) translateZ(0)",
+                            },
+                            "100%": {
+                                transform: "translateY(0%) translateX(-50%) translateZ(0)",
+                            },
+                        },
+                    },
+                    animation: {
+                        dialougeAnim: "dialougeAnim 2s infinite alternate",
+                    },
+                },
+            },
+        };
+    </script>
+
+    <title>Admin</title>
+</head>
+
+<body class="bg-bgColor p-[10px]">
+    <header class="font-extrabold text-white text-2xl flex items-center gap-5">
+        <img class="h-[150px]" src="/imgs/logo.png" alt="" />
+        <div>
+            <div>ADMINISTRATOR</div>
+            <div>BARANGAY FORT BONIFACIO</div>
+        </div>
+    </header>
+    <div class=" bg-bgColor fixed top-0 bottom-0 left-0 right-0 -z-10 flex">
+        <div class=" p-[20px] bg-gradient-to-r from-white  to-accentColor h-[500px] w-[1000px] m-auto rounded-xl">
+            <div class="text-center font-extrabold text-2xl ">
+                REQUEST HISTORY
+            </div>
+            <table class="mt-10">
+                <thead>
+                    <th>NO.</th>
+                    <th>NAME</th>
+                    <th>BRGY ID</th>
+                    <th>BRGY CERTIFICATE</th>
+                    <th>BUSINESS CLEARANCE</th>
+                    <th>VERIFIED?</th>
+                </thead>
+                <tbody id="tbody"></tbody>
+            </table>
+        </div>
+    </div>
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-app.js";
+
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyDo3VmqGDYXzEcRcs8HUsdqdg1rqm4C9Xg",
+            authDomain: "brgy-fort.firebaseapp.com",
+            databaseURL: "https://brgy-fort-default-rtdb.asia-southeast1.firebasedatabase.app",
+            projectId: "brgy-fort",
+            storageBucket: "brgy-fort.appspot.com",
+            messagingSenderId: "794542922168",
+            appId: "1:794542922168:web:b542b8b4eaf92ed1e7574d",
+            measurementId: "G-V77WGG00CB"
+        };
+
+        const app = initializeApp(firebaseConfig);
+
+        import { getDatabase, ref, get, child } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-database.js";
+
+        const db = getDatabase();
+
+
+        var num = 0;
+
+        var tbody = document.getElementById("tbody");
+
+        function addItemsToTable(name, brgyId, brgyCert, bsClr, verified) {
+            let trow = document.createElement("tr");
+            let td1 = document.createElement("td");
+            let td2 = document.createElement("td");
+            let td3 = document.createElement("td");
+            let td4 = document.createElement("td");
+            let td5 = document.createElement("td");
+            let td6 = document.createElement("td");
+
+            let id, cert, clr;
+
+            if (brgyId == undefined) {
+                id = "N/A";
+            } else {
+                id = brgyId;
+            }
+            if (brgyCert == undefined) {
+                cert = "N/A";
+            } else {
+                cert = brgyCert;
+            }
+            if (bsClr == undefined) {
+                clr = "N/A";
+            } else {
+                clr = bsClr;
+            }
+
+            td1.innerHTML = ++num;
+            td2.innerHTML = name;
+            td3.innerHTML = id;
+            td4.innerHTML = cert;
+            td5.innerHTML = clr;
+            td6.innerHTML = verified;
+
+            trow.appendChild(td1);
+            trow.appendChild(td2);
+            trow.appendChild(td3);
+            trow.appendChild(td4);
+            trow.appendChild(td5);
+            trow.appendChild(td6);
+
+            tbody.appendChild(trow);
+        }
+
+        function addAllItemsToTable(requests) {
+            tbody.innerHTML = "";
+
+            requests.forEach((element) => {
+                addItemsToTable((element.userLName + ", " + element.userFName + " "), element.brgyIdReqDate, element.brgyCertReqDate, element.bsClrReqDate, element.userStatus);
+            });
+        }
+
+        function prepareTheData() {
+            const dbRef = ref(db);
+
+            get(child(dbRef, "users")).then((snapshot) => {
+                var reqs = [];
+
+                snapshot.forEach((childSnapshop) => {
+                    reqs.push(childSnapshop.val());
+                });
+
+                addAllItemsToTable(reqs);
+            });
+        }
+
+        window.onload = prepareTheData();
+    </script>
+</body>
+
+</html>

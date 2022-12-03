@@ -129,12 +129,10 @@ export default function Profile() {
                   </div>
                   <div className="flex flex-row items-center gap-2">
                     <HiHome /> <div className="userAddressDisplay w-fit"></div>{" "}
-                    <BiEditAlt />
                   </div>
 
                   <div className="flex flex-row items-center gap-2">
                     <HiPhone /> <div className="userPhoneDisplay"></div>
-                    <BiEditAlt />
                   </div>
                 </div>
 
