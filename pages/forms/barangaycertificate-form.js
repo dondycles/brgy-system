@@ -136,6 +136,10 @@ export default function brgyCertFrom() {
     const userGender = document.getElementById("gender").value;
     const userBlood = document.getElementById("blood").value;
 
+    const userSSS = document.getElementById("sss").value;
+    const userTIN = document.getElementById("tin").value;
+    const userPH = document.getElementById("phHealth").value;
+
     const url = "../assets/BrgyCert.pdf";
     const existingPdfBytes = await fetch(url).then((res) => res.arrayBuffer());
 
@@ -261,9 +265,9 @@ export default function brgyCertFrom() {
                         gender: userGender,
                         blood: userBlood,
 
-                        phHealth: document.getElementById("phHealth").value,
-                        sss: document.getElementById("sss").value,
-                        tin: document.getElementById("tin").value,
+                        phHealth: userPH,
+                        sss: userSSS,
+                        tin: userTIN,
 
                         addressE: document.getElementById("addressE").value,
                         contactE: document.getElementById("contactE").value,

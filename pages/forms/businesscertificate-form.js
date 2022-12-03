@@ -90,8 +90,6 @@ export default function bsnsCertFrom() {
     day = "31st";
   }
 
-  console.log(today);
-
   if (user) {
     const newEmail = user.email
       .replace(".com", "")

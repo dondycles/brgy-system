@@ -10,18 +10,87 @@ import { useRouter } from "next/router";
 import emailjs from "@emailjs/browser";
 import { motion as m } from "framer-motion";
 
+import downloadjs from "downloadjs";
+
+import { PDFDocument, rgb, StandardFonts } from "pdf-lib";
+
 export default function brgyIDFrom() {
   const [user, loading] = useAuthState(auth);
   const route = useRouter();
 
   var today = new Date();
   var dd = String(today.getDate()).padStart(2, "0");
-  var mm = String(today.getMonth() + 1).padStart(2, "0"); //January is 0!
+  var mm = String(today.getMonth() + 1).padStart(2, "0");
   var yyyy = today.getFullYear();
 
   today = mm + "/" + dd + "/" + yyyy;
 
-  console.log(today);
+  var month, day;
+
+  if (mm == 12) {
+    month = "December";
+  }
+  if (mm == 11) {
+    month = "November";
+  }
+  if (mm == 10) {
+    month = "October";
+  }
+  if (mm == 9) {
+    month = "September";
+  }
+  if (mm == 8) {
+    month = "August";
+  }
+  if (mm == 7) {
+    month = "July";
+  }
+  if (mm == 6) {
+    month = "June";
+  }
+  if (mm == 5) {
+    month = "May";
+  }
+  if (mm == 4) {
+    month = "April";
+  }
+  if (mm == 3) {
+    month = "March";
+  }
+  if (mm == 2) {
+    month = "February";
+  }
+  if (mm == 1) {
+    month = "January";
+  }
+
+  if (dd == 1) {
+    day = "1st";
+  }
+  if (dd == 2) {
+    day = "2nd";
+  }
+  if (dd == 3) {
+    day = "3rd";
+  }
+  if (dd > 3 && dd < 21) {
+    day = dd + "th";
+  }
+  if (dd == 21) {
+    day = "21st";
+  }
+  if (dd == 22) {
+    day = "22nd";
+  }
+  if (dd == 23) {
+    day = "23rd";
+  }
+  if (dd > 23 && dd < 31) {
+    day = dd + "th";
+  }
+  if (dd == 31) {
+    day = "31st";
+  }
 
   if (user) {
     const newEmail = user.email
@@ -66,6 +135,84 @@ export default function brgyIDFrom() {
     const userPlace = document.getElementById("placeBday").value;
     const userGender = document.getElementById("gender").value;
     const userBlood = document.getElementById("blood").value;
+
+    const userSSS = document.getElementById("sss").value;
+    const userTIN = document.getElementById("tin").value;
+    const userPH = document.getElementById("phHealth").value;
+
+    const url = "../assets/ID.pdf";
+    const existingPdfBytes = await fetch(url).then((res) => res.arrayBuffer());
+
+    const pdfDoc = await PDFDocument.load(existingPdfBytes);
+    const helveticaFont = await pdfDoc.embedFont(StandardFonts.Helvetica);
+
+    const pages = pdfDoc.getPages();
+    const firstPage = pages[0];
+    const { width, height } = firstPage.getSize();
+
+    firstPage.drawText(userAdd, {
+      x: 58,
+      y: 102,
+      size: 5,
+      font: helveticaFont,
+      color: rgb(0, 0, 0),
+    });
+
+    firstPage.drawText(userBday, {
+      x: 58,
+      y: 85,
+      size: 5,
+      font: helveticaFont,
+      color: rgb(0, 0, 0),
+    });
+
+    firstPage.drawText(userPlace, {
+      x: 58,
+      y: 76,
+      size: 5,
+      font: helveticaFont,
+      color: rgb(0, 0, 0),
+    });
+
+    firstPage.drawText(userNum, {
+      x: 58,
+      y: 67,
+      size: 5,
+      font: helveticaFont,
+      color: rgb(0, 0, 0),
+    });
+
+    firstPage.drawText("SSS: " + userSSS + " / " + "TIN: " + userTIN, {
+      x: 58,
+      y: 58,
+      size: 5,
+      font: helveticaFont,
+      color: rgb(0, 0, 0),
+    });
+
+    firstPage.drawText(month + " " + day + ", " + yyyy, {
+      x: 58,
+      y: 49,
+      size: 5,
+      font: helveticaFont,
+      color: rgb(0, 0, 0),
+    });
+    firstPage.drawText(month + " " + day + ", " + (yyyy + 3), {
+      x: 58,
+      y: 40,
+      size: 5,
+      font: helveticaFont,
+      color: rgb(0, 0, 0),
+    });
+    firstPage.drawText("123123123", {
+      x: 58,
+      y: 31,
+      size: 5,
+      font: helveticaFont,
+      color: rgb(0, 0, 0),
+    });
+
+    const pdfBytes = await pdfDoc.save();
 
     toast.info("Please wait...", {
       autoClose: 1500,
@@ -140,9 +287,9 @@ export default function brgyIDFrom() {
                         gender: userGender,
                         blood: userBlood,
 
-                        phHealth: document.getElementById("phHealth").value,
-                        sss: document.getElementById("sss").value,
-                        tin: document.getElementById("tin").value,
+                        phHealth: userPH,
+                        sss: userSSS,
+                        tin: userTIN,
 
                         addressE: document.getElementById("addressE").value,
                         contactE: document.getElementById("contactE").value,
@@ -187,6 +334,12 @@ export default function brgyIDFrom() {
                               document.getElementById("contactE").value = "";
                               toast.success(
                                 "Your application for Brgy. ID has been submitted. Please check you email."
+                              );
+
+                              downloadjs(
+                                pdfBytes,
+                                userFirst + " Brgy Certificate",
+                                "application/pdf"
                               );
                             },
                             (err) => {
